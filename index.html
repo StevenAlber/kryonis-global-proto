@@ -1047,5 +1047,12 @@
     </footer>
 
   </div>
+
+  <!-- Always scroll to top on refresh -->
+  <script>
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+  </script>
 </body>
 </html>
