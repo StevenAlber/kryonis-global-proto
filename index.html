@@ -109,6 +109,8 @@
       gap: 1.4rem;
       font-size: 0.8rem;
       color: var(--muted);
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .nav-links a {
@@ -148,8 +150,7 @@
         gap: 0.4rem;
       }
       .nav-links {
-        flex-wrap: wrap;
-        row-gap: 0.4rem;
+        justify-content: flex-start;
       }
     }
 
@@ -297,8 +298,9 @@
       .hero-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+      /* ÄRA tõsta kasti teksti ette – tekst jääb alati esimeseks */
       .hero-aside {
-        order: -1;
+        order: 1;
       }
     }
 
@@ -508,7 +510,8 @@
 
     footer {
       border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 2.4rem 0 2.8rem;
+      padding: 2.4rem 0;
+      padding-bottom: calc(2.8rem + env(safe-area-inset-bottom));
       font-size: 0.86rem;
       color: var(--muted);
       margin-top: 1.6rem;
@@ -520,6 +523,13 @@
       gap: 2rem;
       flex-wrap: wrap;
       align-items: flex-start;
+    }
+
+    @media (max-width: 720px) {
+      .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     /* DESKTOP POLISH – center the right-hand cards in grid-2 on large screens */
@@ -553,6 +563,7 @@
             <a href="#doctrine">Doctrine</a>
             <a href="#architecture">Architecture</a>
             <a href="#metrics">GCI &amp; PoC</a>
+            <a href="#tokenomics">Tokenomics</a>
             <a href="#sovereignty">Sovereignty</a>
             <a href="#governance">Governance</a>
             <a href="#studio">Studio</a>
@@ -652,31 +663,31 @@
               </p>
 
               <div class="pill-row">
-                <span class="pill gold">Living Economy</span>
-                <span class="pill">Planetary Consciousness</span>
-                <span class="pill">Noetic Cybernetics</span>
-                <span class="pill">Resonance-based Legitimacy</span>
+                <span class="pill gold">LIVING ECONOMY</span>
+                <span class="pill">PLANETARY CONSCIOUSNESS</span>
+                <span class="pill">NOETIC CYBERNETICS</span>
+                <span class="pill">RESONANCE-BASED LEGITIMACY</span>
               </div>
             </div>
 
             <div class="stack-card">
               <div class="stack-label">Core instruments</div>
               <div class="stack-row">
-                <div class="stack-name">GCI — Global Cognitive Index</div>
+                <div class="stack-name">GCI — GLOBAL COGNITIVE INDEX</div>
                 <div class="stack-desc">
                   Quantifies the coherence and cognitive capacity of territories,
                   institutions and networks.
                 </div>
               </div>
               <div class="stack-row">
-                <div class="stack-name">PoC — Proof of Coherence</div>
+                <div class="stack-name">POC — PROOF OF COHERENCE</div>
                 <div class="stack-desc">
                   A legitimacy layer that rewards systems which remain aligned under
                   complexity, rather than those which simply grow.
                 </div>
               </div>
               <div class="stack-row">
-                <div class="stack-name">PAS · NRU · Lexicon</div>
+                <div class="stack-name">PAS · NRU · LEXICON</div>
                 <div class="stack-desc">
                   Protocols for aligning narrative, neural and legal layers into one
                   continuous field of meaning.
@@ -702,8 +713,8 @@
           <div class="stack-card">
             <div class="stack-row">
               <div>
-                <div class="stack-label">Layer 1</div>
-                <div class="stack-name">Physical</div>
+                <div class="stack-label">LAYER 1</div>
+                <div class="stack-name">PHYSICAL</div>
               </div>
               <div class="stack-desc">
                 Energy, materials, robotics, logistics, biospheres. The substrate on
@@ -713,8 +724,8 @@
 
             <div class="stack-row">
               <div>
-                <div class="stack-label">Layer 2</div>
-                <div class="stack-name">Digital</div>
+                <div class="stack-label">LAYER 2</div>
+                <div class="stack-name">DIGITAL</div>
               </div>
               <div class="stack-desc">
                 Networks, sensors, AI models, digital twins, civic data. The nervous
@@ -724,8 +735,8 @@
 
             <div class="stack-row">
               <div>
-                <div class="stack-label">Layer 3</div>
-                <div class="stack-name">Cognitive</div>
+                <div class="stack-label">LAYER 3</div>
+                <div class="stack-name">COGNITIVE</div>
               </div>
               <div class="stack-desc">
                 Prediction, strategic reasoning, multi-agent simulations. How systems
@@ -735,8 +746,8 @@
 
             <div class="stack-row">
               <div>
-                <div class="stack-label">Layer 4</div>
-                <div class="stack-name gold">Consciousness (KRYONIS)</div>
+                <div class="stack-label">LAYER 4</div>
+                <div class="stack-name gold">CONSCIOUSNESS (KRYONIS)</div>
               </div>
               <div class="stack-desc">
                 Resonance, interiority, meaning-making. The layer that asks not only
@@ -746,8 +757,8 @@
 
             <div class="stack-row">
               <div>
-                <div class="stack-label">Layer 5</div>
-                <div class="stack-name violet">Noöcratic</div>
+                <div class="stack-label">LAYER 5</div>
+                <div class="stack-name violet">NOÖCRATIC</div>
               </div>
               <div class="stack-desc">
                 Federations of aligned minds — human, institutional and artificial —
@@ -773,9 +784,9 @@
           <div class="grid-2">
             <div>
               <div class="metric-card">
-                <div class="metric-label">GCI — Global Cognitive Index</div>
+                <div class="metric-label">GCI — GLOBAL COGNITIVE INDEX</div>
                 <div class="metric-value">
-                  Multi-domain composite<span class="metric-tag">prototype</span>
+                  Multi-domain composite<span class="metric-tag">PROTOTYPE</span>
                 </div>
                 <div class="metric-footnote">
                   Aggregates signal from economic flows, informational hygiene,
@@ -786,22 +797,22 @@
 
               <div class="metric-grid">
                 <div class="metric-card">
-                  <div class="metric-label">Signal density</div>
-                  <div class="metric-value">High</div>
+                  <div class="metric-label">SIGNAL DENSITY</div>
+                  <div class="metric-value">HIGH</div>
                   <div class="metric-footnote">
                     Ratio of meaningful signal to noise across critical domains.
                   </div>
                 </div>
                 <div class="metric-card">
-                  <div class="metric-label">Alignment stability</div>
-                  <div class="metric-value">Coherent</div>
+                  <div class="metric-label">ALIGNMENT STABILITY</div>
+                  <div class="metric-value">COHERENT</div>
                   <div class="metric-footnote">
                     Measures how quickly systems decohere under stress.
                   </div>
                 </div>
                 <div class="metric-card">
-                  <div class="metric-label">Governance latency</div>
-                  <div class="metric-value">Sub-cycle</div>
+                  <div class="metric-label">GOVERNANCE LATENCY</div>
+                  <div class="metric-value">SUB-CYCLE</div>
                   <div class="metric-footnote">
                     Time between signal emergence and legitimate response.
                   </div>
@@ -810,8 +821,8 @@
             </div>
 
             <div class="metric-card">
-              <div class="metric-label">PoC — Proof of Coherence</div>
-              <div class="metric-value">Legitimacy as a living metric</div>
+              <div class="metric-label">POC — PROOF OF COHERENCE</div>
+              <div class="metric-value">LEGITIMACY AS A LIVING METRIC</div>
               <div class="metric-footnote">
                 Traditional systems reward volume: more data, more growth, more
                 throughput. PoC rewards <strong>coherent alignment</strong> across the stack. In
@@ -822,6 +833,71 @@
                 PoC is not a cryptocurrency protocol. It is a governance primitive that
                 can be implemented with or without tokens, depending on context.
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOKENOMICS (CONCEPTUAL LAYER) -->
+      <section id="tokenomics">
+        <div class="wrapper">
+          <div class="section-heading">
+            <div class="section-eyebrow">TOKENOMICS</div>
+            <h2 class="section-title">From extraction tokens to coherence tokens</h2>
+            <p class="section-lead">
+              KRYONIS tokenomics is not built on speculation. It is built on coherence —
+              turning alignment itself into the core economic primitive.
+            </p>
+          </div>
+
+          <div class="grid-2">
+            <div class="doctrine-text">
+              <p>
+                Most token systems reward activity: more transactions, more yield, more
+                volume. KRYONIS proposes a different foundation: value emerges from
+                <strong>systemic coherence</strong> — the ability of a node, institution or
+                ecosystem to remain aligned under stress.
+              </p>
+              <p>
+                In the KRYONIS economy, PoC and GCI act as the primary “oracles”.
+                Coherence, not noise, becomes the scarce resource. Nodes that improve
+                global coherence move closer to the center of value creation.
+              </p>
+              <p class="note">
+                No public token sales. No retail instruments. The economic layer is
+                designed for sovereign nodes and institutional actors, not for mass
+                speculation.
+              </p>
+            </div>
+
+            <div class="stack-card">
+              <div class="stack-label">COMING ECONOMIC LAYER</div>
+              <div class="stack-row">
+                <div class="stack-name">KST — KRYONIS SOVEREIGN TOKEN</div>
+                <div class="stack-desc">
+                  A coherence-aligned unit designed for node-level issuance under
+                  sovereign or institutional agreements.
+                </div>
+              </div>
+              <div class="stack-row">
+                <div class="stack-name">NODE ECONOMICS</div>
+                <div class="stack-desc">
+                  Each KRYONIS node can operate its own emission curve, anchored in PoC
+                  and GCI scores, not in arbitrary inflation.
+                </div>
+              </div>
+              <div class="stack-row">
+                <div class="stack-name">KRYONIS META-DAO</div>
+                <div class="stack-desc">
+                  A future meta-governance layer where decision weight is tied to
+                  demonstrated coherence, not only stake or volume.
+                </div>
+              </div>
+              <p style="font-size:0.8rem; color:var(--muted); margin-top:0.9rem;">
+                Detailed tokenomics and issuance architectures will be published once
+                the KRYONIS sovereign node framework is formally adopted by partner
+                institutions.
+              </p>
             </div>
           </div>
         </div>
@@ -854,29 +930,29 @@
                 frame.
               </p>
               <p class="note">
-                Example domains: Arctica–Siberia bioeconomy clusters, cognitive
+                Example domains: ARCTICA–SIBERIA bioeconomy clusters, cognitive
                 capital regions, special governance zones, orbital research habitats.
               </p>
             </div>
 
             <div class="stack-card">
-              <div class="stack-label">Selected node parameters</div>
+              <div class="stack-label">SELECTED NODE PARAMETERS</div>
               <div class="stack-row">
-                <div class="stack-name">Resonance profile</div>
+                <div class="stack-name">RESONANCE PROFILE</div>
                 <div class="stack-desc">
                   How the node’s culture, law and infrastructure interact as a single
                   field.
                 </div>
               </div>
               <div class="stack-row">
-                <div class="stack-name">Sovereignty envelope</div>
+                <div class="stack-name">SOVEREIGNTY ENVELOPE</div>
                 <div class="stack-desc">
                   What remains under local control, what is federated, what is shared
                   only via encrypted metrics.
                 </div>
               </div>
               <div class="stack-row">
-                <div class="stack-name">Ethical boundary layer</div>
+                <div class="stack-name">ETHICAL BOUNDARY LAYER</div>
                 <div class="stack-desc">
                   Explicit red lines for AI, bioengineering and financialization inside
                   the node.
@@ -901,7 +977,7 @@
 
           <div class="columns-3">
             <div>
-              <h4>Public sector</h4>
+              <h4>PUBLIC SECTOR</h4>
               <p>
                 Ministries, sovereign funds, research institutes and special economic
                 zones seeking a consciousness-aware architecture for long-range
@@ -909,14 +985,14 @@
               </p>
             </div>
             <div>
-              <h4>Strategic partners</h4>
+              <h4>STRATEGIC PARTNERS</h4>
               <p>
                 Bioeconomy, AI, infrastructure and space actors who need a shared
                 language for post-territorial governance and value creation.
               </p>
             </div>
             <div>
-              <h4>Experimental nodes</h4>
+              <h4>EXPERIMENTAL NODES</h4>
               <p>
                 Eco-settlements, orbital labs, Arctic or high-latitude pilot regions that
                 want to operate as sovereign cognitive testbeds.
@@ -944,7 +1020,7 @@
               <p>
                 KRYONIS INTELLIGENCE STUDIO formalises the written layer of the
                 framework: the doctrines, playbooks and architectural maps through
-                which civilizations organise their next intelligence epoch.
+                which civilization organises its next intelligence epoch.
               </p>
               <p>
                 All publications are produced under a five-phase authorship protocol
@@ -954,7 +1030,7 @@
             </div>
 
             <div class="stack-card">
-              <div class="stack-label">Access</div>
+              <div class="stack-label">ACCESS</div>
               <p style="font-size:0.9rem; color:var(--muted); margin-top:0.6rem;">
                 The studio accepts commissions from sovereign institutions, ministries,
                 research agencies and scientific consortia. Each engagement begins with
@@ -967,7 +1043,7 @@
               <a href="https://kryonis-intelligence-studio.onrender.com"
                  class="btn btn-gold"
                  style="margin-top:1.1rem; display:inline-flex;">
-                Open KRYONIS INTELLIGENCE STUDIO
+                OPEN KRYONIS INTELLIGENCE STUDIO
               </a>
             </div>
           </div>
@@ -1004,7 +1080,7 @@
             </div>
 
             <div class="stack-card">
-              <div class="stack-label">First exchange, suggested format</div>
+              <div class="stack-label">FIRST EXCHANGE, SUGGESTED FORMAT</div>
               <p style="font-size:0.9rem; color:var(--muted); margin-top:0.6rem;">
                 ▸ Who you are and what system you speak for.<br />
                 ▸ The time horizon you are responsible for (5 / 25 / 100+ years).<br />
@@ -1021,7 +1097,7 @@
 
     <!-- FOOTER -->
     <footer>
-      <div class="wrapper" style="padding-top:2.8rem; padding-bottom:2.8rem;">
+      <div class="wrapper">
 
         <!-- subtle separator -->
         <div style="
