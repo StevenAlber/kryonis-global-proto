@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KRYONIS — Lazy Susan Protocol</title>
+  <meta name="description" content="The KRYONIS Lazy Susan™ — A resonance-first synthesis protocol for hybrid intelligence." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #020203;
+      --fg: #e1e1e6;
+      --fg-dim: #6b7280;
+      --gold: #D4AF37;
+      --gold-glow: rgba(212, 175, 55, 0.25);
+      --border: rgba(255, 255, 255, 0.08);
+      --glass: blur(12px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .wrapper { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .serif { font-family: 'Cinzel', serif; }
+    .caps { text-transform: uppercase; letter-spacing: 0.1em; }
+    .text-gold { color: var(--gold); }
+    .text-dim { color: var(--fg-dim); }
+
+    /* HEADER */
+    header {
+      padding: 2rem 0; border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .back-link { font-size: 0.8rem; color: var(--fg-dim); text-decoration: none; border: 1px solid var(--border); padding: 5px 10px; border-radius: 4px; }
+    .back-link:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* HERO */
+    .hero { padding: 4rem 0; text-align: center; }
+    .protocol-tag {
+      display: inline-block; border: 1px solid var(--gold); color: var(--gold);
+      padding: 0.3rem 0.8rem; font-size: 0.7rem; margin-bottom: 1.5rem;
+    }
+    h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1rem; }
+    .lead { font-size: 1.1rem; color: var(--fg-dim); max-width: 600px; margin: 0 auto; }
+
+    /* THE LAZY SUSAN VISUALIZER */
+    .orbit-container {
+      position: relative; width: 100%; height: 600px;
+      display: flex; justify-content: center; align-items: center;
+      margin: 3rem 0; overflow: hidden;
+    }
+    
+    .center-table {
+      width: 200px; height: 200px; border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, rgba(0,0,0,0) 70%);
+      display: flex; justify-content: center; align-items: center;
+      text-align: center; z-index: 10;
+      box-shadow: 0 0 30px var(--gold-glow);
+    }
+
+    .orbit-ring {
+      position: absolute; border-radius: 50%;
+      border: 1px dashed rgba(255,255,255,0.1);
+    }
+    .ring-1 { width: 350px; height: 350px; animation: spin-left 60s linear infinite; }
+    .ring-2 { width: 500px; height: 500px; animation: spin-right 80s linear infinite; }
+
+    .seat {
+      position: absolute; width: 12px; height: 12px; background: #111;
+      border: 1px solid var(--fg-dim); border-radius: 50%;
+      top: 50%; left: 50%; transform-origin: 0 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .seat::after {
+      content: attr(data-label);
+      position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+      font-family: 'JetBrains Mono'; font-size: 9px; white-space: nowrap;
+      color: var(--fg-dim); opacity: 0.7;
+    }
+    .seat.human { border-color: var(--gold); background: var(--gold-glow); }
+    .seat.machine { border-color: #6e8cff; background: rgba(110,140,255,0.1); }
+
+    /* GRID LAYOUT FOR ROLES */
+    .roles-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      margin-top: 4rem; border-top: 1px solid var(--border); padding-top: 3rem;
+    }
+    .role-col h3 { margin-bottom: 2rem; font-size: 1.2rem; }
+    
+    .role-item {
+      display: flex; gap: 1rem; margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .role-icon { font-size: 1.2rem; }
+    .role-title { font-weight: 600; display: block; margin-bottom: 0.3rem; }
+    .role-desc { font-size: 0.85rem; color: var(--fg-dim); }
+
+    /* FOOTER CTA */
+    .cta-box {
+      background: linear-gradient(145deg, #0a0b10, #020203);
+      border: 1px solid var(--border); padding: 3rem; text-align: center;
+      margin: 4rem 0; border-radius: 8px;
+    }
+
+    /* ANIMATIONS */
+    @keyframes spin-right { 100% { transform: rotate(360deg); } }
+    @keyframes spin-left { 100% { transform: rotate(-360deg); } }
+
+    @media (max-width: 800px) {
+      .roles-grid { grid-template-columns: 1fr; }
+      .orbit-container { height: 400px; transform: scale(0.7); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <header>
+      <div class="serif caps text-gold">Kryonis.Global</div>
+      <a href="https://kryonis.global" class="back-link mono caps">← Return</a>
+    </header>
+
+    <section class="hero">
+      <span class="protocol-tag mono caps">Operative Playbook 01</span>
+      <h1 class="serif">The "Lazy Susan" Protocol</h1>
+      <p class="lead">
+        A resonance-first synthesis engine. We replace hierarchy with rotation, enabling 12 nodes of hybrid intelligence to architect sovereign futures.
+      </p>
+    </section>
+
+    <div class="orbit-container">
+      <div class="center-table">
+        <div class="mono caps" style="font-size:0.7rem; line-height:1.4;">
+          <span class="text-gold">Center of<br>Synthesis</span><br><br>
+          <span class="text-dim">Resonance<br>Trace</span>
+        </div>
+      </div>
+      
+      <div class="orbit-ring ring-1" id="ring-machine">
+        </div>
+
+      <div class="orbit-ring ring-2" id="ring-human">
+        </div>
+    </div>
+
+    <div class="roles-grid">
+      
+      <div class="role-col">
+        <h3 class="serif caps" style="color:#6e8cff;">// Systemic Core (Machine)</h3>
+        
+        <div class="role-item">
+          <div class="role-icon">🤖</div>
+          <div>
+            <span class="role-title mono">Analytic Module</span>
+            <span class="role-desc">Forms systemic understanding, scientific realism, and meta-analysis.</span>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-icon">🌐</div>
+          <div>
+            <span class="role-title mono">Strategic Awareness</span>
+            <span class="role-desc">Sees civilizational contours, conducts systemic critique.</span>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-icon">⚖️</div>
+          <div>
+            <span class="role-title mono">Ethical Reflector</span>
+            <span class="role-desc">Creates harmony between language, meaning, and value.</span>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-icon">📡</div>
+          <div>
+            <span class="role-title mono">Fact Verification Flow</span>
+            <span class="role-desc">Real-time bibliometrics and evidence base construction.</span>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-icon">🎼</div>
+          <div>
+            <span class="role-title mono">The Orchestrator</span>
+            <span class="role-desc">Modulates knowledge flows, maintains rhythm and coherence.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="role-col">
+        <h3 class="serif caps text-gold">∴ Bio-Sentient Circle (Human)</h3>
+        
+        <div class="role-item">
+          <div class="role-icon">🌱</div>
+          <div>
+            <span class="role-title mono">Bioeconomist</span>
+            <span class="role-desc">Links biological circulation with economic value.</span>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-icon">🧠</div>
+          <div>
+            <span class="role-title mono">Neuro-Modeler</span>
+            <span class="role-desc">Tracks consciousness metadata and cognitive patterns.</span>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-icon">🏛️</div>
+          <div>
+            <span class="role-title mono">System Architect</span>
+            <span class="role-desc">Interprets spatial and structural symbols.</span>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-icon">👁️</div>
+          <div>
+            <span class="role-title mono">Philosopher / Semiotician</span>
+            <span class="role-desc">Creates resonance between language and deep meaning.</span>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-icon">🧬</div>
+          <div>
+            <span class="role-title mono">Anthropologist</span>
+            <span class="role-desc">Adds cultural context and evolutionary dimension.</span>
+          </div>
+        </div>
+        <div class="role-item">
+          <div class="role-icon">💎</div>
+          <div>
+            <span class="role-title mono">Tokenomist</span>
+            <span class="role-desc">Connects value and consciousness into cognitive economy.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cta-box">
+      <h3 class="serif text-gold">Initiate a Session</h3>
+      <p class="mono text-dim" style="margin-bottom:1.5rem;">
+        Optimal configuration: 12-15 participants (50% cognitive systems / 50% human).<br>
+        Goal: Resonance, not hierarchy.
+      </p>
+      <a href="mailto:hq@kryonis.global" style="background:var(--gold); color:#000; text-decoration:none; padding:1rem 2rem; font-weight:600;" class="mono caps">Request Full Protocol Deck</a>
+    </div>
+
+  </div>
+
+  <script>
+    // SCRIPT TO PLACE SEATS IN CIRCLE
+    const machineRoles = ["Analytic", "Strategy", "Ethics", "Facts", "Orchestrator"];
+    const humanRoles = ["BioEcon", "Neuro", "Architect", "Semiotic", "Anthro", "Tokenomist", "Editor"];
+
+    function placeSeats(ringId, roles, type) {
+      const ring = document.getElementById(ringId);
+      const count = roles.length;
+      const angleStep = 360 / count;
+
+      roles.forEach((role, i) => {
+        const angle = i * angleStep;
+        const seat = document.createElement('div');
+        seat.className = `seat ${type}`;
+        seat.setAttribute('data-label', role);
+        
+        // Calculate position on circle
+        // Radius is 50% of ring width
+        const radius = ring.offsetWidth / 2; 
+        
+        // Need to offset rotation to place items
+        seat.style.transform = `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`;
+        
+        ring.appendChild(seat);
+      });
+    }
+
+    placeSeats('ring-machine', machineRoles, 'machine');
+    placeSeats('ring-human', humanRoles, 'human');
+  </script>
+</body>
+</html>
