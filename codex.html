@@ -36,13 +36,13 @@
     .caps { text-transform: uppercase; letter-spacing: 0.1em; }
     .text-gold { color: var(--gold); }
 
-    /* HEADER - FIXED POSITION FIX */
+    /* HEADER - FIXED FOR STABILITY */
     header {
       position: fixed;
       top: 0; left: 0; width: 100%;
       z-index: 1000;
       padding: 1.5rem 0;
-      background: rgba(3, 3, 4, 0.95); /* Opaque background */
+      background: rgba(3, 3, 4, 0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -55,7 +55,7 @@
     .back-link { font-size: 0.7rem; color: var(--fg-dim); text-decoration: none; border: 1px solid var(--border); padding: 8px 16px; border-radius: 2px; transition:0.3s; }
     .back-link:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* MAIN CONTENT PADDING (To clear fixed header) */
+    /* PADDING FOR FIXED HEADER */
     main { padding-top: 100px; padding-bottom: 100px; }
 
     /* HERO */
@@ -66,7 +66,7 @@
       border-left: 1px solid var(--border); padding-left: 1.5rem;
     }
 
-    /* DICTIONARY GRID (DESKTOP) */
+    /* DICTIONARY GRID (DESKTOP DEFAULT) */
     .term-row {
       display: grid; 
       grid-template-columns: 1fr 2fr; 
@@ -79,7 +79,7 @@
     .term-row:last-child { border-bottom: none; }
     .term-row:hover { background: rgba(255,255,255,0.01); }
 
-    .term-col { position: sticky; top: 120px; } /* Adjusted for fixed header */
+    .term-col { position: sticky; top: 120px; }
 
     .term {
       font-family: 'Cinzel', serif;
@@ -117,18 +117,18 @@
     /* FOOTER */
     footer { padding: 4rem 0; text-align: center; font-size: 0.7rem; color: var(--fg-dim); border-top: 1px solid var(--border); }
 
-    /* === MOBILE FIXES === */
+    /* === MOBILE FIXES (CRITICAL FOR LAYOUT) === */
     @media (max-width: 800px) {
       .header-content, .wrapper { padding: 0 1.5rem; }
       
       .term-row { 
         display: flex; 
-        flex-direction: column;
+        flex-direction: column; /* Stack vertically */
         gap: 1rem; 
         padding: 3rem 0; 
       }
       
-      /* Disable sticky on mobile */
+      /* Disable sticky on mobile to prevent overlap */
       .term-col { position: static; margin-bottom: 0.5rem; }
       
       .term { font-size: 1.6rem; }
@@ -277,24 +277,48 @@
     </button>
   </div>
 
-  <audio id="ambient-track" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_6276e53660.mp3" type="audio/mpeg">
+  <audio id="ambient-track" loop preload="auto">
+    <source src="drone.mp3" type="audio/mpeg">
   </audio>
 
   <script>
     const audio = document.getElementById('ambient-track');
     const btn = document.getElementById('sonic-btn');
-    audio.volume = 0.4; 
+    
+    // Force load
+    audio.load();
+    audio.volume = 0.5; 
 
     function toggleAudio() {
       if (audio.paused) {
-        audio.play();
+        // Use Promise to handle autoplay restrictions
+        var playPromise = audio.play();
+
+        if (playPromise !== undefined) {
+          playPromise.then(_ => {
+            // Play started successfully
+            updateBtn(true);
+          })
+          .catch(error => {
+            console.log("Playback prevented. User interaction needed.");
+            // On mobile, sometimes we need to trigger play again inside the click event
+            audio.play();
+            updateBtn(true);
+          });
+        }
+      } else {
+        audio.pause();
+        updateBtn(false);
+      }
+    }
+
+    function updateBtn(isPlaying) {
+      if (isPlaying) {
         btn.innerHTML = "[ AUDIO: <span style='color:#33ff88'>ON</span> ]";
         btn.style.borderColor = "var(--gold)";
         btn.style.color = "var(--gold)";
         btn.style.boxShadow = "0 0 15px rgba(212, 175, 55, 0.2)";
       } else {
-        audio.pause();
         btn.innerHTML = "[ AUDIO: OFF ]";
         btn.style.borderColor = "rgba(212, 175, 55, 0.3)";
         btn.style.color = "rgba(212, 175, 55, 0.5)";
