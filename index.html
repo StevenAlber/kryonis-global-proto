@@ -3,39 +3,23 @@
 <head>
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1" />
- <title>KRYONIS INTELLIGENCE PORTAL — Sovereign Operations Console</title>
- <meta name="description" content="KRYONIS INTELLIGENCE PORTAL — a government-grade operations console for KRYONIS nodes, modules and coherence metrics." />
+ <title>KRYONIS.GLOBAL — Consciousness Architecture</title>
+ <meta name="description" content="KRYONIS.GLOBAL — a post-territorial framework for consciousness-based civilizational architecture." />
 
  <style>
    :root {
-     /* CORE BRAND BACKGROUND */
      --bg: #05060a;
      --bg-soft: #0b0d14;
-     --bg-elevated: #111322;
-
-     /* TEXT */
      --fg: #f5f5f5;
-     --fg-soft: #d7dae2;
      --muted: #a3a7b3;
-
-     /* GOLD ACCENT */
      --gold: #f5c76a;
-     --gold-soft: #f5c76a1a;
-     --gold-strong: #ffde8a;
-
-     /* VIOLET ACCENT */
      --violet: #6e63ff;
-     --violet-soft: #6e63ff1a;
-
-     /* BORDERS */
      --border: #1b1f2b;
-     --border-soft: #121623;
 
-     /* DESIGN TOKENS */
      --radius-lg: 24px;
      --radius-md: 16px;
 
-     --max-width: 1180px;
+     --max-width: 1120px;
      --shadow-soft: 0 18px 60px rgba(0, 0, 0, 0.45);
    }
 
@@ -93,15 +77,6 @@
      align-items: center;
      justify-content: space-between;
      padding: 0.6rem 0;
-     gap: 1.4rem;
-     flex-wrap: wrap;
-   }
-
-   .nav-left {
-     display: flex;
-     align-items: center;
-     gap: 0.9rem;
-     flex-wrap: wrap;
    }
 
    .nav-brand {
@@ -123,26 +98,19 @@
    }
 
    .nav-title {
-     font-size: 0.92rem;
+     font-size: 0.95rem;
      letter-spacing: 0.18em;
      text-transform: uppercase;
      color: var(--muted);
    }
 
-   .nav-subtitle {
-     font-size: 0.7rem;
-     text-transform: uppercase;
-     letter-spacing: 0.2em;
-     color: var(--muted);
-     opacity: 0.8;
-   }
-
    .nav-links {
      display: flex;
-     gap: 1.1rem;
+     gap: 1.4rem;
      font-size: 0.8rem;
      color: var(--muted);
      flex-wrap: wrap;
+     justify-content: center;
    }
 
    .nav-links a {
@@ -165,35 +133,11 @@
      width: 100%;
    }
 
-   .nav-links .active {
-     color: var(--fg);
-   }
-
-   .nav-links .active::after {
-     width: 100%;
-   }
-
-   .nav-right {
-     display: flex;
-     align-items: center;
-     gap: 0.7rem;
-     font-size: 0.78rem;
-     color: var(--muted);
-   }
-
-   .nav-status-dot {
-     width: 7px;
-     height: 7px;
-     border-radius: 999px;
-     background: #4ade80;
-     box-shadow: 0 0 12px rgba(74, 222, 128, 0.6);
-   }
-
    .nav-cta {
-     padding: 0.38rem 0.9rem;
+     padding: 0.4rem 0.9rem;
      border-radius: 999px;
      border: 1px solid rgba(245, 199, 106, 0.3);
-     font-size: 0.78rem;
+     font-size: 0.8rem;
      color: var(--gold);
      background: rgba(245, 199, 106, 0.04);
      white-space: nowrap;
@@ -203,108 +147,53 @@
      .nav {
        flex-direction: column;
        align-items: flex-start;
+       gap: 0.4rem;
      }
-     .nav-left {
-       flex-direction: column;
-       align-items: flex-start;
+     .nav-links {
+       justify-content: flex-start;
      }
    }
 
-   /* GENERIC SECTIONS */
-
-   main {
-     padding-bottom: 2.4rem;
-   }
-
-   section {
-     padding: 2.6rem 0;
-   }
-
-   .section-heading {
-     margin-bottom: 1.8rem;
-   }
-
-   .section-eyebrow {
-     font-size: 0.74rem;
-     letter-spacing: 0.26em;
-     text-transform: uppercase;
-     color: var(--muted);
-     margin-bottom: 0.35rem;
-   }
-
-   .section-title {
-     font-size: 1.25rem;
-     letter-spacing: 0.16em;
-     text-transform: uppercase;
-   }
-
-   .section-lead {
-     font-size: 0.95rem;
-     color: var(--muted);
-     max-width: 32rem;
-     margin-top: 0.5rem;
-   }
-
-   /* HERO / OVERVIEW STRIP */
+   /* HERO */
 
    .hero {
-     padding: 2.6rem 0 1.8rem;
+     padding: 3.6rem 0 3.4rem;
    }
 
-   .hero-layout {
+   .hero-grid {
      display: grid;
-     grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
-     gap: 2.2rem;
-     align-items: flex-start;
+     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+     gap: 3rem;
+     align-items: center;
    }
 
    .hero-kicker {
-     font-size: 0.72rem;
-     letter-spacing: 0.26em;
+     font-size: 0.7rem;
+     letter-spacing: 0.28em;
      text-transform: uppercase;
-     color: var(--muted);
-     margin-bottom: 0.8rem;
+     color: var(--gold);
+     margin-bottom: 0.9rem;
+     opacity: 0.8;
    }
 
    .hero-title {
-     font-size: clamp(1.7rem, 2.8vw, 2.4rem);
-     letter-spacing: 0.16em;
+     font-size: clamp(2rem, 3.3vw, 2.6rem);
+     letter-spacing: 0.12em;
      text-transform: uppercase;
-     margin-bottom: 1rem;
+     margin-bottom: 1.2rem;
+     line-height: 1.25;
    }
 
    .hero-subtitle {
-     font-size: 0.98rem;
+     font-size: 1.02rem;
      color: var(--muted);
      max-width: 32rem;
-     margin-bottom: 1.2rem;
+     margin-bottom: 1.6rem;
    }
 
    .hero-subtitle strong {
-     color: var(--fg-soft);
+     color: var(--fg);
      font-weight: 500;
-   }
-
-   .hero-chips {
-     display: flex;
-     flex-wrap: wrap;
-     gap: 0.5rem;
-     margin-bottom: 1.4rem;
-   }
-
-   .chip {
-     font-size: 0.72rem;
-     padding: 0.22rem 0.7rem;
-     border-radius: 999px;
-     border: 1px solid var(--border);
-     background: rgba(12, 14, 22, 0.96);
-     color: var(--muted);
-   }
-
-   .chip.gold {
-     border-color: rgba(245, 199, 106, 0.8);
-     color: var(--gold);
-     background: var(--gold-soft);
    }
 
    .hero-actions {
@@ -312,7 +201,6 @@
      flex-wrap: wrap;
      gap: 0.9rem;
      align-items: center;
-     margin-top: 0.2rem;
    }
 
    .btn {
@@ -322,25 +210,11 @@
      gap: 0.4rem;
      padding: 0.7rem 1.4rem;
      border-radius: 999px;
-     font-size: 0.86rem;
+     font-size: 0.9rem;
      border: 1px solid transparent;
      cursor: pointer;
      transition: background 0.18s ease-out, border-color 0.18s ease-out,
        color 0.18s ease-out, transform 0.12s ease-out;
-   }
-
-   .btn-gold {
-     background: var(--gold-soft);
-     border: 1px solid rgba(245, 199, 106, 0.35);
-     color: var(--gold);
-     font-weight: 500;
-   }
-
-   .btn-gold:hover {
-     background: var(--gold-strong);
-     border-color: rgba(245, 199, 106, 0.6);
-     color: #000;
-     transform: translateY(-1px);
    }
 
    .btn-outline {
@@ -355,88 +229,156 @@
      transform: translateY(-1px);
    }
 
-   .hero-panel {
-     border-radius: var(--radius-lg);
-     border: 1px solid var(--border);
+   .btn-gold {
+     background: rgba(245, 199, 106, 0.08);
+     border: 1px solid rgba(245, 199, 106, 0.35);
+     color: var(--gold);
+     font-weight: 500;
+     border-radius: 999px;
+     padding: 0.65rem 1.25rem;
+     transition: 0.2s ease-out;
+   }
+
+   .btn-gold:hover {
+     background: rgba(245, 199, 106, 0.15);
+     border-color: rgba(245, 199, 106, 0.55);
+     color: #ffffff;
+     transform: translateY(-1px);
+   }
+
+   .hero-aside {
      background: radial-gradient(circle at top, #23253b, #05060a);
-     padding: 1.5rem 1.4rem;
+     border-radius: var(--radius-lg);
+     border: 1px solid rgba(255, 255, 255, 0.04);
+     padding: 1.6rem 1.4rem;
      box-shadow: var(--shadow-soft);
    }
 
-   .hero-panel-header {
+   .hero-chip {
+     display: inline-flex;
+     align-items: center;
+     gap: 0.4rem;
+     padding: 0.22rem 0.7rem;
+     border-radius: 999px;
+     border: 1px solid rgba(245, 199, 106, 0.4);
+     font-size: 0.75rem;
+     color: var(--gold);
+     margin-bottom: 0.8rem;
+   }
+
+   .hero-metric {
+     font-size: 0.8rem;
+     color: var(--muted);
      display: flex;
      justify-content: space-between;
-     align-items: center;
-     font-size: 0.85rem;
-     margin-bottom: 0.9rem;
-     color: var(--muted);
+     margin-top: 0.4rem;
    }
 
-   .hero-panel-header span strong {
-     color: var(--fg-soft);
-     font-weight: 500;
+   .hero-metric span:last-child {
+     color: var(--fg);
    }
 
-   .hero-panel-grid {
-     display: grid;
-     grid-template-columns: repeat(3, minmax(0, 1fr));
-     gap: 0.85rem;
-     margin-bottom: 1rem;
+   .hero-divider {
+     margin: 1.1rem 0;
+     height: 1px;
+     background: linear-gradient(
+       to right,
+       transparent,
+       rgba(255, 255, 255, 0.16),
+       transparent
+     );
    }
 
-   .mini-metric {
-     padding: 0.7rem 0.8rem;
-     border-radius: 14px;
-     border: 1px solid rgba(255, 255, 255, 0.04);
-     background: rgba(5, 6, 10, 0.92);
+   .hero-caption {
      font-size: 0.8rem;
-   }
-
-   .mini-label {
      color: var(--muted);
-     font-size: 0.72rem;
-     margin-bottom: 0.15rem;
-   }
-
-   .mini-value {
-     font-size: 0.96rem;
-     font-weight: 500;
-   }
-
-   .mini-tag {
-     display: inline-block;
-     margin-left: 0.25rem;
-     font-size: 0.65rem;
-     padding: 0.06rem 0.4rem;
-     border-radius: 999px;
-     background: var(--violet-soft);
-     color: var(--violet);
-   }
-
-   .hero-panel-footnote {
-     font-size: 0.78rem;
-     color: var(--muted);
-     border-top: 1px solid rgba(255, 255, 255, 0.04);
-     padding-top: 0.7rem;
-     margin-top: 0.3rem;
    }
 
    @media (max-width: 900px) {
-     .hero-layout {
+     .hero-grid {
+       grid-template-columns: minmax(0, 1fr);
+     }
+     /* tekst enne kasti */
+     .hero-aside {
+       order: 1;
+     }
+   }
+
+   /* GENERIC SECTIONS */
+
+   section {
+     padding: 3.2rem 0;
+   }
+
+   .section-heading {
+     margin-bottom: 2rem;
+   }
+
+   .section-eyebrow {
+     font-size: 0.75rem;
+     letter-spacing: 0.26em;
+     text-transform: uppercase;
+     color: var(--muted);
+     margin-bottom: 0.4rem;
+   }
+
+   .section-title {
+     font-size: 1.3rem;
+     letter-spacing: 0.16em;
+     text-transform: uppercase;
+   }
+
+   .section-lead {
+     font-size: 0.98rem;
+     color: var(--muted);
+     max-width: 32rem;
+     margin-top: 0.6rem;
+   }
+
+   .grid-2 {
+     display: grid;
+     grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+     gap: 2.4rem;
+     align-items: flex-start;
+   }
+
+   @media (max-width: 900px) {
+     .grid-2 {
        grid-template-columns: minmax(0, 1fr);
      }
    }
 
-   /* OVERVIEW SECTION – STATUS CARDS */
+   /* DOCTRINE */
 
-   .overview-grid {
-     display: grid;
-     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-     gap: 1.8rem;
-     align-items: flex-start;
+   .doctrine-text p + p {
+     margin-top: 1rem;
    }
 
-   .card {
+   .pill-row {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 0.6rem;
+     margin-top: 1.1rem;
+   }
+
+   .pill {
+     font-size: 0.78rem;
+     padding: 0.32rem 0.7rem;
+     border-radius: 999px;
+     border: 1px solid var(--border);
+     background: rgba(12, 14, 22, 0.96);
+     color: var(--muted);
+   }
+
+   .pill.gold {
+     border-color: rgba(245, 199, 106, 0.8);
+     color: var(--gold);
+     background: rgba(245, 199, 106, 0.08);
+   }
+
+   /* STACK / ARCHITECTURE */
+
+   .stack-card {
      border-radius: var(--radius-md);
      border: 1px solid var(--border);
      background: var(--bg-soft);
@@ -444,359 +386,135 @@
      box-shadow: var(--shadow-soft);
    }
 
-   .card-title {
-     font-size: 0.9rem;
-     letter-spacing: 0.16em;
-     text-transform: uppercase;
-     color: var(--muted);
-     margin-bottom: 0.6rem;
-   }
-
-   .card-heading {
-     font-size: 1.05rem;
-     font-weight: 500;
-     margin-bottom: 0.5rem;
-   }
-
-   .card-text {
-     font-size: 0.9rem;
-     color: var(--muted);
-   }
-
-   .status-row {
+   .stack-row {
      display: grid;
-     grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-     gap: 1rem;
-     margin-top: 1rem;
-     font-size: 0.86rem;
+     grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+     gap: 1.3rem;
+     padding: 0.75rem 0;
+     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+     font-size: 0.9rem;
    }
 
-   .status-label {
-     color: var(--muted);
+   .stack-row:last-child {
+     border-bottom: none;
+   }
+
+   .stack-label {
      text-transform: uppercase;
-     letter-spacing: 0.14em;
-     font-size: 0.72rem;
-     margin-bottom: 0.15rem;
+     letter-spacing: 0.18em;
+     font-size: 0.7rem;
+     color: var(--muted);
    }
 
-   .status-value {
+   .stack-name {
      font-weight: 500;
    }
 
-   .status-pill {
-     display: inline-flex;
-     align-items: center;
-     gap: 0.32rem;
-     padding: 0.22rem 0.6rem;
-     border-radius: 999px;
-     font-size: 0.72rem;
-     border: 1px solid rgba(74, 222, 128, 0.7);
-     color: #bbf7d0;
-     background: rgba(22, 163, 74, 0.1);
+   .stack-name.gold {
+     color: var(--gold);
    }
 
-   .status-pill span.dot {
-     width: 7px;
-     height: 7px;
-     border-radius: 999px;
-     background: #4ade80;
+   .stack-name.violet {
+     color: var(--violet);
    }
 
-   .timeline {
-     margin-top: 1.1rem;
-     border-top: 1px solid rgba(255, 255, 255, 0.04);
-     padding-top: 0.9rem;
-     font-size: 0.83rem;
+   .stack-desc {
      color: var(--muted);
    }
 
-   .timeline-item + .timeline-item {
-     margin-top: 0.5rem;
-   }
-
-   .timeline-label {
-     font-size: 0.72rem;
-     text-transform: uppercase;
-     letter-spacing: 0.14em;
-     color: var(--muted);
-   }
-
-   .timeline-main {
-     color: var(--fg-soft);
-   }
-
-   .timeline-meta {
-     font-size: 0.76rem;
-     opacity: 0.82;
-   }
-
-   .metric-grid-3 {
-     display: grid;
-     grid-template-columns: repeat(3, minmax(0, 1fr));
-     gap: 0.9rem;
-     margin-top: 0.4rem;
-   }
+   /* METRICS */
 
    .metric-card {
-     border-radius: 14px;
+     border-radius: var(--radius-md);
      border: 1px solid var(--border);
-     padding: 0.9rem 0.85rem;
+     padding: 1.4rem 1.3rem;
      background: linear-gradient(145deg, #090b12, #040509);
-     font-size: 0.8rem;
    }
 
    .metric-label {
+     font-size: 0.8rem;
      color: var(--muted);
-     font-size: 0.72rem;
-     margin-bottom: 0.15rem;
+     margin-bottom: 0.2rem;
    }
 
    .metric-value {
-     font-size: 0.96rem;
+     font-size: 1.3rem;
      font-weight: 500;
    }
 
-   .metric-footnote {
-     font-size: 0.76rem;
-     color: var(--muted);
-     margin-top: 0.3rem;
+   .metric-tag {
+     font-size: 0.7rem;
+     padding: 0.16rem 0.5rem;
+     border-radius: 999px;
+     background: rgba(110, 99, 255, 0.12);
+     color: var(--violet);
+     margin-left: 0.4rem;
    }
 
-   @media (max-width: 960px) {
-     .overview-grid {
-       grid-template-columns: minmax(0, 1fr);
-     }
-     .metric-grid-3 {
+   .metric-footnote {
+     margin-top: 0.7rem;
+     font-size: 0.78rem;
+     color: var(--muted);
+   }
+
+   .metric-grid {
+     display: grid;
+     grid-template-columns: repeat(3, minmax(0, 1fr));
+     gap: 0.9rem;
+     margin-top: 1rem;
+   }
+
+   @media (max-width: 720px) {
+     .metric-grid {
        grid-template-columns: repeat(2, minmax(0, 1fr));
      }
    }
 
-   /* MODULES SECTION */
+   /* SOVEREIGNTY */
 
-   .modules-grid {
-     display: grid;
-     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-     gap: 1.8rem;
-     align-items: flex-start;
-   }
-
-   .modules-table {
-     width: 100%;
-     border-collapse: collapse;
-     font-size: 0.86rem;
-     margin-top: 0.2rem;
-   }
-
-   .modules-table thead {
-     font-size: 0.74rem;
-     text-transform: uppercase;
-     letter-spacing: 0.16em;
-     color: var(--muted);
-   }
-
-   .modules-table th,
-   .modules-table td {
-     padding: 0.55rem 0.1rem;
-     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-   }
-
-   .modules-table th:first-child,
-   .modules-table td:first-child {
-     padding-right: 0.7rem;
-   }
-
-   .modules-table th:last-child,
-   .modules-table td:last-child {
-     text-align: right;
-   }
-
-   .module-name {
-     font-weight: 500;
-     font-size: 0.9rem;
-   }
-
-   .module-tagline {
+   .note {
      font-size: 0.8rem;
      color: var(--muted);
+     border-left: 2px solid rgba(245, 199, 106, 0.5);
+     padding-left: 0.7rem;
+     margin-top: 0.8rem;
    }
 
-   .module-status-pill {
-     display: inline-flex;
-     align-items: center;
-     gap: 0.3rem;
-     padding: 0.18rem 0.55rem;
-     border-radius: 999px;
-     font-size: 0.7rem;
-     border: 1px solid var(--border);
-     color: var(--muted);
-     background: rgba(12, 14, 22, 0.96);
-   }
+   /* GOVERNANCE / CONTACT / FOOTER */
 
-   .module-status-pill.online {
-     border-color: rgba(74, 222, 128, 0.7);
-     color: #bbf7d0;
-     background: rgba(22, 163, 74, 0.12);
-   }
-
-   .module-status-pill.design {
-     border-color: rgba(245, 199, 106, 0.6);
-     color: var(--gold);
-     background: var(--gold-soft);
-   }
-
-   .module-status-pill.experimental {
-     border-color: rgba(110, 99, 255, 0.7);
-     color: var(--violet);
-     background: var(--violet-soft);
-   }
-
-   .module-status-pill span.dot {
-     width: 6px;
-     height: 6px;
-     border-radius: 999px;
-     background: currentColor;
-   }
-
-   .modules-footnote {
-     margin-top: 0.9rem;
-     font-size: 0.78rem;
-     color: var(--muted);
-   }
-
-   .modules-card-list {
+   .columns-3 {
      display: grid;
-     gap: 0.8rem;
-     font-size: 0.82rem;
+     grid-template-columns: repeat(3, minmax(0, 1fr));
+     gap: 1.8rem;
+     margin-top: 1.2rem;
    }
 
-   .mini-card {
-     border-radius: 14px;
-     border: 1px solid var(--border);
-     background: rgba(5, 6, 10, 0.9);
-     padding: 0.8rem 0.85rem;
-   }
-
-   .mini-card-label {
-     font-size: 0.72rem;
+   .columns-3 h4 {
+     font-size: 0.86rem;
+     letter-spacing: 0.18em;
      text-transform: uppercase;
-     letter-spacing: 0.14em;
      color: var(--muted);
-     margin-bottom: 0.2rem;
+     margin-bottom: 0.5rem;
    }
 
-   .mini-card-main {
-     font-size: 0.9rem;
-     color: var(--fg-soft);
-     margin-bottom: 0.2rem;
-   }
-
-   .mini-card-meta {
-     font-size: 0.76rem;
+   .columns-3 p {
+     font-size: 0.86rem;
      color: var(--muted);
    }
 
-   @media (max-width: 960px) {
-     .modules-grid {
+   @media (max-width: 900px) {
+     .columns-3 {
        grid-template-columns: minmax(0, 1fr);
      }
    }
 
-   /* NODES SECTION */
-
-   .nodes-grid {
-     display: grid;
-     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-     gap: 1.8rem;
-     align-items: flex-start;
-   }
-
-   .nodes-list {
-     font-size: 0.86rem;
-     margin-top: 0.3rem;
-   }
-
-   .nodes-list-item + .nodes-list-item {
-     margin-top: 0.6rem;
-     padding-top: 0.5rem;
-     border-top: 1px solid rgba(255, 255, 255, 0.04);
-   }
-
-   .node-name {
-     font-size: 0.9rem;
-     font-weight: 500;
-   }
-
-   .node-meta {
-     font-size: 0.78rem;
-     color: var(--muted);
-   }
-
-   .node-metrics {
-     font-size: 0.8rem;
-     margin-top: 0.25rem;
-     color: var(--fg-soft);
-   }
-
-   /* PROTOCOLS / ACCESS SECTION */
-
-   .protocols-grid {
-     display: grid;
-     grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-     gap: 1.8rem;
-     align-items: flex-start;
-   }
-
-   .list {
-     list-style: none;
-     padding-left: 0;
-     font-size: 0.86rem;
-     color: var(--muted);
-     margin-top: 0.4rem;
-   }
-
-   .list li + li {
-     margin-top: 0.35rem;
-   }
-
-   .log {
-     font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono",
-       "Courier New", monospace;
-     font-size: 0.78rem;
-     background: #05060f;
-     border-radius: 14px;
-     border: 1px solid var(--border-soft);
-     padding: 0.95rem 0.95rem;
-     color: var(--fg-soft);
-     max-height: 220px;
-     overflow: hidden;
-   }
-
-   .log-line + .log-line {
-     margin-top: 0.25rem;
-   }
-
-   .log-prefix {
-     color: var(--muted);
-     opacity: 0.8;
-   }
-
-   .log-tag {
-     color: var(--violet);
-   }
-
-   .log-node {
-     color: var(--gold);
-   }
-
-   /* FOOTER */
-
    footer {
      border-top: 1px solid rgba(255, 255, 255, 0.05);
-     padding: 2.2rem 0;
-     padding-bottom: calc(2.6rem + env(safe-area-inset-bottom));
-     font-size: 0.82rem;
+     padding: 2.4rem 0;
+     padding-bottom: calc(2.8rem + env(safe-area-inset-bottom));
+     font-size: 0.86rem;
      color: var(--muted);
-     margin-top: 1.4rem;
+     margin-top: 1.6rem;
    }
 
    .footer-row {
@@ -814,14 +532,17 @@
      }
    }
 
-   /* DESKTOP POLISH */
+   /* DESKTOP POLISH – center the right-hand cards in grid-2 on large screens */
 
    @media (min-width: 1024px) {
-     section {
-       padding: 2.9rem 0;
-     }
      .hero {
-       padding-top: 3.2rem;
+       padding: 4.4rem 0 4rem;
+     }
+     section {
+       padding: 3.6rem 0;
+     }
+     .grid-2 {
+       align-items: center;
      }
    }
  </style>
@@ -833,514 +554,540 @@
    <header>
      <div class="wrapper">
        <nav class="nav">
-         <div class="nav-left">
-           <div class="nav-brand">
-             <div class="nav-logo-circle">⦿</div>
-             <div>
-               <div class="nav-title">KRYONIS INTELLIGENCE PORTAL</div>
-               <div class="nav-subtitle">SOVEREIGN OPERATIONS CONSOLE</div>
-             </div>
-           </div>
-
-           <div class="nav-links">
-             <a href="#overview" class="active">Overview</a>
-             <a href="#modules">Modules</a>
-             <a href="#nodes">Nodes</a>
-             <a href="#protocols">Protocols</a>
-           </div>
+         <div class="nav-brand">
+           <div class="nav-logo-circle">⦿</div>
+           <div class="nav-title">KRYONIS.GLOBAL</div>
          </div>
 
-         <div class="nav-right">
-           <div style="display:flex; align-items:center; gap:0.35rem;">
-             <span class="nav-status-dot"></span>
-             <span>Grid status: operational</span>
-           </div>
-           <a class="nav-cta" href="https://kryonis.global" target="_blank" rel="noopener">
-             Return to KRYONIS.GLOBAL
-           </a>
+         <div class="nav-links">
+           <a href="#doctrine">Doctrine</a>
+           <a href="#architecture">Architecture</a>
+           <a href="#metrics">GCI &amp; PoC</a>
+           <a href="#tokenomics">Tokenomics</a>
+           <a href="#sovereignty">Sovereignty</a>
+           <a href="#governance">Governance</a>
+           <a href="#studio">Studio</a>
          </div>
+
+         <a class="nav-cta" href="#contact">Request briefing</a>
        </nav>
      </div>
    </header>
 
    <main>
 
-     <!-- HERO / TOP OVERVIEW -->
+     <!-- HERO -->
      <section class="hero" id="top">
        <div class="wrapper">
-         <div class="hero-layout">
+         <div class="hero-grid">
            <div>
-             <div class="hero-kicker">GOVERNMENT-GRADE DASHBOARD</div>
-             <h1 class="hero-title">KRYONIS INTELLIGENCE PORTAL</h1>
-             <p class="hero-subtitle">
-               The KRYONIS INTELLIGENCE PORTAL is the <strong>sovereign operations console</strong>
-               for KRYONIS nodes, modules and coherence metrics — designed for ministries,
-               institutes and strategic operators who need a live, integrated view of the
-               <strong>civilizational stack</strong>.
-             </p>
-
-             <div class="hero-chips">
-               <span class="chip gold">NODE-BASED DEPLOYMENT</span>
-               <span class="chip">POC / GCI COHERENCE METRICS</span>
-               <span class="chip">BIOECONOMY · AI · GOVERNANCE</span>
+             <div class="hero-kicker">
+               CONSCIOUSNESS-BASED CIVILIZATIONAL FRAMEWORK
              </div>
 
+             <h1 class="hero-title">
+               WE DID NOT COME TO OPTIMIZE THE CITY<br />
+               WE CAME TO AWAKEN A DIFFERENT LAYER
+             </h1>
+
+             <p class="hero-subtitle">
+               KRYONIS is a <strong>post-territorial consciousness architecture</strong> — a meta-layer
+               that sits above cognitive cities, bioeconomic zones and AI grids,
+               aligning infrastructure with coherence rather than throughput.
+             </p>
+
              <div class="hero-actions">
-               <a class="btn btn-gold" href="#modules">View operational modules</a>
-               <a class="btn btn-outline" href="#protocols">Access protocols</a>
+               <a class="btn btn-gold" href="#doctrine">Read the doctrine</a>
+               <a class="btn btn-outline" href="#contact">Schedule a conversation</a>
              </div>
            </div>
 
-           <aside class="hero-panel">
-             <div class="hero-panel-header">
-               <span>Portal snapshot · <strong>Read-only abstraction</strong></span>
-               <span style="font-size:0.72rem; color:var(--muted);">Last sync: &lt;sovereign clock&gt;</span>
+           <aside class="hero-aside">
+             <div class="hero-chip">
+               <span>∴</span>
+               <span>Architecture Snapshot</span>
              </div>
-             <div class="hero-panel-grid">
-               <div class="mini-metric">
-                 <div class="mini-label">ACTIVE NODES</div>
-                 <div class="mini-value">07<span class="mini-tag">PILOT</span></div>
-               </div>
-               <div class="mini-metric">
-                 <div class="mini-label">PRIMARY DOMAINS</div>
-                 <div class="mini-value">BIO · AI · GOV</div>
-               </div>
-               <div class="mini-metric">
-                 <div class="mini-label">PORTAL TIER</div>
-                 <div class="mini-value">LEVEL III</div>
-               </div>
+             <div class="hero-metric">
+               <span>Civilizational horizon</span>
+               <span>5,000 years</span>
              </div>
-             <div class="hero-panel-footnote">
-               This interface represents the public-facing abstraction of the KRYONIS
-               operations console. Live dashboards, simulations and node-specific
-               telemetry are available only within <strong>sovereign-secured deployments</strong>.
+             <div class="hero-metric">
+               <span>Primary domains</span>
+               <span>Consciousness · Bioeconomy · Governance</span>
+             </div>
+             <div class="hero-metric">
+               <span>Deployment style</span>
+               <span>Node-based · Sovereign-aligned</span>
+             </div>
+             <div class="hero-divider"></div>
+             <div class="hero-caption">
+               This site presents the public-facing abstraction of the KRYONIS framework.
+               Technical briefs, whitepapers and implementation details are shared only
+               under mutual NDA with qualified partners.
              </div>
            </aside>
          </div>
        </div>
      </section>
 
-     <!-- OVERVIEW SECTION -->
-     <section id="overview">
+     <!-- DOCTRINE -->
+     <section id="doctrine">
        <div class="wrapper">
          <div class="section-heading">
-           <div class="section-eyebrow">OVERVIEW</div>
-           <h2 class="section-title">System status & coherence layer</h2>
+           <div class="section-eyebrow">DOCTRINE</div>
+           <h2 class="section-title">From extraction to coherence</h2>
            <p class="section-lead">
-             A high-level view of the KRYONIS grid: node activation, module readiness and
-             coherence indicators across the Living Economy stack.
+             The 20th century optimized for production. The early 21st century optimized
+             for data. KRYONIS is designed for the next phase: <strong>coherent planetary
+             consciousness</strong>.
            </p>
          </div>
 
-         <div class="overview-grid">
-           <div class="card">
-             <div class="card-title">OPERATIONAL SUMMARY</div>
-             <div class="card-heading">Node grid & module activation</div>
-             <p class="card-text">
-               The KRYONIS grid is designed as a <strong>distributed sovereign lattice</strong> of
-               nodes — each one running a localized instance of the KRYONIS stack. The
-               portal provides a cockpit-level abstraction of which nodes are active,
-               which modules are deployed and how coherence is evolving over time.
+         <div class="grid-2">
+           <div class="doctrine-text">
+             <p>
+               We treat consciousness not as a side-effect of infrastructure, but as a
+               first-class design variable. Cities, eco-zones and AI systems are modeled
+               as participants in a shared cognitive field, not as isolated machines.
+             </p>
+             <p>
+               In this frame, sovereignty is no longer defined only by borders or
+               ledgers. It is defined by the ability of a system to maintain
+               <strong>resonant coherence</strong> under stress — informational, economic or
+               existential.
+             </p>
+             <p>
+               KRYONIS provides a language and an operating logic for building such
+               systems. It does not replace existing institutions; it gives them a new
+               alignment layer.
              </p>
 
-             <div class="status-row">
-               <div>
-                 <div class="status-label">NODE GRID</div>
-                 <div class="status-value">
-                   7 pilot nodes · 3 in sovereign evaluation
-                 </div>
-               </div>
-               <div>
-                 <div class="status-label">PORTAL STATUS</div>
-                 <div class="status-value">
-                   <span class="status-pill">
-                     <span class="dot"></span>
-                     ONLINE · STABLE
-                   </span>
-                 </div>
-               </div>
-             </div>
-
-             <div class="timeline">
-               <div class="timeline-item">
-                 <div class="timeline-label">LAST MAJOR UPDATE</div>
-                 <div class="timeline-main">
-                   Integration of GCI / PoC coherence metrics with node registry.
-                 </div>
-                 <div class="timeline-meta">
-                   Deployed as sovereign-optional layer; tokens not required.
-                 </div>
-               </div>
-               <div class="timeline-item">
-                 <div class="timeline-label">NEAR-TERM HORIZON</div>
-                 <div class="timeline-main">
-                   Progressive activation of KRYONIS Pulse and IntentEX as core
-                   operational engines for selected nodes.
-                 </div>
-               </div>
+             <div class="pill-row">
+               <span class="pill gold">LIVING ECONOMY</span>
+               <span class="pill">PLANETARY CONSCIOUSNESS</span>
+               <span class="pill">NOETIC CYBERNETICS</span>
+               <span class="pill">RESONANCE-BASED LEGITIMACY</span>
              </div>
            </div>
 
-           <div class="card">
-             <div class="card-title">COHERENCE METRICS</div>
-             <div class="metric-grid-3">
+           <div class="stack-card">
+             <div class="stack-label">CORE INSTRUMENTS</div>
+             <div class="stack-row">
+               <div class="stack-name">GCI — GLOBAL COGNITIVE INDEX</div>
+               <div class="stack-desc">
+                 Quantifies the coherence and cognitive capacity of territories,
+                 institutions and networks.
+               </div>
+             </div>
+             <div class="stack-row">
+               <div class="stack-name">POC — PROOF OF COHERENCE</div>
+               <div class="stack-desc">
+                 A legitimacy layer that rewards systems which remain aligned under
+                 complexity, rather than those which simply grow.
+               </div>
+             </div>
+             <div class="stack-row">
+               <div class="stack-name">PAS · NRU · LEXICON</div>
+               <div class="stack-desc">
+                 Protocols for aligning narrative, neural and legal layers into one
+                 continuous field of meaning.
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </section>
+
+     <!-- ARCHITECTURE -->
+     <section id="architecture">
+       <div class="wrapper">
+         <div class="section-heading">
+           <div class="section-eyebrow">ARCHITECTURE</div>
+           <h2 class="section-title">The KRYONIS civilizational stack</h2>
+           <p class="section-lead">
+             A five-layer model that integrates steel, code, cognition and
+             consciousness into a single design surface.
+           </p>
+         </div>
+
+         <div class="stack-card">
+           <div class="stack-row">
+             <div>
+               <div class="stack-label">LAYER 1</div>
+               <div class="stack-name">PHYSICAL</div>
+             </div>
+             <div class="stack-desc">
+               Energy, materials, robotics, logistics, biospheres. The substrate on
+               which all other layers depend.
+             </div>
+           </div>
+
+           <div class="stack-row">
+             <div>
+               <div class="stack-label">LAYER 2</div>
+               <div class="stack-name">DIGITAL</div>
+             </div>
+             <div class="stack-desc">
+               Networks, sensors, AI models, digital twins, civic data. The nervous
+               system of contemporary civilization.
+             </div>
+           </div>
+
+           <div class="stack-row">
+             <div>
+               <div class="stack-label">LAYER 3</div>
+               <div class="stack-name">COGNITIVE</div>
+             </div>
+             <div class="stack-desc">
+               Prediction, strategic reasoning, multi-agent simulations. How systems
+               anticipate and respond.
+             </div>
+           </div>
+
+           <div class="stack-row">
+             <div>
+               <div class="stack-label">LAYER 4</div>
+               <div class="stack-name gold">CONSCIOUSNESS (KRYONIS)</div>
+             </div>
+             <div class="stack-desc">
+               Resonance, interiority, meaning-making. The layer that asks not only
+               “Can we?” but “Who are we becoming if we do?”.
+             </div>
+           </div>
+
+           <div class="stack-row">
+             <div>
+               <div class="stack-label">LAYER 5</div>
+               <div class="stack-name violet">NOÖCRATIC</div>
+             </div>
+             <div class="stack-desc">
+               Federations of aligned minds — human, institutional and artificial —
+               acting as one coherent civilizational organism.
+             </div>
+           </div>
+         </div>
+       </div>
+     </section>
+
+     <!-- METRICS -->
+     <section id="metrics">
+       <div class="wrapper">
+         <div class="section-heading">
+           <div class="section-eyebrow">METRICS</div>
+           <h2 class="section-title">GCI, PoC and the measurement of coherence</h2>
+           <p class="section-lead">
+             KRYONIS does not treat consciousness as a metaphor. It treats it as an
+             observable pattern in data — and builds indices that can be governed.
+           </p>
+         </div>
+
+         <div class="grid-2">
+           <div>
+             <div class="metric-card">
+               <div class="metric-label">GCI — GLOBAL COGNITIVE INDEX</div>
+               <div class="metric-value">
+                 Multi-domain composite<span class="metric-tag">PROTOTYPE</span>
+               </div>
+               <div class="metric-footnote">
+                 Aggregates signal from economic flows, informational hygiene,
+                 institutional depth, cultural narrative and ecological stability into a
+                 single score for territories or networks.
+               </div>
+             </div>
+
+             <div class="metric-grid">
                <div class="metric-card">
-                 <div class="metric-label">GCI — SIGNAL DENSITY</div>
+                 <div class="metric-label">SIGNAL DENSITY</div>
                  <div class="metric-value">HIGH</div>
                  <div class="metric-footnote">
-                   Ratio of meaningful signal to noise across bioeconomy, AI and governance domains.
+                   Ratio of meaningful signal to noise across critical domains.
                  </div>
                </div>
                <div class="metric-card">
-                 <div class="metric-label">POC — ALIGNMENT STABILITY</div>
+                 <div class="metric-label">ALIGNMENT STABILITY</div>
                  <div class="metric-value">COHERENT</div>
                  <div class="metric-footnote">
-                   Measures how quickly nodes decohere under informational and economic stress.
+                   Measures how quickly systems decohere under stress.
                  </div>
                </div>
                <div class="metric-card">
                  <div class="metric-label">GOVERNANCE LATENCY</div>
                  <div class="metric-value">SUB-CYCLE</div>
                  <div class="metric-footnote">
-                   Time between signal emergence and legitimate response in the sovereign stack.
+                   Time between signal emergence and legitimate response.
                  </div>
                </div>
+
              </div>
-             <div class="metric-footnote" style="margin-top:0.7rem;">
-               In production deployments, these metrics are driven by live telemetry from
-               KRYONIS Pulse, K-Analytics and PX-Δ1 — forming a continuous
-               <strong>coherence surface</strong> for decision-makers.
+           </div>
+
+           <div class="metric-card">
+             <div class="metric-label">POC — PROOF OF COHERENCE</div>
+             <div class="metric-value">LEGITIMACY AS A LIVING METRIC</div>
+             <div class="metric-footnote">
+               Traditional systems reward volume: more data, more growth, more
+               throughput. PoC rewards <strong>coherent alignment</strong> across the stack. In
+               a KRYONIS deployment, civic or economic actors who maintain coherence
+               under complexity move to the center of the system’s value creation.
+             </div>
+             <div class="metric-footnote">
+               PoC is not a cryptocurrency protocol. It is a governance primitive that
+               can be implemented with or without tokens, depending on context.
              </div>
            </div>
          </div>
        </div>
      </section>
 
-     <!-- MODULES SECTION -->
-     <section id="modules">
+     <!-- TOKENOMICS (CONCEPTUAL) -->
+     <section id="tokenomics">
        <div class="wrapper">
          <div class="section-heading">
-           <div class="section-eyebrow">MODULES</div>
-           <h2 class="section-title">Operational modules inside the portal</h2>
+           <div class="section-eyebrow">TOKENOMICS</div>
+           <h2 class="section-title">From extraction tokens to coherence tokens</h2>
            <p class="section-lead">
-             The portal aggregates six core modules — each a real operational system —
-             into one aligned interface.
+             KRYONIS tokenomics is not built on speculation. It is built on coherence —
+             turning alignment itself into the core economic primitive.
            </p>
          </div>
 
-         <div class="modules-grid">
-           <div class="card">
-             <div class="card-title">MODULE GRID</div>
-             <table class="modules-table">
-               <thead>
-                 <tr>
-                   <th>Module</th>
-                   <th>Function</th>
-                   <th>Status</th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <td>
-                     <div class="module-name">KRYONIS Pulse</div>
-                     <div class="module-tagline">Resonance input & cognitive telemetry</div>
-                   </td>
-                   <td>
-                     Aggregates subjective and objective signals into a unified
-                     <strong>resonance map</strong> of actors, regions and institutions.
-                   </td>
-                   <td>
-                     <span class="module-status-pill online">
-                       <span class="dot"></span>
-                       ONLINE
-                     </span>
-                   </td>
-                 </tr>
-
-                 <tr>
-                   <td>
-                     <div class="module-name">K-Analytics</div>
-                     <div class="module-tagline">Coherence analytics & modeling</div>
-                   </td>
-                   <td>
-                     Runs PoC / GCI analysis, scenario modeling and system diagnostics
-                     across the Living Economy stack.
-                   </td>
-                   <td>
-                     <span class="module-status-pill design">
-                       <span class="dot"></span>
-                       PILOT DEPLOYMENT
-                     </span>
-                   </td>
-                 </tr>
-
-                 <tr>
-                   <td>
-                     <div class="module-name">Lethe</div>
-                     <div class="module-tagline">Strategic forgetting & archive control</div>
-                   </td>
-                   <td>
-                     Manages controlled forgetting, archival tiers and sovereign
-                     information decay protocols.
-                   </td>
-                   <td>
-                     <span class="module-status-pill experimental">
-                       <span class="dot"></span>
-                       DESIGN STAGE
-                     </span>
-                   </td>
-                 </tr>
-
-                 <tr>
-                   <td>
-                     <div class="module-name">PX-Δ1</div>
-                     <div class="module-tagline">Cognitive surveillance grid</div>
-                   </td>
-                   <td>
-                     Monitors cognitive, informational and narrative flows for early
-                     detection of decoherence and hostile patterns.
-                   </td>
-                   <td>
-                     <span class="module-status-pill online">
-                       <span class="dot"></span>
-                       ONLINE
-                     </span>
-                   </td>
-                 </tr>
-
-                 <tr>
-                   <td>
-                     <div class="module-name">ΔX Tracker</div>
-                     <div class="module-tagline">Anomaly & delta monitoring</div>
-                   </td>
-                   <td>
-                     Tracks key deltas across bioeconomic, financial and infrastructural
-                     layers to surface critical anomalies.
-                   </td>
-                   <td>
-                     <span class="module-status-pill design">
-                       <span class="dot"></span>
-                       PILOT DEPLOYMENT
-                     </span>
-                   </td>
-                 </tr>
-
-                 <tr>
-                   <td>
-                     <div class="module-name">IntentEX</div>
-                     <div class="module-tagline">Intent licensing interface</div>
-                   </td>
-                   <td>
-                     Licenses, routes and prices <strong>intent</strong> as a strategic asset —
-                     turning collective attention into an explicit economic primitive.
-                   </td>
-                   <td>
-                     <span class="module-status-pill experimental">
-                       <span class="dot"></span>
-                       UNDER DESIGN
-                     </span>
-                   </td>
-                 </tr>
-               </tbody>
-             </table>
-
-             <div class="modules-footnote">
-               In a full deployment, each module runs its own secure micro-interface
-               inside the portal. This page shows only the <strong>architectural
-               overview</strong>, not the live operational consoles.
-             </div>
+         <div class="grid-2">
+           <div class="doctrine-text">
+             <p>
+               Most token systems reward activity: more transactions, more yield, more
+               volume. KRYONIS proposes a different foundation: value emerges from
+               <strong>systemic coherence</strong> — the ability of a node, institution or
+               ecosystem to remain aligned under stress.
+             </p>
+             <p>
+               In the KRYONIS economy, PoC and GCI act as the primary oracles.
+               Coherence, not noise, becomes the scarce resource. Nodes that improve
+               global coherence move closer to the center of value creation.
+             </p>
+             <p class="note">
+               No public token sales. No retail instruments. The economic layer is
+               designed for sovereign nodes and institutional actors, not for mass
+               speculation.
+             </p>
            </div>
 
-           <div class="card">
-             <div class="card-title">OPERATIONAL VIEW</div>
-             <div class="modules-card-list">
-               <div class="mini-card">
-                 <div class="mini-card-label">STACK POSITION</div>
-                 <div class="mini-card-main">
-                   Modules span from physical telemetry to noetic intent.
-                 </div>
-                 <div class="mini-card-meta">
-                   Together, they cover the entire KRYONIS civilizational stack,
-                   from raw data to consciousness-level governance.
-                 </div>
-               </div>
-
-               <div class="mini-card">
-                 <div class="mini-card-label">GOVERNANCE</div>
-                 <div class="mini-card-main">
-                   Portal decisions anchored in PoC and GCI, not volume metrics.
-                 </div>
-                 <div class="mini-card-meta">
-                   Activation, throttling and federation of modules is governed by
-                   demonstrated coherence rather than pure throughput or speculation.
-                 </div>
-               </div>
-
-               <div class="mini-card">
-                 <div class="mini-card-label">INTEGRATION</div>
-                 <div class="mini-card-main">
-                   Designed to sit inside sovereign infrastructure, not above it.
-                 </div>
-                 <div class="mini-card-meta">
-                   The portal is deployed as a <strong>sovereign-aligned interface</strong>,
-                   respecting local law, security protocols and political architecture.
-                 </div>
+           <div class="stack-card">
+             <div class="stack-label">COMING ECONOMIC LAYER</div>
+             <div class="stack-row">
+               <div class="stack-name">KST — KRYONIS SOVEREIGN TOKEN</div>
+               <div class="stack-desc">
+                 A coherence-aligned unit designed for node-level issuance under
+                 sovereign or institutional agreements.
                </div>
              </div>
+             <div class="stack-row">
+               <div class="stack-name">NODE ECONOMICS</div>
+               <div class="stack-desc">
+                 Each KRYONIS node can operate its own emission curve, anchored in PoC
+                 and GCI scores, not in arbitrary inflation.
+               </div>
+             </div>
+             <div class="stack-row">
+               <div class="stack-name">KRYONIS META-DAO</div>
+               <div class="stack-desc">
+                 A future meta-governance layer where decision weight is tied to
+                 demonstrated coherence, not only stake or volume.
+               </div>
+             </div>
+             <p style="font-size:0.8rem; color:var(--muted); margin-top:0.9rem;">
+               Detailed tokenomics and issuance architectures will be published once
+               the KRYONIS sovereign node framework is formally adopted by partner
+               institutions.
+             </p>
            </div>
          </div>
        </div>
      </section>
 
-     <!-- NODES SECTION -->
-     <section id="nodes">
+     <!-- SOVEREIGNTY -->
+     <section id="sovereignty">
        <div class="wrapper">
          <div class="section-heading">
-           <div class="section-eyebrow">NODES</div>
+           <div class="section-eyebrow">SOVEREIGNTY &amp; BIOECONOMY</div>
            <h2 class="section-title">Node-based deployment, not empire</h2>
            <p class="section-lead">
-             The portal treats each deployment as a sovereign node — tuned to its own
-             culture, law and ecology, but connected through a shared coherence logic.
+             KRYONIS is designed to be deployed as a <strong>sovereign node</strong> inside
+             existing jurisdictions — from Arctic bioeconomic zones to dense urban
+             corridors.
            </p>
          </div>
 
-         <div class="nodes-grid">
-           <div class="card">
-             <div class="card-title">NODE LOGIC</div>
-             <div class="card-heading">Local sovereignty, shared architecture</div>
-             <p class="card-text">
-               Each KRYONIS node is a <strong>self-contained instantiation</strong> of the
-               KRYONIS stack, configured for a specific jurisdiction or ecosystem.
-               Nodes can operate independently, or federate into larger cognitive
-               regions.
+         <div class="grid-2">
+           <div class="doctrine-text">
+             <p>
+               Each node runs a localized instance of the KRYONIS stack, tuned to
+               regional culture, law and ecology. Nodes can remain independent or
+               federate into larger cognitive regions.
              </p>
-             <p class="card-text" style="margin-top:0.8rem;">
-               The portal provides a cross-node view: which regions are carrying
-               coherence, where decoherence is emerging and how interventions propagate
-               through the Living Economy lattice.
+             <p>
+               In bioeconomic frontiers — Siberia, Arctic corridors, high-latitude
+               eco-settlements — KRYONIS acts as the meta-governance layer that keeps
+               genetics, biosystems, infrastructure and human intention in one coherent
+               frame.
+             </p>
+             <p class="note">
+               Example domains: ARCTICA–SIBERIA bioeconomy clusters, cognitive
+               capital regions, special governance zones, orbital research habitats.
              </p>
            </div>
 
-           <div class="card">
-             <div class="card-title">ILLUSTRATIVE NODE SET</div>
-             <div class="nodes-list">
-               <div class="nodes-list-item">
-                 <div class="node-name">ARCTICA–SIBERIA BIOECONOMY NODE</div>
-                 <div class="node-meta">
-                   High-latitude bioeconomic corridors · long-horizon ecological
-                   infrastructure.
-                 </div>
-                 <div class="node-metrics">
-                   GCI: HIGH · PoC: STABLE · Domain: Bioeconomy / Governance
-                 </div>
+           <div class="stack-card">
+             <div class="stack-label">SELECTED NODE PARAMETERS</div>
+             <div class="stack-row">
+               <div class="stack-name">RESONANCE PROFILE</div>
+               <div class="stack-desc">
+                 How the node’s culture, law and infrastructure interact as a single
+                 field.
                </div>
-
-               <div class="nodes-list-item">
-                 <div class="node-name">URBAN COGNITIVE CAPITAL NODE</div>
-                 <div class="node-meta">
-                   Dense urban region with AI, finance and civic infrastructure
-                   integration.
-                 </div>
-                 <div class="node-metrics">
-                   GCI: HIGH · PoC: SENSITIVE · Domain: AI / Economic circuitry
-                 </div>
+             </div>
+             <div class="stack-row">
+               <div class="stack-name">SOVEREIGNTY ENVELOPE</div>
+               <div class="stack-desc">
+                 What remains under local control, what is federated, what is shared
+                 only via encrypted metrics.
                </div>
-
-               <div class="nodes-list-item">
-                 <div class="node-name">ORBITAL / RESEARCH NODE</div>
-                 <div class="node-meta">
-                   Distributed labs and orbital habitats exploring next-generation
-                   architectures.
-                 </div>
-                 <div class="node-metrics">
-                   GCI: EMERGING · PoC: EXPERIMENTAL · Domain: Space / Systems science
-                 </div>
+             </div>
+             <div class="stack-row">
+               <div class="stack-name">ETHICAL BOUNDARY LAYER</div>
+               <div class="stack-desc">
+                 Explicit red lines for AI, bioengineering and financialization inside
+                 the node.
                </div>
              </div>
            </div>
-
          </div>
        </div>
      </section>
 
-     <!-- PROTOCOLS SECTION -->
-     <section id="protocols">
+     <!-- GOVERNANCE -->
+     <section id="governance">
        <div class="wrapper">
          <div class="section-heading">
-           <div class="section-eyebrow">ACCESS & PROTOCOLS</div>
-           <h2 class="section-title">Access tiers and audit layer</h2>
+           <div class="section-eyebrow">GOVERNANCE</div>
+           <h2 class="section-title">Who is KRYONIS for?</h2>
            <p class="section-lead">
-             The public portal is read-only. Full access is governed by sovereign
-             contracts, classification tiers and a continuous audit trail.
+             The framework is intended for institutions that operate on time horizons
+             beyond election cycles and quarterly reports.
            </p>
          </div>
 
-         <div class="protocols-grid">
-           <div class="card">
-             <div class="card-title">ACCESS TIERS</div>
-             <div class="card-heading">From public abstraction to classified console</div>
-             <ul class="list">
-               <li>
-                 <strong>Tier 0 · Public abstraction</strong> — high-level view of
-                 architecture, modules and conceptual metrics (this interface).
-               </li>
-               <li>
-                 <strong>Tier I · Institutional console</strong> — node-local dashboards
-                 for ministries, institutes and sovereign funds.
-               </li>
-               <li>
-                 <strong>Tier II · Operations cockpit</strong> — real-time control
-                 surfaces for KRYONIS Pulse, K-Analytics, PX-Δ1 and ΔX Tracker.
-               </li>
-               <li>
-                 <strong>Tier III · Strategic alignment council</strong> — multi-node
-                 governance interface integrating PoC, GCI and IntentEX.
-               </li>
-             </ul>
-             <p class="card-text" style="margin-top:0.8rem;">
-               All non-public tiers are deployed only under formal agreements with
-               sovereign or institutional actors. No retail access. No speculative
-               instruments.
+         <div class="columns-3">
+           <div>
+             <h4>PUBLIC SECTOR</h4>
+             <p>
+               Ministries, sovereign funds, research institutes and special economic
+               zones seeking a consciousness-aware architecture for long-range
+               projects.
+             </p>
+           </div>
+           <div>
+             <h4>STRATEGIC PARTNERS</h4>
+             <p>
+               Bioeconomy, AI, infrastructure and space actors who need a shared
+               language for post-territorial governance and value creation.
+             </p>
+           </div>
+           <div>
+             <h4>EXPERIMENTAL NODES</h4>
+             <p>
+               Eco-settlements, orbital labs, Arctic or high-latitude pilot regions that
+               want to operate as sovereign cognitive testbeds.
+             </p>
+           </div>
+         </div>
+       </div>
+     </section>
+
+     <!-- INTELLIGENCE STUDIO ANCHOR -->
+     <section id="studio">
+       <div class="wrapper">
+         <div class="section-heading">
+           <div class="section-eyebrow">INTELLIGENCE STUDIO</div>
+           <h2 class="section-title">KRYONIS INTELLIGENCE STUDIO</h2>
+           <p class="section-lead">
+             The sovereign research and documentation bureau of KRYONIS —
+             producing strategic architecture papers, doctrinal reports and
+             classified-grade intelligence compendiums for states and institutes.
+           </p>
+         </div>
+
+         <div class="grid-2">
+           <div class="doctrine-text">
+             <p>
+               KRYONIS INTELLIGENCE STUDIO formalises the written layer of the
+               framework: the doctrines, playbooks and architectural maps through
+               which civilization organises its next intelligence epoch.
+             </p>
+             <p>
+               All publications are produced under a five-phase authorship protocol
+               and Proof-of-Coherence methodology, ensuring analytical depth and
+               doctrinal clarity for each commissioned document.
              </p>
            </div>
 
-           <div class="card">
-             <div class="card-title">AUDIT LAYER</div>
-             <div class="card-heading">Exemplary portal event log (synthetic)</div>
-             <div class="log">
-               <div class="log-line">
-                 <span class="log-prefix">[00:00:01]</span>
-                 <span> Portal handshake established · channel=&lt;encrypted&gt;</span>
-               </div>
-               <div class="log-line">
-                 <span class="log-prefix">[00:00:09]</span>
-                 <span> Loaded <span class="log-tag">GCI / PoC</span> baseline for
-                 node <span class="log-node">ARCTICA–SIBERIA</span></span>
-               </div>
-               <div class="log-line">
-                 <span class="log-prefix">[00:00:17]</span>
-                 <span> Activated <span class="log-tag">KRYONIS Pulse</span> read-only
-                 telemetry layer</span>
-               </div>
-               <div class="log-line">
-                 <span class="log-prefix">[00:00:24]</span>
-                 <span> Routed anomaly stream from <span class="log-tag">ΔX Tracker</span>
-                 to sovereign review queue</span>
-               </div>
-               <div class="log-line">
-                 <span class="log-prefix">[00:00:32]</span>
-                 <span> Updated coherence surface · status=COHERENT · latency=SUB-CYCLE</span>
-               </div>
-               <div class="log-line">
-                 <span class="log-prefix">[00:00:44]</span>
-                 <span> Intent licensing channel <span class="log-tag">IntentEX</span>
-                 in DESIGN mode · no external flows</span>
-               </div>
-             </div>
-             <p class="card-text" style="margin-top:0.8rem;">
-               In live deployments, every significant action within the portal
-               is anchored to a <strong>cryptographically verifiable audit line</strong>,
-               forming a continuous memory of how coherence has been governed.
+           <div class="stack-card">
+             <div class="stack-label">ACCESS</div>
+             <p style="font-size:0.9rem; color:var(--muted); margin-top:0.6rem;">
+               The studio accepts commissions from sovereign institutions, ministries,
+               research agencies and scientific consortia. Each engagement begins with
+               a confidential diagnostic briefing.
+             </p>
+             <p style="font-size:0.9rem; color:var(--muted); margin-top:0.6rem;">
+               To explore the studio’s structure, methodology and commissioning
+               framework, visit the dedicated interface.
+             </p>
+             <a href="https://kryonis-intelligence-studio.onrender.com"
+                class="btn btn-gold"
+                style="margin-top:1.1rem; display:inline-flex;">
+               OPEN KRYONIS INTELLIGENCE STUDIO
+             </a>
+           </div>
+         </div>
+       </div>
+     </section>
+
+     <!-- CONTACT -->
+     <section id="contact">
+       <div class="wrapper">
+         <div class="section-heading">
+           <div class="section-eyebrow">CONTACT</div>
+           <h2 class="section-title">Request a private briefing</h2>
+           <p class="section-lead">
+             For governments, institutes and long-term capital only. No retail offers,
+             no public token sales, no mass-market products.
+           </p>
+         </div>
+
+         <div class="grid-2">
+           <div>
+             <p style="font-size:0.95rem; color:var(--muted);">
+               To explore collaboration, request a briefing deck or propose a node, please
+               send a concise introduction outlining your role, jurisdiction and time
+               horizon.
+             </p>
+             <p style="margin-top:0.9rem; font-size:0.95rem;">
+               Primary contact:<br />
+               <strong>hq@kryonis.global</strong>
+             </p>
+             <p style="margin-top:0.5rem; font-size:0.85rem; color:var(--muted);">
+               Messages are read manually. If there is resonance, you will receive a
+               response with next-step protocols.
+             </p>
+           </div>
+
+           <div class="stack-card">
+             <div class="stack-label">FIRST EXCHANGE, SUGGESTED FORMAT</div>
+             <p style="font-size:0.9rem; color:var(--muted); margin-top:0.6rem;">
+               ▸ Who you are and what system you speak for.<br />
+               ▸ The time horizon you are responsible for (5 / 25 / 100+ years).<br />
+               ▸ The domain you wish to stabilise: bioeconomy, AI, governance, orbital,
+               other.<br />
+               ▸ Why you believe a consciousness-based architecture is necessary now.
              </p>
            </div>
          </div>
@@ -1353,22 +1100,23 @@
    <footer>
      <div class="wrapper">
 
+       <!-- subtle separator -->
        <div style="
          height:1px;
          background:linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent);
-         margin-bottom:2rem;
+         margin-bottom:2.2rem;
        "></div>
 
        <div class="footer-row">
-         <div style="line-height:1.55;">
-           <div style="opacity:0.85; font-weight:500;">KRYONIS operational contact:</div>
+         <div style="line-height:1.55; font-size:0.9rem;">
+           <div style="opacity:0.85; font-weight:500;">Get in touch:</div>
            <div style="opacity:0.85;">hq@kryonis.global</div>
          </div>
 
-         <div style="line-height:1.55; text-align:right; opacity:0.75;">
+         <div style="line-height:1.55; font-size:0.82rem; text-align:right; opacity:0.75;">
            © KRYONIS Sovereign Systems Limited · 2025<br />
-           KRYONIS INTELLIGENCE PORTAL · Sovereign Operations Console<br />
-           Hong Kong SAR
+           Suite 4002A, 40/F, Tower 1, Lippo Centre<br />
+           89 Queensway, Hong Kong SAR
          </div>
        </div>
 
@@ -1377,8 +1125,8 @@
 
  </div>
 
+ <!-- Always scroll to top on refresh -->
  <script>
-   // always start from top on refresh
    window.onbeforeunload = function () {
      window.scrollTo(0, 0);
    };
