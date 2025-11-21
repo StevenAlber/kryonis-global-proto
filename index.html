@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>KRYONIS — Civilization Architecture</title>
   <meta name="description" content="KRYONIS — A post-territorial framework for consciousness-based civilizational architecture." />
 
@@ -84,35 +84,44 @@
       z-index: 10;
     }
 
-    /* HEADER */
+    /* HEADER - FIXED & RESPONSIVE */
     header {
       position: fixed;
       top: 0; left: 0; width: 100%;
       z-index: 100;
-      padding: 1.5rem 0;
-      transition: background 0.3s;
+      padding: 1.2rem 0;
+      transition: background 0.3s, padding 0.3s;
+      background: rgba(2, 2, 4, 0.85); /* Darker background for readability */
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
-    header.scrolled {
-      background: rgba(2, 2, 4, 0.85);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 0;
-    }
-
-    .nav { display: flex; justify-content: space-between; align-items: center; }
     
-    .brand { display: flex; align-items: center; gap: 0.8rem; }
+    header.scrolled { padding: 0.8rem 0; background: rgba(2, 2, 4, 0.95); }
+
+    .nav { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
+    
+    .brand { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
     .logo-mark { 
       color: var(--gold); 
       font-size: 1.2rem; 
       animation: pulse 4s infinite; 
     }
-    .brand-text { font-size: 0.9rem; letter-spacing: 0.2em; font-weight: 600; }
+    .brand-text { font-size: 0.9rem; letter-spacing: 0.15em; font-weight: 600; color: var(--fg); }
 
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a { font-size: 0.75rem; color: var(--fg-muted); position: relative; }
+    /* DESKTOP LINKS */
+    .nav-links { 
+      display: flex; gap: 1.5rem; 
+      align-items: center;
+    }
+    .nav-links a { 
+      font-size: 0.75rem; color: var(--fg-muted); position: relative; padding: 5px 0;
+    }
     .nav-links a::after {
-      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+      content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px;
       background: var(--gold); transition: width 0.3s var(--ease);
     }
     .nav-links a:hover { color: var(--fg); }
@@ -120,16 +129,17 @@
 
     .cta-btn {
       border: 1px solid var(--gold-dim);
-      padding: 0.5rem 1.2rem;
+      padding: 0.5rem 1rem;
       border-radius: 2px;
       font-size: 0.7rem;
       color: var(--gold);
       background: rgba(212, 175, 55, 0.05);
+      white-space: nowrap;
     }
     .cta-btn:hover {
       background: var(--gold);
       color: #000;
-      box-shadow: 0 0 20px var(--gold-glow);
+      box-shadow: 0 0 15px var(--gold-glow);
     }
 
     /* HERO */
@@ -137,7 +147,8 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding-top: 6rem;
+      padding-top: 8rem; /* Fixes overlap issues */
+      padding-bottom: 4rem;
     }
 
     .hero-grid {
@@ -149,7 +160,7 @@
 
     .hero-title {
       font-family: 'Cinzel', serif;
-      font-size: clamp(2.5rem, 4.5vw, 4rem);
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
       line-height: 1.1;
       margin-bottom: 1.5rem;
       background: linear-gradient(to right, #fff, #aaa);
@@ -165,7 +176,7 @@
       font-weight: 300;
     }
 
-    .btn-group { display: flex; gap: 1rem; }
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
     
     .btn {
       padding: 0.9rem 1.8rem;
@@ -179,6 +190,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
     }
 
     .btn-primary {
@@ -258,7 +270,7 @@
     .stack-item:hover {
       background: rgba(255,255,255,0.04);
       border-color: var(--gold-dim);
-      transform: translateX(10px);
+      transform: translateX(5px);
     }
 
     /* METRICS GRID */
@@ -304,11 +316,23 @@
       100% { text-shadow: 0 0 10px rgba(212, 175, 55, 0); }
     }
 
+    /* === MOBILE OPTIMIZATIONS (FIX FOR YOUR ISSUE) === */
     @media (max-width: 900px) {
-      .hero-grid, .grid-2 { grid-template-columns: 1fr; }
+      
+      /* Hide main menu links on mobile to prevent breaking */
       .nav-links { display: none; }
+      
+      /* Hero Adjustments */
+      .hero { padding-top: 7rem; } 
+      .hero-grid, .grid-2 { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-title { font-size: 2.2rem; }
+      
+      /* Button Stack */
+      .btn-group { flex-direction: column; width: 100%; }
+      .btn { width: 100%; }
+      
+      /* Metrics Stack */
       .metrics-grid { grid-template-columns: 1fr; }
-      .hero-title { font-size: 2.5rem; }
     }
   </style>
 </head>
@@ -321,10 +345,10 @@
     <header id="navbar">
       <div class="wrapper">
         <nav class="nav">
-          <div class="brand">
+          <a href="#" class="brand">
             <div class="logo-mark">⦿</div>
             <div class="brand-text serif caps">Kryonis.Global</div>
-          </div>
+          </a>
           
           <div class="nav-links caps mono">
             <a href="#doctrine">Doctrine</a>
