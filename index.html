@@ -22,7 +22,9 @@
 
       --gold: #C5A028; 
       --gold-dim: rgba(197, 160, 40, 0.3);
-      --gold-glow: rgba(197, 160, 40, 0.1);
+      --gold-glow: rgba(197, 160, 40, 0.15);
+      
+      --violet: #7c73e6;
       
       --border: rgba(255, 255, 255, 0.08);
       --glass: blur(10px);
@@ -206,15 +208,15 @@
       
       /* SIDE-BY-SIDE BUTTONS FOR MOBILE */
       .btn-group { 
-        flex-direction: row; /* Force row direction */
+        flex-direction: row; 
         width: 100%; 
-        gap: 0.8rem; /* Small gap between buttons */
+        gap: 0.8rem; 
       }
       .btn { 
-        flex: 1; /* Make buttons share width equally (50/50) */
+        flex: 1; 
         min-width: auto; 
         width: auto; 
-        padding: 0.9rem 0.5rem; /* Slightly less padding to fit text */
+        padding: 0.9rem 0.5rem; 
         font-size: 0.7rem;
       }
       
@@ -244,7 +246,6 @@
               <a href="#metrics" class="desktop-only">Metrics</a>
               <a href="#studio" class="desktop-only">Studio</a>
             </div>
-            
             <a href="#contact" class="cta-btn caps mono">Briefing</a>
           </div>
         </nav>
@@ -373,7 +374,19 @@
           <div class="section-header reveal">
             <span class="eyebrow mono caps">Measurement</span>
             <h2 class="section-title">GCI & PoC Telemetry</h2>
-          </div>
+            
+            <p class="text-muted" style="max-width:600px; margin-top:1rem; margin-bottom:2rem;">
+              KRYONIS does not treat consciousness as a metaphor. It treats it as an observable pattern in data that can be governed.
+            </p>
+            
+            <a href="https://kryonis-system-portal.onrender.com" target="_blank" 
+               style="display:inline-flex; align-items:center; gap:0.5rem; text-decoration:none; border:1px solid var(--gold); padding:0.8rem 1.5rem; transition:0.3s; border-radius:2px;"
+               onmouseover="this.style.background='rgba(197, 160, 40, 0.1)'"
+               onmouseout="this.style.background='transparent'">
+               <span style="width:6px; height:6px; background:#33ff88; border-radius:50%; box-shadow:0 0 6px #33ff88; margin-right:5px;"></span>
+               <span class="mono caps" style="color:var(--gold); font-size:0.75rem; letter-spacing:0.1em;">Launch Live Operations Console</span>
+            </a>
+            </div>
           <div class="metrics-grid reveal">
             <div class="metric-box">
               <div class="mono caps text-muted" style="font-size:0.7rem;">Signal Density</div>
