@@ -12,7 +12,7 @@
 
   <style>
     :root {
-      /* PALETTE - STUDIO ALIGNED */
+      /* PALETTE */
       --bg-deep: #030304;
       --bg-panel: rgba(15, 15, 20, 0.6);
       
@@ -20,7 +20,7 @@
       --fg-muted: #8a8f9d;
       --fg-dark: #555a66;
 
-      --gold: #C5A028; /* Studio Gold (slightly more metallic) */
+      --gold: #C5A028; 
       --gold-dim: rgba(197, 160, 40, 0.3);
       --gold-glow: rgba(197, 160, 40, 0.1);
       
@@ -50,14 +50,14 @@
     
     a { text-decoration: none; color: inherit; transition: all 0.3s var(--ease); }
 
-    /* NOISE TEXTURE */
+    /* NOISE */
     .noise {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none; z-index: 900; opacity: 0.05;
       background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     }
 
-    /* CANVAS BG */
+    /* CANVAS */
     #cosmos {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       z-index: -1; opacity: 0.5;
@@ -82,7 +82,7 @@
     .logo-mark { color: var(--gold); font-size: 1.1rem; }
     .brand-text { font-size: 0.85rem; letter-spacing: 0.15em; font-weight: 600; color: #fff; }
 
-    /* NAV LINKS - CLEANER LOOK */
+    /* NAV LINKS */
     .nav-links { display: flex; gap: 1.8rem; align-items: center; }
     .nav-links a { 
       font-size: 0.7rem; color: var(--fg-muted); padding: 5px 0;
@@ -102,7 +102,7 @@
     }
     .cta-btn:hover { background: var(--gold); color: #000; }
 
-    /* HERO - ALIGNED WITH STUDIO */
+    /* HERO */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
       padding-top: 6rem; padding-bottom: 4rem;
@@ -114,7 +114,7 @@
       font-family: 'Cinzel', serif;
       font-size: clamp(2.2rem, 4.5vw, 3.8rem);
       line-height: 1.1; margin-bottom: 1.5rem;
-      color: #fff; /* Pure white instead of gradient for authority */
+      color: #fff; 
     }
     .hero-desc {
       font-size: 1rem; color: var(--fg-muted); max-width: 90%;
@@ -122,14 +122,14 @@
       padding-left: 1.5rem;
     }
 
-    /* BUTTONS - FIXED (NO LONG YELLOW BOX) */
+    /* BUTTONS */
     .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
     
     .btn {
       padding: 0.9rem 1.8rem; font-size: 0.75rem; text-transform: uppercase;
       letter-spacing: 0.12em; cursor: pointer; transition: all 0.3s var(--ease);
       position: relative; display: inline-flex; align-items: center; justify-content: center;
-      text-align: center; min-width: 140px; /* Minimum width but not full width */
+      text-align: center; min-width: 140px;
     }
 
     .btn-primary {
@@ -150,7 +150,6 @@
       background: var(--bg-panel); backdrop-filter: var(--glass);
       border: 1px solid var(--border); padding: 2rem; position: relative;
     }
-    /* Finer lines for Studio look */
     .glass-card::before {
       content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
@@ -197,22 +196,26 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s var(--ease); }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
-    /* MOBILE OPTIMIZATIONS (FIXED BUTTONS) */
+    /* MOBILE OPTIMIZATIONS (BUTTONS SIDE-BY-SIDE FIX) */
     @media (max-width: 900px) {
       .nav-links .desktop-only { display: none; }
+      
       .hero { padding-top: 7rem; } 
       .hero-grid, .grid-2 { grid-template-columns: 1fr; gap: 3rem; }
       .hero-title { font-size: 2.2rem; }
       
-      /* BUTTON FIX: Use flex-start instead of stretch */
+      /* SIDE-BY-SIDE BUTTONS FOR MOBILE */
       .btn-group { 
-        flex-direction: column; 
-        align-items: flex-start; /* This stops the stretch */
+        flex-direction: row; /* Force row direction */
         width: 100%; 
+        gap: 0.8rem; /* Small gap between buttons */
       }
       .btn { 
-        width: auto; /* Let button size to content */
-        min-width: 160px; /* Consistent size but not full screen */
+        flex: 1; /* Make buttons share width equally (50/50) */
+        min-width: auto; 
+        width: auto; 
+        padding: 0.9rem 0.5rem; /* Slightly less padding to fit text */
+        font-size: 0.7rem;
       }
       
       .metrics-grid { grid-template-columns: 1fr; }
@@ -237,9 +240,7 @@
             <div class="nav-links caps mono" style="margin-right:1rem;">
               <a href="#doctrine" class="desktop-only">Doctrine</a>
               <a href="#architecture" class="desktop-only">Stack</a>
-              
               <a href="protocol.html" class="playbook-link">Playbook</a>
-              
               <a href="#metrics" class="desktop-only">Metrics</a>
               <a href="#studio" class="desktop-only">Studio</a>
             </div>
@@ -259,8 +260,8 @@
               
               <h1 class="hero-title">
                 We did not come to optimize the city<br>
-                We came to awaken<br>
-                <span class="text-gold">a different layer</span>
+                <span class="text-gold">We came to awaken</span><br>
+                a different layer
               </h1>
               
               <p class="hero-desc">
