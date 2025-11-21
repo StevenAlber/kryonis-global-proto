@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KRYONIS — The Lexicon</title>
+  <meta name="description" content="The official glossary of KRYONIS doctrinal terms and definitions." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #030304;
+      --fg: #e1e1e6;
+      --fg-dim: #6b7280;
+      --gold: #C5A028;
+      --gold-dim: rgba(197, 160, 40, 0.3);
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .wrapper { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .serif { font-family: 'Cinzel', serif; }
+    .caps { text-transform: uppercase; letter-spacing: 0.1em; }
+    .text-gold { color: var(--gold); }
+
+    /* HEADER */
+    header {
+      padding: 2rem 0; border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .back-link { font-size: 0.7rem; color: var(--fg-dim); text-decoration: none; border: 1px solid var(--border); padding: 8px 16px; border-radius: 2px; transition:0.3s; }
+    .back-link:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* HERO */
+    .hero { padding: 6rem 0 4rem; }
+    h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; color: #fff; margin-bottom: 1.5rem; }
+    .lead { 
+      color: var(--fg-dim); font-size: 1.1rem; max-width: 600px; 
+      border-left: 1px solid var(--border); padding-left: 1.5rem;
+    }
+
+    /* DICTIONARY GRID */
+    .term-row {
+      display: grid; 
+      grid-template-columns: 1fr 2fr; 
+      gap: 2rem;
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      transition: 0.3s;
+    }
+    .term-row:last-child { border-bottom: none; }
+    .term-row:hover { background: rgba(255,255,255,0.01); }
+
+    .term-col { position: sticky; top: 2rem; }
+
+    .term {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: var(--gold);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    
+    .phonetic {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--fg-dim);
+      display: block;
+      letter-spacing: 0.05em;
+    }
+
+    .definition {
+      font-size: 1.1rem;
+      color: var(--fg);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+    
+    .context {
+      font-size: 0.9rem;
+      color: var(--fg-dim);
+      font-style: italic;
+      background: rgba(255,255,255,0.02);
+      padding: 1.5rem;
+      border-left: 2px solid var(--gold-dim);
+    }
+
+    /* FOOTER */
+    footer { padding: 4rem 0; text-align: center; font-size: 0.7rem; color: var(--fg-dim); border-top: 1px solid var(--border); }
+
+    @media (max-width: 768px) {
+      .term-row { grid-template-columns: 1fr; gap: 1rem; padding: 3rem 0; }
+      .term { font-size: 1.5rem; }
+      .lead { border-left: none; padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <header>
+      <div class="serif caps text-gold">Kryonis.Global</div>
+      <a href="index.html" class="back-link mono caps">← Return</a>
+    </header>
+
+    <section class="hero">
+      <span class="mono caps text-gold" style="font-size:0.7rem; border:1px solid var(--gold-dim); padding:4px 8px; margin-bottom:1.5rem; display:inline-block;">Glossary of Terms</span>
+      <h1 class="serif">The Lexicon</h1>
+      <p class="lead">
+        Language structures reality. To build a new civilization, we must first define the terms of its existence.
+      </p>
+    </section>
+
+    <div class="dictionary">
+      
+      <div class="term-row">
+        <div class="term-col">
+          <div class="term">Decoherence</div>
+          <span class="phonetic mono">/diː-kəʊ-ˈhɪə-rəns/</span>
+        </div>
+        <div>
+          <div class="definition">
+            The systemic breakdown of structural integrity caused by excessive informational noise and entropy. In a decoherent state, institutions retain their form (bureaucracy) but lose their function (signal).
+          </div>
+          <div class="context">
+            "The 21st century crisis is not a resource crisis; it is a crisis of global decoherence. KRYONIS nodes are designed to act as Faraday cages against this entropy."
+          </div>
+        </div>
+      </div>
+
+      <div class="term-row">
+        <div class="term-col">
+          <div class="term">Proof of Coherence</div>
+          <span class="phonetic mono">[PoC]</span>
+        </div>
+        <div>
+          <div class="definition">
+            A validation protocol that measures a system's ability to maintain alignment under stress. Unlike Proof-of-Work (which expends energy) or Proof-of-Stake (which leverages capital), PoC measures the efficiency and clarity of energy organization.
+          </div>
+          <div class="context">
+            "Nations with high GDP but low PoC are fragile. Nations with high PoC are antifragile."
+          </div>
+        </div>
+      </div>
+
+      <div class="term-row">
+        <div class="term-col">
+          <div class="term">Noöcratic</div>
+          <span class="phonetic mono">/noʊ-ə-ˈkræt-ɪk/</span>
+        </div>
+        <div>
+          <div class="definition">
+            A governance model derived from the "Noosphere" (sphere of mind). A system where decision-making authority is distributed based on demonstrated cognitive capacity and foresight, rather than popularity or accumulated capital.
+          </div>
+          <div class="context">
+            "Democracy counts heads. Noöcracy weighs thoughts. In a KRYONIS node, governance is allocated to those who demonstrate the longest time horizons."
+          </div>
+        </div>
+      </div>
+
+      <div class="term-row">
+        <div class="term-col">
+          <div class="term">Bio-Sentient Node</div>
+          <span class="phonetic mono">[Architecture]</span>
+        </div>
+        <div>
+          <div class="definition">
+            A sovereign physical territory designed to be biologically autonomous (food/energy) and cognitively connected. A node is not just a smart city; it is a conscious organism capable of self-repair and localized intelligence.
+          </div>
+        </div>
+      </div>
+
+      <div class="term-row">
+        <div class="term-col">
+          <div class="term">The Lattice</div>
+          <span class="phonetic mono">[Network]</span>
+        </div>
+        <div>
+          <div class="definition">
+            The resonant field connecting all KRYONIS nodes. It is the "nervous system" of the new architecture, carrying high-fidelity signal while filtering out low-fidelity noise.
+          </div>
+        </div>
+      </div>
+
+      <div class="term-row">
+        <div class="term-col">
+          <div class="term">Lazy Susan</div>
+          <span class="phonetic mono">[Protocol]</span>
+        </div>
+        <div>
+          <div class="definition">
+            A proprietary synthesis engine where 12 nodes of hybrid intelligence (Human + AI) rotate around a central problem. It replaces vertical hierarchy with horizontal resonance, allowing for the rapid architecting of sovereign futures.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="mono caps">
+      Kryonis Intelligence Studio · Hong Kong SAR · 2025
+    </footer>
+  </div>
+
+</body>
+</html>
