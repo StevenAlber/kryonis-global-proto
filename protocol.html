@@ -72,7 +72,7 @@
       position: relative; width: 100%; height: 600px;
       display: flex; justify-content: center; align-items: center;
       margin: 3rem 0; 
-      overflow: hidden;
+      overflow: visible; /* Changed to visible so tooltips don't cut off */
     }
     
     .center-table {
@@ -127,25 +127,31 @@
       border: 1px solid var(--border); padding: 4rem 2rem; text-align: center;
       margin: 6rem 0; border-radius: 4px;
     }
+    /* Extra padding at bottom so Audio button doesn't overlap text */
+    footer { padding-bottom: 100px; }
 
     /* ANIMATIONS */
     @keyframes spin-right { 100% { transform: rotate(360deg); } }
     @keyframes spin-left { 100% { transform: rotate(-360deg); } }
 
-    /* MOBILE FIXES */
+    /* MOBILE FIXES - THE CORRECT WAY */
     @media (max-width: 800px) {
-      .orbit-container { height: 400px; transform: scale(0.55); margin: 0; }
-      .ring-1 { width: 200px; height: 200px; }
-      .ring-2 { width: 300px; height: 300px; }
-      .center-table { width: 140px; height: 140px; }
-      .center-table div { font-size: 0.6rem !important; }
+      .orbit-container { 
+        height: 360px; /* Height of container on mobile */
+        /* Instead of resizing rings, we just SCALE the whole thing down */
+        transform: scale(0.6); 
+        margin: -2rem 0; /* Pull it tighter since we scaled it down */
+      }
+      /* NOTE: Removed the explicit width/height overrides for rings. 
+         Now they stay big but get zoomed out. This fixes the motion. */
+      
       .roles-grid { grid-template-columns: 1fr; gap: 2rem; }
       h1 { font-size: 2.5rem; } 
       .lead { text-align: center; border-left: none; padding-left: 0; font-size: 1rem; }
       .wrapper { padding: 0 1.5rem; }
     }
 
-    /* SONIC MODE BUTTON STYLES */
+    /* SONIC MODE BUTTON */
     .sonic-container {
       position: fixed; bottom: 20px; right: 20px; z-index: 9999;
     }
@@ -285,6 +291,9 @@
       </a>
     </div>
 
+    <footer>
+      </footer>
+
   </div>
 
   <div class="sonic-container">
@@ -293,7 +302,7 @@
     </button>
   </div>
 
-  <audio id="ambient-track" loop preload="auto">
+  <audio id="ambient-track" loop>
     <source src="drone.mp3" type="audio/mpeg">
   </audio>
 
@@ -313,6 +322,7 @@
         seat.className = `seat ${type}`;
         seat.setAttribute('data-label', role);
         
+        // Uses full size then CSS scales it down
         const radius = ring.offsetWidth / 2; 
         seat.style.transform = `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`;
         
@@ -323,7 +333,7 @@
     placeSeats('ring-machine', machineRoles, 'machine');
     placeSeats('ring-human', humanRoles, 'human');
 
-    // AUDIO LOGIC
+    // AUDIO LOGIC (FORCE PLAY FIX)
     const audio = document.getElementById('ambient-track');
     const btn = document.getElementById('sonic-btn');
     
@@ -337,7 +347,7 @@
           playPromise.then(_ => { updateBtn(true); })
           .catch(error => {
             console.log("Autoplay blocked");
-            audio.play(); // Force on mobile touch
+            audio.play();
             updateBtn(true);
           });
         }
