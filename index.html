@@ -2,13 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KRYONIS — Planetary Civilization Architecture</title>
   <meta name="description" content="KRYONIS — a dual-axis operating system for planetary civilization: Axis I (Cognitive Capital) and Axis II (Metabolic Bio-Capital)." />
 
+  <!-- Fonts (võid hiljem self-hostida) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Favicon hookid (asenda enda ikoonidega) -->
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <style>
     :root {
@@ -52,8 +57,7 @@
     .text-gold{color:var(--gold);}
     .text-muted{color:var(--fg-muted);}
     a{text-decoration:none;color:inherit;transition:all 0.3s var(--ease);}
-
-    .desktop-only{} /* default, peidame ainult mobiilis */
+    .desktop-only{} /* peidame ainult mobiilis */
 
     .noise{
       position:fixed;top:0;left:0;width:100%;height:100%;
@@ -385,8 +389,11 @@
               </div>
 
               <div style="margin-top:1.5rem;">
-                <a href="https://kryonis.global/gci" target="_blank"
-                   class="btn btn-outline" style="font-size:0.7rem;">
+                <a href="https://kryonis.global/gci"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-outline"
+                   style="font-size:0.7rem;">
                   Open GCI Brief
                 </a>
               </div>
@@ -521,7 +528,10 @@
                   Open TEC-X Playbook
                 </a>
                 <a href="https://kryonis-system-portal.onrender.com"
-                   target="_blank" class="btn btn-outline" style="font-size:0.7rem;">
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-outline"
+                   style="font-size:0.7rem;">
                   Open Operator Portal
                 </a>
               </div>
@@ -571,6 +581,7 @@
               <div style="margin-top:1.5rem;">
                 <a href="Establishing%20the%20Global%20Bio-Capital%20Exchange.pdf"
                    target="_blank"
+                   rel="noopener noreferrer"
                    class="btn btn-primary"
                    style="font-size:0.7rem;">
                   Open GBX Strategic Proposal
@@ -636,6 +647,7 @@
             </p>
             <a href="https://kryonis-intelligence-studio.onrender.com"
                target="_blank"
+               rel="noopener noreferrer"
                class="btn btn-primary">
               Open Studio Interface
             </a>
@@ -706,7 +718,6 @@
 
   <div class="sonic-container">
     <button id="sonic-btn"
-            onclick="toggleAudio()"
             aria-label="Toggle ambient audio">
       [ AUDIO: OFF ]
     </button>
@@ -738,7 +749,7 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // particles
+    // particles (optimeeritud: j-loop algab i+1)
     const canvas = document.getElementById('cosmos');
     const ctx    = canvas.getContext('2d');
     let width, height, particles = [];
@@ -778,9 +789,9 @@
       }
     }
 
-    function init() {
+    function initParticles() {
       particles = [];
-      const count = Math.min(window.innerWidth / 8, 150);
+      const count = Math.min(window.innerWidth / 10, 140); // veidi vähem, kiirem
       for (let i = 0; i < count; i++) {
         particles.push(new Particle());
       }
@@ -793,7 +804,7 @@
         particles[i].update();
         particles[i].draw();
 
-        for (let j = i; j < particles.length; j++) {
+        for (let j = i + 1; j < particles.length; j++) { // j = i+1 → ei dubleeri jooni
           const dx   = particles[i].x - particles[j].x;
           const dy   = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx*dx + dy*dy);
@@ -812,31 +823,14 @@
       requestAnimationFrame(animate);
     }
 
-    init();
+    initParticles();
     animate();
 
-    // audio
+    // audio (puhtalt JS-is, mitte onclick)
     const audio = document.getElementById('ambient-track');
     const btn   = document.getElementById('sonic-btn');
     audio.load();
     audio.volume = 0.5;
-
-    function toggleAudio() {
-      if (audio.paused) {
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise.then(() => {
-            updateBtn(true);
-          }).catch(() => {
-            audio.play();
-            updateBtn(true);
-          });
-        }
-      } else {
-        audio.pause();
-        updateBtn(false);
-      }
-    }
 
     function updateBtn(isPlaying) {
       if (isPlaying) {
@@ -851,6 +845,23 @@
         btn.style.boxShadow    = "none";
       }
     }
+
+    btn.addEventListener('click', () => {
+      if (audio.paused) {
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            updateBtn(true);
+          }).catch(() => {
+            audio.play();
+            updateBtn(true);
+          });
+        }
+      } else {
+        audio.pause();
+        updateBtn(false);
+      }
+    });
   </script>
 </body>
 </html>
