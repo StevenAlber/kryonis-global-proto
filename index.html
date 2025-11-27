@@ -6,12 +6,10 @@
   <title>KRYONIS — Planetary Civilization Architecture</title>
   <meta name="description" content="KRYONIS — a dual-axis operating system for planetary civilization: Axis I (Cognitive Capital) and Axis II (Metabolic Bio-Capital)." />
 
-  <!-- Fonts (võid hiljem self-hostida) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
-  <!-- Favicon hookid (asenda enda ikoonidega) -->
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
@@ -57,7 +55,6 @@
     .text-gold{color:var(--gold);}
     .text-muted{color:var(--fg-muted);}
     a{text-decoration:none;color:inherit;transition:all 0.3s var(--ease);}
-    .desktop-only{} /* peidame ainult mobiilis */
 
     .noise{
       position:fixed;top:0;left:0;width:100%;height:100%;
@@ -66,7 +63,7 @@
     }
 
     #cosmos{
-      position:fixed;top:0;left:0;width:100%;height:100%;
+      position:fixed;top:0;left:0;left:0;width:100%;height:100%;
       z-index:-1;opacity:0.5;
     }
 
@@ -192,6 +189,61 @@
       font-size:1.8rem;font-family:'Cinzel',serif;margin:0.5rem 0;
     }
 
+    /* === NEW: AXES BAND === */
+    .axes-band{
+      padding:3rem 0 1rem;
+      border-bottom:1px solid rgba(255,255,255,0.04);
+      background:radial-gradient(circle at top,
+        rgba(197,160,40,0.08) 0%,
+        rgba(0,0,0,0) 55%);
+    }
+    .axes-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1.5rem;
+    }
+    .axis-card{
+      background:rgba(15,15,20,0.75);
+      border:1px solid var(--border);
+      padding:1.4rem 1.6rem;
+      backdrop-filter:var(--glass);
+    }
+    .axis-label{
+      font-size:0.75rem;
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+      margin-bottom:0.4rem;
+    }
+    .axis-title{
+      font-family:'Cinzel',serif;
+      font-size:1.05rem;
+      color:#fff;
+      margin-bottom:0.4rem;
+    }
+    .axis-desc{
+      font-size:0.85rem;
+      color:var(--fg-muted);
+      margin-bottom:0.7rem;
+    }
+    .axis-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.4rem;
+    }
+    .axis-pill{
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.16);
+      padding:0.15rem 0.6rem;
+      font-size:0.7rem;
+      color:var(--fg-muted);
+      text-transform:uppercase;
+      letter-spacing:0.1em;
+    }
+    .axis-pill span{
+      color:var(--gold);
+    }
+
     footer{
       padding:4rem 0;color:var(--fg-dark);font-size:0.75rem;padding-bottom:100px;
     }
@@ -217,6 +269,7 @@
       .btn-group{flex-direction:row;width:100%;gap:0.8rem;}
       .btn{flex:1;min-width:auto;width:auto;padding:0.9rem 0.5rem;font-size:0.7rem;}
       .metrics-grid{grid-template-columns:1fr;}
+      .axes-grid{grid-template-columns:1fr;}
     }
 
     .sonic-container{
@@ -239,7 +292,7 @@
       <div class="wrapper">
         <nav class="nav">
           <a href="#" class="brand">
-            <div class="logo-mark">⦿</div>
+            <div class="logo-mark">Circle</div>
             <div class="brand-text serif caps">Kryonis.Global</div>
           </a>
 
@@ -318,6 +371,48 @@
         </div>
       </section>
 
+      <!-- NEW: AXES BAND -->
+      <section class="axes-band">
+        <div class="wrapper">
+          <div class="axes-grid">
+
+            <!-- AXIS I CARD -->
+            <div class="axis-card reveal">
+              <div class="axis-label mono">Axis I</div>
+              <div class="axis-title">Cognitive Capital Stack</div>
+              <p class="axis-desc">
+                The intelligence and coherence layer of KRYONIS: how minds, models and
+                institutions align, measure and govern consciousness as infrastructure.
+              </p>
+              <div class="axis-tags">
+                <div class="axis-pill mono">PoC <span>•</span> Proof-of-Coherence</div>
+                <div class="axis-pill mono">GCI <span>•</span> Global Cognitive Index</div>
+                <div class="axis-pill mono">Resonant <span>Governance</span></div>
+                <div class="axis-pill mono">Intelligence <span>Studio</span></div>
+              </div>
+            </div>
+
+            <!-- AXIS II CARD -->
+            <div class="axis-card reveal">
+              <div class="axis-label mono">Axis II</div>
+              <div class="axis-title">Metabolic Bio-Capital Stack</div>
+              <p class="axis-desc">
+                The metabolic and ecological layer: how biospheres become accountable,
+                measurable balance sheets and sovereign-grade collateral.
+              </p>
+              <div class="axis-tags">
+                <div class="axis-pill mono">MSF <span>•</span> Metabolic Framework</div>
+                <div class="axis-pill mono">TEC-X <span>•</span> Metabolic Consensus</div>
+                <div class="axis-pill mono">GBX <span>•</span> Bio-Capital Exchange</div>
+                <div class="axis-pill mono">BOREALIS <span>•</span> Bio-Intelligence</div>
+                <div class="axis-pill mono">AEGIS-7 <span>•</span> Sovereignty Shield</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <!-- AXIS I -->
       <section id="axis1">
         <div class="wrapper">
@@ -340,14 +435,11 @@
                 Within this axis, KRYONIS establishes the primitives for cognitive infrastructure —
                 the <strong class="text-gold">Global Cognitive Index (GCI)</strong> and
                 <strong class="text-gold">Proof-of-Coherence (PoC)</strong>.
-                Together they form the legitimacy layer for noöcratic systems,
-                determining how attention, meaning and alignment circulate through a civilization.
+                Together they form the legitimacy layer for noöcratic systems.
               </p>
 
               <p class="text-muted" style="font-size:1rem;">
-                Axis I is the layer where institutions learn to govern intelligence itself:
-                the flow of sense-making, the integrity of symbolic systems
-                and the ability of minds and models to remain coherent under accelerating pressure.
+                Axis I is the layer where institutions learn to govern intelligence itself.
               </p>
             </div>
 
@@ -389,11 +481,9 @@
               </div>
 
               <div style="margin-top:1.5rem;">
-                <a href="https://kryonis.global/gci"
-                   target="_blank"
+                <a href="https://kryonis.global/gci" target="_blank"
                    rel="noopener noreferrer"
-                   class="btn btn-outline"
-                   style="font-size:0.7rem;">
+                   class="btn btn-outline" style="font-size:0.7rem;">
                   Open GCI Brief
                 </a>
               </div>
@@ -477,14 +567,11 @@
                 <strong class="text-gold">Metabolic Sovereignty Framework (MSF)</strong>,
                 the <strong class="text-gold">TEC-X Protocol</strong> and the
                 <strong class="text-gold">BOREALIS Bio-Intelligence Stack</strong>,
-                enabling real-time measurement, verification and settlement of planetary bio-capacity
-                across Arctic-Boreal, Amazonian, Congo and Indo-Pacific biomes.
+                enabling real-time measurement, verification and settlement of planetary bio-capacity.
               </p>
 
               <p class="text-muted" style="font-size:1rem;">
                 Axis II transforms living systems into accountable, measurable assets.
-                Forests, oceans, cryospheres and high-latitude bioregions become part of a global metabolic ledger
-                that can support sovereign clearing, long-horizon investment and post-fiat collateralisation.
               </p>
             </div>
 
@@ -572,10 +659,10 @@
               </div>
 
               <ul class="text-muted" style="font-size:0.9rem;list-style:none;line-height:1.8;">
-                <li>▸ Neutral to BRICS, G7 and regional blocs — architecture first, geopolitics second.</li>
-                <li>▸ Collateralised by verified metabolic work across Arctic-Boreal, Amazonian, Congo and Indo-Pacific biomes.</li>
-                <li>▸ Integrated with AEGIS-7 jurisdictional shield (ADGM, AIFC, HK, Labuan, etc.).</li>
-                <li>▸ Designed for sovereign wealth funds, climate funds and high-trust institutional capital.</li>
+                <li>Neutral to BRICS, G7 and regional blocs — architecture first, geopolitics second.</li>
+                <li>Collateralised by verified metabolic work across Arctic-Boreal, Amazonian, Congo and Indo-Pacific biomes.</li>
+                <li>Integrated with AEGIS-7 jurisdictional shield (ADGM, AIFC, HK, Labuan, etc.).</li>
+                <li>Designed for sovereign wealth funds, climate funds and high-trust institutional capital.</li>
               </ul>
 
               <div style="margin-top:1.5rem;">
@@ -627,8 +714,7 @@
               <div class="mono caps text-muted" style="font-size:0.7rem;">Governance Latency</div>
               <div class="metric-val">SUB-CYCLE</div>
               <div class="text-muted" style="font-size:0.7rem;">
-                Response time of the system to new cognitive and metabolic signals.
-              </div>
+                Response time of the system to new cognitive and metabolic signals.</div>
             </div>
           </div>
         </div>
@@ -682,10 +768,10 @@
                 Suggested Protocol
               </div>
               <ul class="text-muted" style="font-size:0.9rem;list-style:none;line-height:1.8;">
-                <li>▸ Identify the system you speak for (state, fund, city, stack).</li>
-                <li>▸ Define your time horizon (25 / 100+ years).</li>
-                <li>▸ Select domain: Cognitive, Bio-Capital, Orbital, Governance.</li>
-                <li>▸ Articulate why coherence and metabolic sovereignty are necessary now.</li>
+                <li> Identify the system you speak for (state, fund, city, stack).</li>
+                <li>> Define your time horizon (25 / 100+ years).</li>
+                <li>> Select domain: Cognitive, Bio-Capital, Orbital, Governance.</li>
+                <li>> Articulate why coherence and metabolic sovereignty are necessary now.</li>
               </ul>
             </div>
 
@@ -699,7 +785,7 @@
       <div class="wrapper">
         <div class="footer-content">
           <div>
-            <div class="logo-mark" style="font-size:1rem;">⦿</div>
+            <div class="logo-mark" style="font-size:1rem;">Circle</div>
             <div class="mono caps text-muted" style="margin-top:1rem;font-size:0.7rem;">
               KRYONIS Sovereign Systems
             </div>
@@ -749,7 +835,7 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // particles (optimeeritud: j-loop algab i+1)
+    // particles
     const canvas = document.getElementById('cosmos');
     const ctx    = canvas.getContext('2d');
     let width, height, particles = [];
@@ -791,7 +877,7 @@
 
     function initParticles() {
       particles = [];
-      const count = Math.min(window.innerWidth / 10, 140); // veidi vähem, kiirem
+      const count = Math.min(window.innerWidth / 10, 140);
       for (let i = 0; i < count; i++) {
         particles.push(new Particle());
       }
@@ -804,7 +890,7 @@
         particles[i].update();
         particles[i].draw();
 
-        for (let j = i + 1; j < particles.length; j++) { // j = i+1 → ei dubleeri jooni
+        for (let j = i + 1; j < particles.length; j++) {
           const dx   = particles[i].x - particles[j].x;
           const dy   = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx*dx + dy*dy);
@@ -826,7 +912,7 @@
     initParticles();
     animate();
 
-    // audio (puhtalt JS-is, mitte onclick)
+    // audio
     const audio = document.getElementById('ambient-track');
     const btn   = document.getElementById('sonic-btn');
     audio.load();
