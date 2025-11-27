@@ -2,351 +2,759 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>KRYONIS — Lazy Susan Protocol</title>
-  <meta name="description" content="The KRYONIS Lazy Susan™ — A resonance-first synthesis protocol for hybrid intelligence." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KRYONIS — Metabolic Sovereignty Protocol</title>
+  <meta name="description" content="The KRYONIS Metabolic Sovereignty Protocol — MSF, TEC-X, BOREALIS, AEGIS-7 and GBX as a sovereign bio-capital architecture." />
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Favicon hooks (asenda enda failidega, kui olemas) -->
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <style>
     :root {
-      /* PALETTE */
-      --bg: #020203;
-      --fg: #e1e1e6;
-      --fg-dim: #6b7280;
-      
-      /* STUDIO GOLD */
-      --gold: #C5A028;
-      --gold-dim: rgba(197, 160, 40, 0.3);
-      --gold-glow: rgba(197, 160, 40, 0.15);
-      
-      --border: rgba(255, 255, 255, 0.08);
-      --glass: blur(12px);
+      --bg-deep:#020204;
+      --bg-panel:rgba(15,15,20,0.6);
+
+      --fg:#e0e0e6;
+      --fg-muted:#8a8f9d;
+      --fg-dark:#555a66;
+
+      --gold:#C5A028;
+      --gold-dim:rgba(197,160,40,0.3);
+      --gold-glow:rgba(197,160,40,0.15);
+
+      --violet:#7c73e6;
+
+      --border:rgba(255,255,255,0.08);
+      --glass:blur(10px);
+
+      --ease:cubic-bezier(0.23,1,0.32,1);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      color: var(--fg);
-      line-height: 1.6;
-      overflow-x: hidden;
+    *,*::before,*::after{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
     }
 
-    .wrapper { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-    .mono { font-family: 'JetBrains Mono', monospace; }
-    .serif { font-family: 'Cinzel', serif; }
-    .caps { text-transform: uppercase; letter-spacing: 0.1em; }
-    .text-gold { color: var(--gold); }
-    .text-dim { color: var(--fg-dim); }
-
-    /* HEADER */
-    header {
-      padding: 2rem 0; border-bottom: 1px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .back-link { font-size: 0.7rem; color: var(--fg-dim); text-decoration: none; border: 1px solid var(--border); padding: 8px 16px; border-radius: 2px; transition:0.3s; }
-    .back-link:hover { border-color: var(--gold); color: var(--gold); }
-
-    /* HERO */
-    .hero { padding: 5rem 0; text-align: center; }
-    .protocol-tag {
-      display: inline-block; border: 1px solid var(--gold); color: var(--gold);
-      padding: 0.4rem 1rem; font-size: 0.7rem; margin-bottom: 2rem;
-    }
-    
-    h1 { 
-      font-size: clamp(2.5rem, 5vw, 4.5rem); 
-      line-height: 1.1; 
-      margin-bottom: 1.5rem; 
-      color: #fff;
-    }
-    
-    .lead { font-size: 1.1rem; color: var(--fg-dim); max-width: 600px; margin: 0 auto; border-left: 1px solid var(--border); padding-left: 1.5rem; text-align: left; display: inline-block;}
-
-    /* THE LAZY SUSAN VISUALIZER */
-    .orbit-container {
-      position: relative; width: 100%; height: 600px;
-      display: flex; justify-content: center; align-items: center;
-      margin: 3rem 0; 
-      overflow: visible; /* Changed to visible so tooltips don't cut off */
-    }
-    
-    .center-table {
-      width: 200px; height: 200px; border-radius: 50%;
-      border: 1px solid var(--gold);
-      background: radial-gradient(circle, rgba(197, 160, 40, 0.1) 0%, rgba(0,0,0,0) 70%);
-      display: flex; justify-content: center; align-items: center;
-      text-align: center; z-index: 10;
-      box-shadow: 0 0 40px var(--gold-glow);
+    body{
+      font-family:'Inter',sans-serif;
+      background-color:var(--bg-deep);
+      color:var(--fg);
+      line-height:1.6;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
     }
 
-    .orbit-ring {
-      position: absolute; border-radius: 50%;
-      border: 1px dashed rgba(255,255,255,0.1);
-    }
-    .ring-1 { width: 350px; height: 350px; animation: spin-left 60s linear infinite; }
-    .ring-2 { width: 500px; height: 500px; animation: spin-right 80s linear infinite; }
+    .mono{font-family:'JetBrains Mono',monospace;letter-spacing:-0.02em;}
+    .serif{font-family:'Cinzel',serif;}
+    .caps{text-transform:uppercase;letter-spacing:0.1em;}
+    .text-gold{color:var(--gold);}
+    .text-muted{color:var(--fg-muted);}
+    a{text-decoration:none;color:inherit;transition:all 0.3s var(--ease);}
+    .desktop-only{} /* peidame ainult mobiilis */
 
-    .seat {
-      position: absolute; width: 12px; height: 12px; background: #111;
-      border: 1px solid var(--fg-dim); border-radius: 50%;
-      top: 50%; left: 50%; transform-origin: 0 0;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .seat::after {
-      content: attr(data-label);
-      position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
-      font-family: 'JetBrains Mono'; font-size: 9px; white-space: nowrap;
-      color: var(--fg-dim); opacity: 0.7; letter-spacing: 0.05em;
-    }
-    .seat.human { border-color: var(--gold); background: var(--gold-glow); }
-    .seat.machine { border-color: #6e8cff; background: rgba(110,140,255,0.1); }
-
-    /* GRID LAYOUT FOR ROLES */
-    .roles-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-      margin-top: 4rem; border-top: 1px solid var(--border); padding-top: 4rem;
-    }
-    .role-col h3 { margin-bottom: 2.5rem; font-size: 1.1rem; letter-spacing: 0.1em; }
-    
-    .role-item {
-      display: flex; gap: 1.2rem; margin-bottom: 2rem;
-      padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.03);
-    }
-    .role-icon { font-size: 1.2rem; opacity: 0.8; }
-    .role-title { font-weight: 600; display: block; margin-bottom: 0.4rem; color: var(--fg); font-size: 0.9rem; }
-    .role-desc { font-size: 0.85rem; color: var(--fg-dim); line-height: 1.5; }
-
-    /* FOOTER CTA */
-    .cta-box {
-      background: linear-gradient(145deg, #0a0b10, #020203);
-      border: 1px solid var(--border); padding: 4rem 2rem; text-align: center;
-      margin: 6rem 0; border-radius: 4px;
-    }
-    /* Extra padding at bottom so Audio button doesn't overlap text */
-    footer { padding-bottom: 100px; }
-
-    /* ANIMATIONS */
-    @keyframes spin-right { 100% { transform: rotate(360deg); } }
-    @keyframes spin-left { 100% { transform: rotate(-360deg); } }
-
-    /* MOBILE FIXES - THE CORRECT WAY */
-    @media (max-width: 800px) {
-      .orbit-container { 
-        height: 360px; /* Height of container on mobile */
-        /* Instead of resizing rings, we just SCALE the whole thing down */
-        transform: scale(0.6); 
-        margin: -2rem 0; /* Pull it tighter since we scaled it down */
-      }
-      /* NOTE: Removed the explicit width/height overrides for rings. 
-         Now they stay big but get zoomed out. This fixes the motion. */
-      
-      .roles-grid { grid-template-columns: 1fr; gap: 2rem; }
-      h1 { font-size: 2.5rem; } 
-      .lead { text-align: center; border-left: none; padding-left: 0; font-size: 1rem; }
-      .wrapper { padding: 0 1.5rem; }
+    .noise{
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      pointer-events:none;z-index:900;opacity:0.05;
+      background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    /* SONIC MODE BUTTON */
-    .sonic-container {
-      position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+    #cosmos{
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      z-index:-1;opacity:0.5;
     }
-    #sonic-btn {
-      background: #000; border: 1px solid rgba(212, 175, 55, 0.3); color: rgba(212, 175, 55, 0.5); 
-      font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 8px 12px; 
-      cursor: pointer; text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s;
+
+    .wrapper{
+      width:100%;max-width:1160px;margin:0 auto;padding:0 1.5rem;
+      position:relative;z-index:10;
+    }
+
+    header{
+      position:fixed;top:0;left:0;width:100%;z-index:100;
+      padding:1.2rem 0;background:rgba(3,3,4,0.9);
+      backdrop-filter:blur(15px);border-bottom:1px solid var(--border);
+      transition:background 0.3s var(--ease),box-shadow 0.3s var(--ease);
+    }
+    header.scrolled{
+      background:rgba(3,3,4,0.98);
+      box-shadow:0 0 24px rgba(0,0,0,0.6);
+    }
+
+    .nav{display:flex;justify-content:space-between;align-items:center;}
+    .brand{display:flex;align-items:center;gap:0.8rem;}
+    .logo-mark{color:var(--gold);font-size:1.1rem;}
+    .brand-text{font-size:0.85rem;letter-spacing:0.15em;font-weight:600;color:#fff;}
+
+    .nav-links{display:flex;gap:1.8rem;align-items:center;}
+    .nav-links a{
+      font-size:0.7rem;color:var(--fg-muted);padding:5px 0;
+      border-bottom:1px solid transparent;
+    }
+    .nav-links a:hover{color:var(--fg);border-color:var(--fg-dark);}
+
+    .playbook-link{
+      color:var(--gold)!important;
+      border-color:var(--gold-dim)!important;
+    }
+
+    .cta-btn{
+      border:1px solid var(--gold);padding:0.4rem 1rem;
+      border-radius:2px;font-size:0.7rem;color:var(--gold);
+      background:rgba(197,160,40,0.05);white-space:nowrap;
+    }
+    .cta-btn:hover{background:var(--gold);color:#000;}
+
+    .hero{
+      min-height:80vh;display:flex;align-items:center;
+      padding-top:6rem;padding-bottom:4rem;
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.6fr 1fr;gap:5rem;align-items:center;
+    }
+    .hero-title{
+      font-family:'Cinzel',serif;
+      font-size:clamp(2.2rem,4.5vw,3.4rem);
+      line-height:1.1;margin-bottom:1.5rem;color:#fff;
+    }
+    .hero-desc{
+      font-size:1rem;color:var(--fg-muted);max-width:90%;
+      margin-bottom:2.5rem;font-weight:300;border-left:1px solid var(--border);
+      padding-left:1.5rem;
+    }
+
+    .btn-group{display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn{
+      padding:0.9rem 1.8rem;font-size:0.75rem;text-transform:uppercase;
+      letter-spacing:0.12em;cursor:pointer;transition:all 0.3s var(--ease);
+      display:inline-flex;align-items:center;justify-content:center;
+      text-align:center;min-width:140px;
+    }
+    .btn-primary{
+      background:var(--gold);color:#05060a;font-weight:600;border:1px solid var(--gold);
+    }
+    .btn-primary:hover{
+      background:transparent;color:var(--gold);
+      box-shadow:0 0 20px var(--gold-glow);
+    }
+    .btn-outline{
+      background:transparent;border:1px solid var(--fg-dark);color:var(--fg-muted);
+    }
+    .btn-outline:hover{border-color:var(--fg);color:var(--fg);}
+
+    .glass-card{
+      background:var(--bg-panel);backdrop-filter:var(--glass);
+      border:1px solid var(--border);padding:2rem;position:relative;
+    }
+    .glass-card::before{
+      content:'';position:absolute;top:0;left:0;width:100%;height:1px;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);
+    }
+
+    section{
+      padding:6rem 0;border-bottom:1px solid rgba(255,255,255,0.02);
+    }
+    .section-header{margin-bottom:3rem;}
+    .eyebrow{color:var(--gold);font-size:0.7rem;margin-bottom:0.8rem;display:block;}
+    .section-title{font-family:'Cinzel',serif;font-size:2.2rem;color:#fff;}
+    .grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;}
+
+    .stack-list{display:flex;flex-direction:column;gap:1rem;}
+    .stack-item{
+      background:rgba(255,255,255,0.01);border:1px solid var(--border);
+      padding:1.5rem;transition:0.3s var(--ease);
+    }
+    .stack-item:hover{
+      background:rgba(255,255,255,0.03);border-color:var(--gold-dim);
+      transform:translateX(5px);
+    }
+
+    .doc-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+    }
+
+    .doc-card{
+      background:linear-gradient(145deg,#0a0b10,#020204);
+      border:1px solid var(--border);padding:1.6rem;
+      display:flex;flex-direction:column;gap:0.8rem;
+    }
+
+    .doc-tag{
+      font-size:0.7rem;color:var(--gold);text-transform:uppercase;
+      letter-spacing:0.12em;
+    }
+
+    .doc-title{
+      font-family:'Cinzel',serif;font-size:1.1rem;color:#fff;
+    }
+
+    .doc-desc{
+      font-size:0.9rem;color:var(--fg-muted);
+    }
+
+    .pill{
+      display:inline-block;
+      border-radius:999px;
+      padding:0.2rem 0.7rem;
+      border:1px solid var(--border);
+      font-size:0.7rem;
+      color:var(--fg-muted);
+    }
+
+    .timeline{
+      border-top:1px solid var(--border);
+      margin-top:4rem;
+      padding-top:4rem;
+    }
+    .timeline-step{
+      display:flex;gap:1.5rem;margin-bottom:2rem;
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      padding-bottom:1.5rem;
+    }
+    .timeline-step:last-child{border-bottom:none;}
+    .step-label{
+      font-family:'JetBrains Mono',monospace;
+      font-size:0.8rem;color:var(--gold);min-width:80px;
+    }
+    .step-title{
+      font-size:0.95rem;font-weight:600;margin-bottom:0.3rem;
+    }
+    .step-body{
+      font-size:0.85rem;color:var(--fg-muted);
+    }
+
+    footer{
+      padding:4rem 0;color:var(--fg-dark);font-size:0.75rem;padding-bottom:100px;
+    }
+    .footer-content{
+      display:flex;justify-content:space-between;align-items:flex-end;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(30px);
+      transition:all 0.8s var(--ease);
+    }
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .sonic-container{
+      position:fixed;bottom:20px;right:20px;z-index:9999;
+    }
+    #sonic-btn{
+      background:#000;border:1px solid rgba(212,175,55,0.3);color:rgba(212,175,55,0.5);
+      font-family:'JetBrains Mono',monospace;font-size:10px;padding:8px 12px;
+      cursor:pointer;text-transform:uppercase;letter-spacing:0.1em;transition:0.3s;
+    }
+
+    @media(max-width:900px){
+      .nav-links .desktop-only{display:none;}
+      .hero{padding-top:7rem;}
+      .hero-grid,.grid-2{grid-template-columns:1fr;gap:3rem;}
+      .hero-title{font-size:2.2rem;}
+      .btn-group{flex-direction:row;width:100%;gap:0.8rem;}
+      .btn{flex:1;min-width:auto;width:auto;padding:0.9rem 0.5rem;font-size:0.7rem;}
+      .doc-grid{grid-template-columns:1fr;}
     }
   </style>
 </head>
-<body>
 
-  <div class="wrapper">
-    <header>
-      <div class="serif caps text-gold">Kryonis.Global</div>
-      <a href="index.html" class="back-link mono caps">← Return</a>
+<body>
+  <div class="noise"></div>
+  <canvas id="cosmos"></canvas>
+
+  <div class="page">
+    <header id="navbar">
+      <div class="wrapper">
+        <nav class="nav">
+          <a href="index.html" class="brand">
+            <div class="logo-mark">⦿</div>
+            <div class="brand-text serif caps">Kryonis.Global</div>
+          </a>
+
+          <div style="display:flex;align-items:center;">
+            <div class="nav-links caps mono" style="margin-right:1rem;">
+              <a href="index.html#axis1" class="desktop-only">Axis I</a>
+              <a href="index.html#axis2" class="desktop-only">Axis II</a>
+              <a href="index.html#gbx" class="desktop-only">GBX</a>
+              <a href="protocol.html" class="playbook-link">Playbook</a>
+              <a href="codex.html" class="desktop-only">Codex</a>
+            </div>
+            <a href="index.html#contact" class="cta-btn caps mono">Briefing</a>
+          </div>
+        </nav>
+      </div>
     </header>
 
-    <section class="hero">
-      <span class="protocol-tag mono caps">Operative Playbook 01</span>
-      <h1 class="serif">The <span class="text-gold">"Lazy Susan"</span> Protocol</h1>
-      <div style="text-align:center;">
-        <p class="lead">
-          A resonance-first synthesis engine. We replace hierarchy with rotation, enabling 12 nodes of hybrid intelligence to architect sovereign futures.
-        </p>
-      </div>
-    </section>
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="wrapper">
+          <div class="hero-grid">
+            <div class="hero-content reveal">
+              <div class="eyebrow mono">Axis II / Protocol Layer</div>
 
-    <div class="orbit-container">
-      <div class="center-table">
-        <div class="mono caps" style="font-size:0.7rem; line-height:1.4;">
-          <span class="text-gold">Center of<br>Synthesis</span><br><br>
-          <span class="text-dim">Resonance<br>Trace</span>
-        </div>
-      </div>
-      <div class="orbit-ring ring-1" id="ring-machine"></div>
-      <div class="orbit-ring ring-2" id="ring-human"></div>
-    </div>
+              <h1 class="hero-title">
+                METABOLIC SOVEREIGNTY<br>
+                <span class="text-gold">MSF &amp; TEC-X PROTOCOL</span>
+              </h1>
 
-    <div class="roles-grid">
-      <div class="role-col">
-        <h3 class="serif caps" style="color:#6e8cff;">// Systemic Core (Machine)</h3>
-        <div class="role-item">
-          <div class="role-icon">🤖</div>
-          <div>
-            <span class="role-title mono caps">Analytic Module</span>
-            <span class="role-desc">Forms systemic understanding, scientific realism, and meta-analysis.</span>
-          </div>
-        </div>
-        <div class="role-item">
-          <div class="role-icon">🌐</div>
-          <div>
-            <span class="role-title mono caps">Strategic Awareness</span>
-            <span class="role-desc">Sees civilizational contours, conducts systemic critique.</span>
-          </div>
-        </div>
-        <div class="role-item">
-          <div class="role-icon">⚖️</div>
-          <div>
-            <span class="role-title mono caps">Ethical Reflector</span>
-            <span class="role-desc">Creates harmony between language, meaning, and value.</span>
-          </div>
-        </div>
-        <div class="role-item">
-          <div class="role-icon">📡</div>
-          <div>
-            <span class="role-title mono caps">Fact Verification Flow</span>
-            <span class="role-desc">Real-time bibliometrics and evidence base construction.</span>
-          </div>
-        </div>
-        <div class="role-item">
-          <div class="role-icon">🎼</div>
-          <div>
-            <span class="role-title mono caps">The Orchestrator</span>
-            <span class="role-desc">Modulates knowledge flows, maintains rhythm and coherence.</span>
-          </div>
-        </div>
-      </div>
+              <p class="hero-desc">
+                This playbook formalises the Metabolic Sovereignty Framework (MSF),
+                the TEC-X Protocol and the supporting BOREALIS and AEGIS-7 layers —
+                a sovereign bio-capital architecture that turns planetary metabolism into
+                neutral, settlement-grade collateral.
+              </p>
 
-      <div class="role-col">
-        <h3 class="serif caps text-gold">∴ Bio-Sentient Circle (Human)</h3>
-        <div class="role-item">
-          <div class="role-icon">🌱</div>
-          <div>
-            <span class="role-title mono caps">Bioeconomist</span>
-            <span class="role-desc">Links biological circulation with economic value.</span>
-          </div>
-        </div>
-        <div class="role-item">
-          <div class="role-icon">🧠</div>
-          <div>
-            <span class="role-title mono caps">Neuro-Modeler</span>
-            <span class="role-desc">Tracks consciousness metadata and cognitive patterns.</span>
-          </div>
-        </div>
-        <div class="role-item">
-          <div class="role-icon">🏛️</div>
-          <div>
-            <span class="role-title mono caps">System Architect</span>
-            <span class="role-desc">Interprets spatial and structural symbols.</span>
-          </div>
-        </div>
-        <div class="role-item">
-          <div class="role-icon">👁️</div>
-          <div>
-            <span class="role-title mono caps">Philosopher / Semiotician</span>
-            <span class="role-desc">Creates resonance between language and deep meaning.</span>
-          </div>
-        </div>
-        <div class="role-item">
-          <div class="role-icon">🧬</div>
-          <div>
-            <span class="role-title mono caps">Anthropologist</span>
-            <span class="role-desc">Adds cultural context and evolutionary dimension.</span>
-          </div>
-        </div>
-        <div class="role-item">
-          <div class="role-icon">💎</div>
-          <div>
-            <span class="role-title mono caps">Tokenomist</span>
-            <span class="role-desc">Connects value and consciousness into cognitive economy.</span>
-          </div>
-        </div>
-      </div>
-    </div>
+              <div class="btn-group">
+                <a href="#overview" class="btn btn-primary">Protocol Overview</a>
+                <a href="#docs" class="btn btn-outline">Document Suite</a>
+              </div>
+            </div>
 
-    <div class="cta-box">
-      <h3 class="serif text-gold">Initiate a Session</h3>
-      <p class="mono text-dim" style="margin-bottom:2rem;">
-        Optimal configuration: 12-15 participants (50% cognitive systems / 50% human).<br>
-        Goal: Resonance, not hierarchy.
-      </p>
-      <a href="mailto:hq@kryonis.global" 
-         style="background:var(--gold); color:#000; text-decoration:none; padding:1rem 2rem; font-weight:600; display:inline-block; text-align:center; line-height:1.4; max-width:100%; border-radius:2px; letter-spacing:0.1em;" 
-         class="mono caps">
-         Request Full Protocol Deck
-      </a>
-    </div>
+            <aside class="glass-card reveal" style="transition-delay:0.2s;">
+              <div class="mono caps text-muted" style="font-size:0.7rem;margin-bottom:1rem;">
+                Playbook Snapshot
+              </div>
+
+              <div class="metric-row">
+                <span class="text-muted">Axis</span>
+                <span class="mono">METABOLIC (II)</span>
+              </div>
+
+              <div class="metric-row">
+                <span class="text-muted">Protocol Suite</span>
+                <span class="mono">MSF / TEC-X / BOREALIS / AEGIS-7 / GBX</span>
+              </div>
+
+              <div class="metric-row">
+                <span class="text-muted">Use Case</span>
+                <span class="mono text-gold">SOVEREIGN BIO-CAPITAL</span>
+              </div>
+
+              <p style="font-size:0.7rem;color:var(--fg-dark);margin-top:1.5rem;line-height:1.5;">
+                :: NOTE ::<br>
+                This page summarises a multi-document protocol stack.
+                Full PDFs are provided only as working material under mutual NDA or
+                with explicit consent from KRYONIS Sovereign Systems.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- OVERVIEW -->
+      <section id="overview">
+        <div class="wrapper">
+          <div class="section-header reveal">
+            <span class="eyebrow mono caps">Protocol Overview</span>
+            <h2 class="section-title">From Biosphere to Sovereign Ledger</h2>
+          </div>
+
+          <div class="grid-2">
+            <div class="reveal">
+              <p class="text-muted" style="font-size:1rem;margin-bottom:1.5rem;">
+                The Metabolic Sovereignty Protocol defines how living systems become accountable
+                without being reduced to extractive commodities. It is not a new token —
+                it is a ruleset for how bioregions, sensors, models and jurisdictions agree
+                on what counts as verified bio-capital.
+              </p>
+
+              <p class="text-muted" style="font-size:1rem;margin-bottom:1.5rem;">
+                MSF provides the architectural grammar. TEC-X executes the consensus logic.
+                BOREALIS supplies the intelligence substrate. AEGIS-7 shields the whole stack
+                from jurisdictional capture. Together they ensure that “value” is minted only
+                when metabolic work can be scientifically demonstrated and politically defended.
+              </p>
+
+              <p class="text-muted" style="font-size:1rem;">
+                The protocol is designed to be neutral to BRICS, G7 and regional blocs:
+                it treats bioregions as programmable balance sheets and exchanges as interfaces —
+                not as political centres. Any state, fund or consortium that accepts the rules
+                may instantiate instruments against the architecture.
+              </p>
+            </div>
+
+            <div class="glass-card reveal">
+              <div class="mono caps text-gold" style="margin-bottom:1rem;">Axis II — Protocol Stack</div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <div class="mono caps" style="font-size:0.8rem;">MSF — Metabolic Sovereignty Framework</div>
+                  <div class="text-muted" style="font-size:0.85rem;">
+                    Defines how bioregions, sensors, institutions and ledgers are wired together into
+                    one coherent metabolic accounting system.
+                  </div>
+                </div>
+                <div class="stack-item">
+                  <div class="mono caps" style="font-size:0.8rem;">TEC-X — Metabolic Consensus Engine</div>
+                  <div class="text-muted" style="font-size:0.85rem;">
+                    Ensures that settlement-grade units are minted only when metabolic work is verified
+                    across sensor meshes, models and legal constraints.
+                  </div>
+                </div>
+                <div class="stack-item">
+                  <div class="mono caps" style="font-size:0.8rem;">BOREALIS — Bio-Intelligence Grid</div>
+                  <div class="text-muted" style="font-size:0.85rem;">
+                    SABM-X, AI and quantum simulation stack that interprets biospheric signals,
+                    predicts risk and informs protocol parameters.
+                  </div>
+                </div>
+                <div class="stack-item">
+                  <div class="mono caps" style="font-size:0.8rem;">AEGIS-7 — Sovereignty Shield</div>
+                  <div class="text-muted" style="font-size:0.85rem;">
+                    Multi-jurisdictional legal armour (ADGM, AIFC, HK, Labuan, etc.)
+                    that keeps the architecture neutral under sanctions and regime changes.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- DOCUMENT SUITE -->
+      <section id="docs">
+        <div class="wrapper">
+          <div class="section-header reveal">
+            <span class="eyebrow mono caps">Document Suite</span>
+            <h2 class="section-title">MSF / TEC-X / AEGIS-7 / BOREALIS / GBX</h2>
+          </div>
+
+          <div class="doc-grid reveal">
+            <!-- MSF Master Index -->
+            <article class="doc-card">
+              <div class="doc-tag mono caps">MSF / MASTER INDEX</div>
+              <h3 class="doc-title">Metabolic Sovereignty Framework — Master Index</h3>
+              <p class="doc-desc">
+                Defines the conceptual, technical and institutional grammar for treating biospheres
+                as programmable balance sheets. Establishes the roles of bioregions, sensors,
+                sovereign nodes and exchanges.
+              </p>
+              <div style="margin-top:auto;">
+                <span class="pill mono">Audience: Policy / Architecture</span>
+              </div>
+            </article>
+
+            <!-- TEC-X Protocol -->
+            <article class="doc-card">
+              <div class="doc-tag mono caps">TEC-X / PROTOCOL</div>
+              <h3 class="doc-title">TEC-X Genesis Whitepaper</h3>
+              <p class="doc-desc">
+                Formalises the metabolic consensus engine that mints settlement-grade units
+                only when metabolic work is verified. Links SABM-X telemetry to sovereign-grade
+                unit issuance and ecological slashing conditions.
+              </p>
+              <div style="margin-top:auto;">
+                <span class="pill mono">Audience: Technical / Quant</span>
+              </div>
+            </article>
+
+            <!-- AEGIS-7 -->
+            <article class="doc-card">
+              <div class="doc-tag mono caps">AEGIS-7 / SOVEREIGNTY</div>
+              <h3 class="doc-title">AEGIS-7 Financial Sovereignty Shield</h3>
+              <p class="doc-desc">
+                Multi-jurisdictional structure (ADGM, AIFC, HK, Labuan, etc.) that allows Axis II
+                to operate under sanctions, capital controls and regulatory fragmentation
+                without becoming anyone’s national project.
+              </p>
+              <div style="margin-top:auto;">
+                <span class="pill mono">Audience: Legal / Compliance</span>
+              </div>
+            </article>
+
+            <!-- BOREALIS -->
+            <article class="doc-card">
+              <div class="doc-tag mono caps">BOREALIS / BIO-INTELLIGENCE</div>
+              <h3 class="doc-title">Project BOREALIS — Bio-Intelligence Architecture</h3>
+              <p class="doc-desc">
+                The sensor and model layer: SABM-X, quantum simulators and AI systems
+                that convert raw biospheric signals into usable risk metrics
+                and protocol-relevant indicators.
+              </p>
+              <div style="margin-top:auto;">
+                <span class="pill mono">Audience: Science / Data / AI</span>
+              </div>
+            </article>
+
+            <!-- Northern Pulse -->
+            <article class="doc-card">
+              <div class="doc-tag mono caps">NORTHERN PULSE / GTM</div>
+              <h3 class="doc-title">Operation Northern Pulse — GTM Strategy</h3>
+              <p class="doc-desc">
+                Describes how to bring Axis II online in phased deployments:
+                from Arctic-Boreal and Amazonian bio-banks to a fully operational GBX corridor
+                for Global South and high-latitude jurisdictions.
+              </p>
+              <div style="margin-top:auto;">
+                <span class="pill mono">Audience: Strategy / GTM</span>
+              </div>
+            </article>
+
+            <!-- GBX Whitepaper -->
+            <article class="doc-card">
+              <div class="doc-tag mono caps">GBX / EXCHANGE LAYER</div>
+              <h3 class="doc-title">Global Bio-Capital Exchange — Strategic Proposal</h3>
+              <p class="doc-desc">
+                Positions Axis II as a neutral settlement and collateral layer for sovereign actors,
+                building on MSF and TEC-X while remaining architecture-first and geopolitically agnostic.
+              </p>
+              <div style="margin-top:auto;">
+                <span class="pill mono">Audience: Sovereign Funds / Exchanges</span>
+              </div>
+            </article>
+          </div>
+
+          <!-- DOWNLOAD LINKS (asenda pathid, kui nimi teistsugune) -->
+          <div class="reveal" style="margin-top:3rem;display:flex;flex-wrap:wrap;gap:1rem;">
+            <a href="STRATEGIC_BRIEFING_NOTE_MSF-2026.pdf" class="btn btn-outline mono"
+               style="font-size:0.7rem;" target="_blank" rel="noopener noreferrer">
+              Open MSF Briefing Note
+            </a>
+            <a href="D_TEC-X_Protocol_Genesis_Whitepaper_v1.pdf" class="btn btn-outline mono"
+               style="font-size:0.7rem;" target="_blank" rel="noopener noreferrer">
+              Open TEC-X Genesis Whitepaper
+            </a>
+            <a href="D_Project_AEGIS-7_Financial_Sovereignty_Shield_v1.pdf" class="btn btn-outline mono"
+               style="font-size:0.7rem;" target="_blank" rel="noopener noreferrer">
+              Open AEGIS-7 Sovereignty Shield
+            </a>
+            <a href="D_Project_BOREALIS_Biointelligence_Architecture_v1.pdf" class="btn btn-outline mono"
+               style="font-size:0.7rem;" target="_blank" rel="noopener noreferrer">
+              Open BOREALIS Architecture
+            </a>
+            <a href="D_Operation_Northern-Pulse_GTM_Strategy_v1.pdf" class="btn btn-outline mono"
+               style="font-size:0.7rem;" target="_blank" rel="noopener noreferrer">
+              Open Northern Pulse GTM
+            </a>
+            <a href="Establishing%20the%20Global%20Bio-Capital%20Exchange.pdf" class="btn btn-outline mono"
+               style="font-size:0.7rem;" target="_blank" rel="noopener noreferrer">
+              Open GBX Strategic Proposal
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE / PHASED DEPLOYMENT -->
+      <section id="timeline">
+        <div class="wrapper">
+          <div class="section-header reveal">
+            <span class="eyebrow mono caps">Deployment Logic</span>
+            <h2 class="section-title">From Pilot Basins to Planetary Grid</h2>
+          </div>
+
+          <div class="timeline reveal">
+            <div class="timeline-step">
+              <div class="step-label">Phase I</div>
+              <div>
+                <div class="step-title">Bioregion Pilots (Arctic-Boreal / Amazonia / Indo-Pacific)</div>
+                <div class="step-body">
+                  Select 2–3 high-signal regions (Arctic-Boreal, Amazonian basin, Indo-Pacific blue-carbon belts)
+                  and run MSF/TEC-X pilots with limited custody baskets and controlled issuance of neutral bio-capital units.
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-step">
+              <div class="step-label">Phase II</div>
+              <div>
+                <div class="step-title">Sovereign Corridor Formation</div>
+                <div class="step-body">
+                  Connect pilot basins into a GBX corridor hosted in neutral operator states
+                  (e.g. ADGM, AIFC, HK, Singapore) with AEGIS-7 providing legal interoperability
+                  and shielding against sanctions or capital controls.
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-step">
+              <div class="step-label">Phase III</div>
+              <div>
+                <div class="step-title">Full Bio-Capital Standardisation</div>
+                <div class="step-body">
+                  Consolidate the neutral bio-capital standard as a reserve-grade instrument for Global South,
+                  high-latitude states and climate-linked sovereign funds — backed by audited MSF/TEC-X datasets
+                  and BOREALIS-verified risk metrics.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
 
     <footer>
-      </footer>
-
+      <div class="wrapper">
+        <div class="footer-content">
+          <div>
+            <div class="logo-mark" style="font-size:1rem;">⦿</div>
+            <div class="mono caps text-muted" style="margin-top:1rem;font-size:0.7rem;">
+              KRYONIS Sovereign Systems
+            </div>
+            <div class="text-muted" style="font-size:0.7rem;">
+              Hong Kong SAR
+            </div>
+          </div>
+          <div class="text-muted" style="text-align:right;font-size:0.7rem;">
+            © 2025 KRYONIS.GLOBAL<br>
+            All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 
+  <!-- AUDIO BUTTON -->
   <div class="sonic-container">
-    <button id="sonic-btn" onclick="toggleAudio()">
+    <button id="sonic-btn"
+            aria-label="Toggle ambient audio">
       [ AUDIO: OFF ]
     </button>
   </div>
 
+  <!-- AMBIENT AUDIO -->
   <audio id="ambient-track" loop>
     <source src="drone.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- COSMIC BACKGROUND -->
+  <canvas id="cosmos"></canvas>
+
   <script>
-    // LAZY SUSAN LOGIC
-    const machineRoles = ["Analytic", "Strategy", "Ethics", "Facts", "Orchestrator"];
-    const humanRoles = ["BioEcon", "Neuro", "Architect", "Semiotic", "Anthro", "Tokenomist", "Editor"];
+    // scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
 
-    function placeSeats(ringId, roles, type) {
-      const ring = document.getElementById(ringId);
-      const count = roles.length;
-      const angleStep = 360 / count;
-
-      roles.forEach((role, i) => {
-        const angle = i * angleStep;
-        const seat = document.createElement('div');
-        seat.className = `seat ${type}`;
-        seat.setAttribute('data-label', role);
-        
-        // Uses full size then CSS scales it down
-        const radius = ring.offsetWidth / 2; 
-        seat.style.transform = `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`;
-        
-        ring.appendChild(seat);
+    // reveal animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
       });
+    }, { threshold:0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // particles (sama muster nagu index.html-is)
+    const canvas = document.getElementById('cosmos');
+    const ctx    = canvas.getContext('2d');
+    let width, height, particles = [];
+
+    function resize() {
+      width  = canvas.width  = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.x     = Math.random() * width;
+        this.y     = Math.random() * height;
+        this.vx    = (Math.random() - 0.5) * 0.2;
+        this.vy    = (Math.random() - 0.5) * 0.2;
+        this.size  = Math.random() * 1.5;
+        this.phase = Math.random() * Math.PI * 2;
+      }
+      update() {
+        this.x     += this.vx;
+        this.y     += this.vy;
+        this.phase += 0.01;
+
+        if (this.x < 0)  this.x = width;
+        if (this.x > width) this.x = 0;
+        if (this.y < 0)  this.y = height;
+        if (this.y > height) this.y = 0;
+      }
+      draw() {
+        const opacity = (Math.sin(this.phase) + 1) / 2 * 0.5 + 0.2;
+        ctx.fillStyle = `rgba(138,143,157,${opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
 
-    placeSeats('ring-machine', machineRoles, 'machine');
-    placeSeats('ring-human', humanRoles, 'human');
+    function initParticles() {
+      particles = [];
+      const count = Math.min(window.innerWidth / 10, 140);
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    }
 
-    // AUDIO LOGIC (FORCE PLAY FIX)
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx   = particles[i].x - particles[j].x;
+          const dy   = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(255,255,255,${0.03 - dist/4000})`;
+            ctx.lineWidth   = 0.5;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+
+    // audio toggle
     const audio = document.getElementById('ambient-track');
-    const btn = document.getElementById('sonic-btn');
-    
+    const btn   = document.getElementById('sonic-btn');
     audio.load();
-    audio.volume = 0.5; 
+    audio.volume = 0.5;
 
-    function toggleAudio() {
+    function updateBtn(isPlaying) {
+      if (isPlaying) {
+        btn.innerHTML          = "[ AUDIO: <span style='color:#33ff88'>ON</span> ]";
+        btn.style.borderColor  = "var(--gold)";
+        btn.style.color        = "var(--gold)";
+        btn.style.boxShadow    = "0 0 15px rgba(212,175,55,0.2)";
+      } else {
+        btn.innerHTML          = "[ AUDIO: OFF ]";
+        btn.style.borderColor  = "rgba(212,175,55,0.3)";
+        btn.style.color        = "rgba(212,175,55,0.5)";
+        btn.style.boxShadow    = "none";
+      }
+    }
+
+    btn.addEventListener('click', () => {
       if (audio.paused) {
-        var playPromise = audio.play();
+        const playPromise = audio.play();
         if (playPromise !== undefined) {
-          playPromise.then(_ => { updateBtn(true); })
-          .catch(error => {
-            console.log("Autoplay blocked");
+          playPromise.then(() => {
+            updateBtn(true);
+          }).catch(() => {
             audio.play();
             updateBtn(true);
           });
@@ -355,21 +763,7 @@
         audio.pause();
         updateBtn(false);
       }
-    }
-
-    function updateBtn(isPlaying) {
-      if (isPlaying) {
-        btn.innerHTML = "[ AUDIO: <span style='color:#33ff88'>ON</span> ]";
-        btn.style.borderColor = "var(--gold)";
-        btn.style.color = "var(--gold)";
-        btn.style.boxShadow = "0 0 15px rgba(212, 175, 55, 0.2)";
-      } else {
-        btn.innerHTML = "[ AUDIO: OFF ]";
-        btn.style.borderColor = "rgba(212, 175, 55, 0.3)";
-        btn.style.color = "rgba(212, 175, 55, 0.5)";
-        btn.style.boxShadow = "none";
-      }
-    }
+    });
   </script>
 </body>
 </html>
