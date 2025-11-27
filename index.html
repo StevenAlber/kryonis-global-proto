@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>KRYONIS — Civilization Architecture</title>
-  <meta name="description" content="KRYONIS — A post-territorial framework for consciousness-based civilizational architecture." />
+  <meta name="description" content="KRYONIS — A post-territorial framework for consciousness-based civilizational architecture and bio-capital monetary systems." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,6 +76,13 @@
       position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
       padding: 1.2rem 0; background: rgba(3, 3, 4, 0.9);
       backdrop-filter: blur(15px); border-bottom: 1px solid var(--border);
+      transition: background 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+
+    /* SCROLLED STATE */
+    header.scrolled {
+      background: rgba(3, 3, 4, 0.98);
+      box-shadow: 0 0 24px rgba(0, 0, 0, 0.6);
     }
 
     .nav { display: flex; justify-content: space-between; align-items: center; }
@@ -199,6 +206,11 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s var(--ease); }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
+    /* MOBILE-HIDE (peidetud mobiilis) */
+    @media (max-width: 900px) {
+      .mobile-hide { display: none; }
+    }
+
     /* MOBILE OPTIMIZATIONS */
     @media (max-width: 900px) {
       .nav-links .desktop-only { display: none; }
@@ -207,7 +219,6 @@
       .hero-grid, .grid-2 { grid-template-columns: 1fr; gap: 3rem; }
       .hero-title { font-size: 2.2rem; }
       
-      /* SIDE-BY-SIDE BUTTONS */
       .btn-group { flex-direction: row; width: 100%; gap: 0.8rem; }
       .btn { flex: 1; min-width: auto; width: auto; padding: 0.9rem 0.5rem; font-size: 0.7rem; }
       
@@ -243,6 +254,7 @@
             <div class="nav-links caps mono" style="margin-right:1rem;">
               <a href="#doctrine" class="desktop-only">Doctrine</a>
               <a href="#architecture" class="desktop-only">Stack</a>
+              <a href="#tokenomics" class="desktop-only">Bio-Capital</a>
               
               <a href="protocol.html" class="playbook-link">Playbook</a>
               <a href="codex.html" class="desktop-only">Codex</a>
@@ -257,6 +269,7 @@
     </header>
 
     <main>
+      <!-- HERO -->
       <section class="hero">
         <div class="wrapper">
           <div class="hero-grid">
@@ -270,12 +283,12 @@
               </h1>
               
               <p class="hero-desc">
-                KRYONIS is a post-territorial consciousness architecture. A meta-layer that sits above cognitive cities and AI grids, aligning infrastructure with coherence rather than throughput.
+                KRYONIS is a post-territorial consciousness architecture. A meta-layer that sits above cognitive cities and AI grids, aligning infrastructure with coherence rather than throughput — and extending into a sovereign bio-capital standard for the post-oil world.
               </p>
               
               <div class="btn-group">
                 <a href="#doctrine" class="btn btn-primary">Read Doctrine</a>
-                <a href="#contact" class="btn btn-outline">Private Briefing</a>
+                <a href="#tokenomics" class="btn btn-outline">Bio-Capital System</a>
               </div>
             </div>
 
@@ -295,13 +308,14 @@
               </div>
               <p style="font-size:0.7rem; color:var(--fg-dark); margin-top:1.5rem; line-height:1.5;">
                 :: SYSTEM NOTE ::<br>
-                This site presents the public-facing abstraction. Technical briefs are shared only under mutual NDA.
+                This site presents the public-facing abstraction. Technical briefs and tokenomics decks are shared only under mutual NDA.
               </p>
             </aside>
           </div>
         </div>
       </section>
 
+      <!-- DOCTRINE -->
       <section id="doctrine">
         <div class="wrapper">
           <div class="section-header reveal">
@@ -334,6 +348,7 @@
         </div>
       </section>
 
+      <!-- STACK -->
       <section id="architecture">
         <div class="wrapper">
           <div class="section-header reveal">
@@ -373,6 +388,61 @@
         </div>
       </section>
 
+      <!-- BIO-CAPITAL / TOKENOMICS -->
+      <section id="tokenomics">
+        <div class="wrapper">
+          <div class="section-header reveal">
+            <span class="eyebrow mono caps">Bio-Capital</span>
+            <h2 class="section-title">The Trinary Value Engine</h2>
+            <p class="text-muted" style="max-width:640px; margin-top:1rem;">
+              Beneath the consciousness layer, KRYONIS carries a sovereign monetary architecture: TEC-X, a Real-World Asset 2.0 system that turns verified metabolic work into neutral settlement for BRICS and the Global South.
+            </p>
+          </div>
+
+          <div class="stack-list reveal">
+            <div class="stack-item">
+              <div class="mono caps text-gold" style="font-size:0.8rem; margin-bottom:0.3rem;">
+                BIO-RUB — Settlement Layer
+              </div>
+              <div class="text-muted" style="font-size:0.9rem;">
+                A sovereign bio-backed unit of account, used only for institutional settlement and reserves. 
+                Pegged to a basket of Arctic and Amazonian ecosystem services rather than any single national currency.
+              </div>
+            </div>
+
+            <div class="stack-item">
+              <div class="mono caps text-gold" style="font-size:0.8rem; margin-bottom:0.3rem;">
+                GENE-ALPHA — Yield Layer
+              </div>
+              <div class="text-muted" style="font-size:0.9rem;">
+                Tokenized scientific upside: rights to future IP royalties from enzymes, peptides and bio-materials discovered by the SABM-X & BOREALIS stack.
+                The growth engine that aligns long-term capital with frontier bio-discovery.
+              </div>
+            </div>
+
+            <div class="stack-item">
+              <div class="mono caps text-gold" style="font-size:0.8rem; margin-bottom:0.3rem;">
+                TUNDRA-GOV — Governance Layer
+              </div>
+              <div class="text-muted" style="font-size:0.9rem;">
+                A non-tradable governance key held by sovereign science councils and accredited institutions. 
+                It defines quotas, ecological safety thresholds and valuation parameters — capital cannot vote against physics.
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal" style="margin-top:2.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
+            <a href="protocol.html" class="btn btn-outline">
+              Open TEC-X Protocol
+            </a>
+            <a href="Establishing%20the%20Global%20Bio-Capital%20Exchange%20.pdf" target="_blank" class="btn btn-primary">
+              Open GBX Strategic Proposal
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- METRICS -->
       <section id="metrics">
         <div class="wrapper">
           <div class="section-header reveal">
@@ -412,13 +482,14 @@
         </div>
       </section>
 
+      <!-- STUDIO -->
       <section id="studio">
         <div class="wrapper">
           <div class="glass-card reveal" style="text-align:center; padding: 4rem 2rem;">
             <div class="mono caps text-gold" style="margin-bottom:1rem;">Intelligence Studio</div>
             <h2 class="section-title" style="margin-bottom:1.5rem;">Research Bureau</h2>
             <p class="text-muted" style="max-width:600px; margin: 0 auto 2rem auto; font-size:0.9rem;">
-              KRYONIS INTELLIGENCE STUDIO formalises the written layer of the framework: strategic architecture papers, doctrines, and classified-grade intelligence.
+              KRYONIS INTELLIGENCE STUDIO formalises the written layer of the framework: strategic architecture papers, doctrines, tokenomics and classified-grade intelligence.
             </p>
             <a href="https://kryonis-intelligence-studio.onrender.com" target="_blank" class="btn btn-primary">
               Open Studio Interface
@@ -427,6 +498,7 @@
         </div>
       </section>
 
+      <!-- CONTACT -->
       <section id="contact">
         <div class="wrapper">
           <div class="grid-2">
@@ -563,7 +635,7 @@
     }
     init(); animate();
 
-    // AUDIO LOGIC (FORCE PLAY FIX)
+    // AUDIO LOGIC
     const audio = document.getElementById('ambient-track');
     const btn = document.getElementById('sonic-btn');
     
@@ -572,7 +644,7 @@
 
     function toggleAudio() {
       if (audio.paused) {
-        var playPromise = audio.play();
+        const playPromise = audio.play();
         if (playPromise !== undefined) {
           playPromise.then(_ => { updateBtn(true); })
           .catch(error => {
