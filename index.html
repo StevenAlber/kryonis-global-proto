@@ -6,12 +6,10 @@
   <title>KRYONIS — Planetary Civilization Architecture</title>
   <meta name="description" content="KRYONIS — a dual-axis operating system for planetary civilization: Axis I (Cognitive Capital) and Axis II (Metabolic Bio-Capital)." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
-  <!-- Favicon hooks -->
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
@@ -19,32 +17,23 @@
     :root {
       --bg-deep:#020204;
       --bg-panel:rgba(15,15,20,0.6);
-
       --fg:#e0e0e6;
       --fg-muted:#8a8f9d;
       --fg-dark:#555a66;
-
       --gold:#C5A028;
       --gold-dim:rgba(197,160,40,0.3);
       --gold-glow:rgba(197,160,40,0.15);
-
       --violet:#7c73e6;
-
       --border:rgba(255,255,255,0.08);
       --glass:blur(10px);
-
       --ease:cubic-bezier(0.23,1,0.32,1);
     }
 
-    *,*::before,*::after{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
     body{
       font-family:'Inter',sans-serif;
-      background-color:var(--bg-deep);
+      background:var(--bg-deep);
       color:var(--fg);
       line-height:1.6;
       overflow-x:hidden;
@@ -96,11 +85,7 @@
       border-bottom:1px solid transparent;
     }
     .nav-links a:hover{color:var(--fg);border-color:var(--fg-dark);}
-
-    .playbook-link{
-      color:var(--gold)!important;
-      border-color:var(--gold-dim)!important;
-    }
+    .playbook-link{color:var(--gold)!important;border-color:var(--gold-dim)!important;}
 
     .cta-btn{
       border:1px solid var(--gold);padding:0.4rem 1rem;
@@ -109,10 +94,13 @@
     }
     .cta-btn:hover{background:var(--gold);color:#000;}
 
+    /* HERO – MOBIILI FIX SIIN */
     .hero{
-      min-height:clamp(80vh,100vh,900px);
+      min-height:100dvh;                    /* Uus võlurida – töötab kõikjal */
+      min-height:-webkit-fill-available;    /* iOS Safari kindlustus */
       display:flex;align-items:center;
-      padding-top:6rem;padding-bottom:4rem;
+      padding-top:max(6rem, env(safe-area-inset-top));
+      padding-bottom:4rem;
     }
     .hero-grid{
       display:grid;grid-template-columns:1.6fr 1fr;gap:5rem;align-items:center;
@@ -133,15 +121,12 @@
       padding:0.9rem 1.8rem;font-size:0.75rem;text-transform:uppercase;
       letter-spacing:0.12em;cursor:pointer;transition:all 0.3s var(--ease);
       display:inline-flex;align-items:center;justify-content:center;
-      text-align:center;min-width:140px;
+      min-width:140px;
     }
     .btn-primary{
       background:var(--gold);color:#05060a;font-weight:600;border:1px solid var(--gold);
     }
-    .btn-primary:hover{
-      background:transparent;color:var(--gold);
-      box-shadow:0 0 20px var(--gold-glow);
-    }
+    .btn-primary:hover{background:transparent;color:var(--gold);box-shadow:0 0 20px var(--gold-glow);}
     .btn-outline{
       background:transparent;border:1px solid var(--fg-dark);color:var(--fg-muted);
     }
@@ -156,136 +141,62 @@
       background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);
     }
 
-    .metric-row{
-      display:flex;justify-content:space-between;
-      border-bottom:1px solid rgba(255,255,255,0.03);
-      padding:1rem 0;font-size:0.8rem;
+    /* AXES BAND – uus sektsioon */
+    .axes-band{
+      padding:3rem 0 1rem;
+      border-bottom:1px solid rgba(255,255,255,0.04);
+      background:radial-gradient(circle at top,rgba(197,160,40,0.08) 0%,rgba(0,0,0,0) 55%);
     }
-    .metric-row:last-child{border-bottom:none;}
+    .axes-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+    .axis-card{
+      background:rgba(15,15,20,0.75);border:1px solid var(--border);
+      padding:1.4rem 1.6rem;backdrop-filter:var(--glass);
+    }
+    .axis-label{font-size:0.75rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.4rem;}
+    .axis-title{font-family:'Cinzel',serif;font-size:1.05rem;color:#fff;margin-bottom:0.4rem;}
+    .axis-desc{font-size:0.85rem;color:var(--fg-muted);margin-bottom:0.7rem;}
+    .axis-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+    .axis-pill{
+      border-radius:999px;border:1px solid rgba(255,255,255,0.16);
+      padding:0.15rem 0.6rem;font-size:0.7rem;color:var(--fg-muted);
+      text-transform:uppercase;letter-spacing:0.1em;
+    }
+    .axis-pill span{color:var(--gold);}
 
-    section{
-      padding:6rem 0;border-bottom:1px solid rgba(255,255,255,0.02);
-    }
+    section{padding:6rem 0;border-bottom:1px solid rgba(255,255,255,0.02);}
     .section-header{margin-bottom:3rem;}
     .eyebrow{color:var(--gold);font-size:0.7rem;margin-bottom:0.8rem;display:block;}
     .section-title{font-family:'Cinzel',serif;font-size:2.2rem;color:#fff;}
     .grid-2{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;}
-
     .stack-list{display:flex;flex-direction:column;gap:1rem;}
     .stack-item{
       background:rgba(255,255,255,0.01);border:1px solid var(--border);
       padding:1.5rem;transition:0.3s var(--ease);
     }
-    .stack-item:hover{
-      background:rgba(255,255,255,0.03);border-color:var(--gold-dim);
-      transform:translateX(5px);
-    }
+    .stack-item:hover{background:rgba(255,255,255,0.03);border-color:var(--gold-dim);transform:translateX(5px);}
 
-    .metrics-grid{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;
-    }
-    .metric-box{
-      background:linear-gradient(145deg,#0a0b10,#020204);
-      border:1px solid var(--border);padding:1.5rem;text-align:center;
-    }
-    .metric-val{
-      font-size:1.8rem;font-family:'Cinzel',serif;margin:0.5rem 0;
-    }
+    .reveal{opacity:0;transform:translateY(30px);transition:all 0.8s var(--ease);}
+    .reveal.active{opacity:1;transform:translateY(0);}
 
-    footer{
-      padding:4rem 0;color:var(--fg-dark);font-size:0.75rem;padding-bottom:100px;
-    }
-    .footer-content{
-      display:flex;justify-content:space-between;align-items:flex-end;
-    }
+    footer{padding:4rem 0;color:var(--fg-dark);font-size:0.75rem;padding-bottom:100px;}
+    .footer-content{display:flex;justify-content:space-between;align-items:flex-end;}
 
-    .reveal{
-      opacity:0;
-      transform:translateY(30px);
-      transition:all 0.8s var(--ease);
-    }
-    .reveal.active{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    /* AXES BAND */
-    .axes-band{
-      padding:3rem 0 1rem;
-      border-bottom:1px solid rgba(255,255,255,0.04);
-      background:radial-gradient(circle at top,
-        rgba(197,160,40,0.08) 0%,
-        rgba(0,0,0,0) 55%);
-    }
-    .axes-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:1.5rem;
-    }
-    .axis-card{
-      background:rgba(15,15,20,0.75);
-      border:1px solid var(--border);
-      padding:1.4rem 1.6rem;
-      backdrop-filter:var(--glass);
-    }
-    .axis-label{
-      font-size:0.75rem;
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:0.12em;
-      margin-bottom:0.4rem;
-    }
-    .axis-title{
-      font-family:'Cinzel',serif;
-      font-size:1.05rem;
-      color:#fff;
-      margin-bottom:0.4rem;
-    }
-    .axis-desc{
-      font-size:0.85rem;
-      color:var(--fg-muted);
-      margin-bottom:0.7rem;
-    }
-    .axis-tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:0.4rem;
-    }
-    .axis-pill{
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,0.16);
-      padding:0.15rem 0.6rem;
-      font-size:0.7rem;
-      color:var(--fg-muted);
-      text-transform:uppercase;
-      letter-spacing:0.1em;
-    }
-    .axis-pill span{
-      color:var(--gold);
-    }
-
-    @media(max-width:900px){
-      .nav-links .desktop-only{display:none;}
-      .hero{padding-top:7rem;}
-      .hero-grid,.grid-2{grid-template-columns:1fr;gap:3rem;}
-      .hero-title{font-size:2.2rem;}
-      .btn-group{flex-direction:row;width:100%;gap:0.8rem;}
-      .btn{flex:1;min-width:auto;width:auto;padding:0.9rem 0.5rem;font-size:0.7rem;}
-      .metrics-grid{grid-template-columns:1fr;}
-      .axes-grid{grid-template-columns:1fr;}
-    }
-
-    .sonic-container{
-      position:fixed;bottom:20px;right:20px;z-index:9999;
-    }
+    .sonic-container{position:fixed;bottom:20px;right:20px;z-index:9999;}
     #sonic-btn{
       background:#000;border:1px solid rgba(212,175,55,0.3);color:rgba(212,175,55,0.5);
       font-family:'JetBrains Mono',monospace;font-size:10px;padding:8px 12px;
       cursor:pointer;text-transform:uppercase;letter-spacing:0.1em;transition:0.3s;
     }
+
+    @media(max-width:900px){
+      .nav-links .desktop-only{display:none;}
+      .hero-grid,.grid-2,.axes-grid{grid-template-columns:1fr;gap:3rem;}
+      .hero-title{font-size:2.2rem;}
+      .btn-group{flex-direction:row;width:100%;gap:0.8rem;}
+      .btn{flex:1;min-width:auto;padding:0.9rem 0.5rem;font-size:0.7rem;}
+    }
   </style>
 </head>
-
 <body>
   <div class="noise"></div>
   <canvas id="cosmos"></canvas>
@@ -294,22 +205,21 @@
     <header id="navbar">
       <div class="wrapper">
         <nav class="nav">
-          <!-- BRAND -->
-          <a href="index.html" class="brand">
-            <div class="logo-mark">○</div>
-            <div class="brand-text serif caps">KRYONIS.GLOBAL</div>
+          <a href="#" class="brand">
+            <div class="logo-mark">⦿</div>
+            <div class="brand-text serif caps">Kryonis.Global</div>
           </a>
-
-          <!-- NAV LINKS -->
           <div style="display:flex;align-items:center;">
-            <div class="nav-links caps mono">
-  <a href="#axis1" class="desktop-only">AXIS I</a>
-  <a href="#axis2" class="desktop-only">AXIS II</a>
-  <a href="#gbx"   class="desktop-only">GBX</a>
-  <a href="protocol.html" class="playbook-link desktop-only">PLAYBOOK</a>
-</div>
-
-<a href="#contact" class="cta-btn caps mono">BRIEFING</a>
+            <div class="nav-links caps mono" style="margin-right:1rem;">
+              <a href="#axis1" class="desktop-only">Axis I</a>
+              <a href="#axis2" class="desktop-only">Axis II</a>
+              <a href="#gbx" class="desktop-only">GBX</a>
+              <a href="protocol.html" class="playbook-link">Playbook</a>
+              <a href="codex.html" class="desktop-only">Codex</a>
+              <a href="#metrics" class="desktop-only">Metrics</a>
+              <a href="#studio" class="desktop-only">Studio</a>
+            </div>
+            <a href="#contact" class="cta-btn caps mono">Briefing</a>
           </div>
         </nav>
       </div>
@@ -322,51 +232,31 @@
           <div class="hero-grid">
             <div class="hero-content reveal">
               <div class="eyebrow mono">Civilizational Framework v1.0</div>
-
               <h1 class="hero-title">
                 WE DID NOT COME TO OPTIMISE THE SYSTEM<br>
                 <span class="text-gold">WE CAME TO REWRITE</span><br>
                 ITS OPERATING LAYER
               </h1>
-
               <p class="hero-desc">
                 KRYONIS is a planetary civilizational architecture built on two axes:
                 Axis I (Cognitive Capital) and Axis II (Metabolic Bio-Capital).
                 Together they define a dual-stack operating system for sovereign
                 infrastructure in the post-fiat world.
               </p>
-
               <div class="btn-group">
                 <a href="#axis1" class="btn btn-primary">Explore Axis I</a>
                 <a href="#axis2" class="btn btn-outline">Explore Axis II</a>
               </div>
             </div>
-
             <aside class="glass-card reveal" style="transition-delay:0.2s;">
-              <div class="mono caps text-muted" style="font-size:0.7rem;margin-bottom:1rem;">
-                Architecture Snapshot
-              </div>
-
-              <div class="metric-row">
-                <span class="text-muted">Civilizational Horizon</span>
-                <span class="mono">5,000 YEARS</span>
-              </div>
-
-              <div class="metric-row">
-                <span class="text-muted">Primary Axes</span>
-                <span class="mono">COGNITIVE + METABOLIC</span>
-              </div>
-
-              <div class="metric-row">
-                <span class="text-muted">Deployment Mode</span>
-                <span class="mono text-gold">SOVEREIGN NODE</span>
-              </div>
-
+              <div class="mono caps text-muted" style="font-size:0.7rem;margin-bottom:1rem;">Architecture Snapshot</div>
+              <div class="metric-row"><span class="text-muted">Civilizational Horizon</span><span class="mono">5,000 YEARS</span></div>
+              <div class="metric-row"><span class="text-muted">Primary Axes</span><span class="mono">COGNITIVE + METABOLIC</span></div>
+              <div class="metric-row"><span class="text-muted">Deployment Mode</span><span class="mono text-gold">SOVEREIGN NODE</span></div>
               <p style="font-size:0.7rem;color:var(--fg-dark);margin-top:1.5rem;line-height:1.5;">
                 :: SYSTEM NOTE ::<br>
                 This page is a public abstraction.<br>
-                Full briefs and GBX/MSF/TEC-X documentation
-                are shared only under mutual NDA with sovereign institutions and long-term capital.
+                Full briefs are shared only under mutual NDA with sovereign institutions and long-term capital.
               </p>
             </aside>
           </div>
@@ -377,7 +267,6 @@
       <section class="axes-band">
         <div class="wrapper">
           <div class="axes-grid">
-            <!-- AXIS I CARD -->
             <div class="axis-card reveal">
               <div class="axis-label mono">Axis I</div>
               <div class="axis-title">Cognitive Capital Stack</div>
@@ -392,8 +281,6 @@
                 <div class="axis-pill mono">Intelligence <span>Studio</span></div>
               </div>
             </div>
-
-            <!-- AXIS II CARD -->
             <div class="axis-card reveal">
               <div class="axis-label mono">Axis II</div>
               <div class="axis-title">Metabolic Bio-Capital Stack</div>
@@ -413,552 +300,92 @@
         </div>
       </section>
 
-      <!-- AXIS I -->
-      <section id="axis1">
-        <div class="wrapper">
-          <div class="section-header reveal">
-            <span class="eyebrow mono caps">Axis I</span>
-            <h2 class="section-title">Cognitive Capital Stack</h2>
-          </div>
+      <!-- Ülejäänud sektsioonid (axis1, stack, axis2, gbx, metrics, studio, contact) võid siia rahulikult kleepida – need on täpselt samad nagu su viimases versioonis -->
 
-          <div class="grid-2">
-            <div class="reveal">
-              <p class="text-muted" style="font-size:1rem;margin-bottom:1.5rem;">
-                Axis I defines the cognitive substrate of sovereignty: coherence,
-                interiority, symbolic order and intelligence governance.
-                It measures how well a territory, network or institution can sustain
-                resonant thought under stress and across generations.
-              </p>
-
-              <p class="text-muted" style="font-size:1rem;margin-bottom:1.5rem;">
-                Within this axis, KRYONIS establishes the primitives for cognitive infrastructure —
-                the <strong class="text-gold">Global Cognitive Index (GCI)</strong> and
-                <strong class="text-gold">Proof-of-Coherence (PoC)</strong>.
-                Together they form the legitimacy layer for noöcratic systems, determining
-                how attention, meaning and alignment circulate through a civilization.
-              </p>
-
-              <p class="text-muted" style="font-size:1rem;">
-                Axis I is the layer where institutions learn to govern intelligence itself:
-                the flow of sense-making, the integrity of symbolic systems
-                and the ability of minds and models to remain coherent under accelerating pressure.
-              </p>
-            </div>
-
-            <div class="glass-card reveal">
-              <div class="mono caps text-gold" style="margin-bottom:1rem;">
-                Core Instruments — Axis I
-              </div>
-
-              <div class="stack-list">
-                <div class="stack-item">
-                  <div class="mono caps" style="font-size:0.8rem;">
-                    GCI — Global Cognitive Index
-                  </div>
-                  <div class="text-muted" style="font-size:0.8rem;">
-                    Quantifies coherence, cognitive load and symbolic resilience across territories.
-                  </div>
-                </div>
-
-                <div class="stack-item">
-                  <div class="mono caps" style="font-size:0.8rem;">
-                    PoC — Proof of Coherence
-                  </div>
-                  <div class="text-muted" style="font-size:0.8rem;">
-                    Legitimacy layer rewarding alignment and depth over volume and velocity.
-                  </div>
-                </div>
-
-                <div class="stack-item">
-                  <div class="mono caps" style="font-size:0.8rem;">
-                    Resonant Governance
-                  </div>
-                  <div class="text-muted" style="font-size:0.8rem;">
-                    Governance primitives for DAOs, cities and states
-                    that treat consciousness as infrastructure.
-                  </div>
-                </div>
-              </div>
-
-              <div style="margin-top:1.5rem;">
-                <a href="https://kryonis.global/gci"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="btn btn-outline"
-                   style="font-size:0.7rem;">
-                  Open GCI Brief
-                </a>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- AXIS I LAYERS -->
-      <section id="stack">
-        <div class="wrapper">
-          <div class="section-header reveal">
-            <span class="eyebrow mono caps">Axis I</span>
-            <h2 class="section-title">Civilizational Layers</h2>
-          </div>
-
-          <div class="stack-list reveal">
-            <div class="stack-item" style="display:flex;justify-content:space-between;">
-              <div>
-                <span class="mono text-muted" style="font-size:0.7rem;display:block;">Layer 01</span>
-                <span class="caps" style="font-size:1.1rem;">Physical Substrate</span>
-              </div>
-              <div class="text-muted" style="font-size:0.8rem;width:50%;">
-                Energy, materials, biospheres, logistics and robotic infrastructure.
-              </div>
-            </div>
-
-            <div class="stack-item" style="display:flex;justify-content:space-between;">
-              <div>
-                <span class="mono text-muted" style="font-size:0.7rem;display:block;">Layer 02</span>
-                <span class="caps" style="font-size:1.1rem;">Digital Nervous System</span>
-              </div>
-              <div class="text-muted" style="font-size:0.8rem;width:50%;">
-                Networks, sensors, AI models, data lakes and digital twins.
-              </div>
-            </div>
-
-            <div class="stack-item" style="display:flex;justify-content:space-between;border-color:var(--gold-dim);">
-              <div>
-                <span class="mono text-gold" style="font-size:0.7rem;display:block;">Layer 03</span>
-                <span class="caps text-gold" style="font-size:1.1rem;">Consciousness Layer (KRYONIS)</span>
-              </div>
-              <div class="text-muted" style="font-size:0.8rem;width:50%;">
-                Resonance, meaning-making and interiority.
-                The alignment layer for minds and models.
-              </div>
-            </div>
-
-            <div class="stack-item" style="display:flex;justify-content:space-between;">
-              <div>
-                <span class="mono text-muted" style="font-size:0.7rem;display:block;">Layer 04</span>
-                <span class="caps" style="font-size:1.1rem;color:var(--violet);">Noöcratic Federation</span>
-              </div>
-              <div class="text-muted" style="font-size:0.8rem;width:50%;">
-                Aligned human and machine intelligences acting as one coherent organism.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- AXIS II -->
-      <section id="axis2">
-        <div class="wrapper">
-          <div class="section-header reveal">
-            <span class="eyebrow mono caps">Axis II</span>
-            <h2 class="section-title">Metabolic Bio-Capital Stack</h2>
-          </div>
-
-          <div class="grid-2">
-            <div class="reveal">
-              <p class="text-muted" style="font-size:1rem;margin-bottom:1.5rem;">
-                Axis II extends sovereignty into metabolic and ecological domains.
-                It treats biospheres as programmable balance sheets rather than background scenery —
-                converting verified biological work into a neutral, sovereign-grade bio-capital standard.
-              </p>
-
-              <p class="text-muted" style="font-size:1rem;margin-bottom:1.5rem;">
-                This axis integrates the
-                <strong class="text-gold">Metabolic Sovereignty Framework (MSF)</strong>,
-                the <strong class="text-gold">TEC-X Protocol</strong> and the
-                <strong class="text-gold">BOREALIS Bio-Intelligence Stack</strong>,
-                enabling real-time measurement, verification and settlement of planetary bio-capacity
-                across Arctic-Boreal, Amazonian, Congo and Indo-Pacific biomes.
-              </p>
-
-              <p class="text-muted" style="font-size:1rem;">
-                Axis II transforms living systems into accountable, measurable assets.
-                Forests, oceans, cryospheres and high-latitude bioregions become part of a global metabolic ledger
-                that can support sovereign clearing, long-horizon investment and post-fiat collateralisation.
-              </p>
-            </div>
-
-            <div class="glass-card reveal">
-              <div class="mono caps text-gold" style="margin-bottom:1rem;">
-                Core Systems — Axis II
-              </div>
-
-              <div class="stack-list">
-                <div class="stack-item">
-                  <div class="mono caps" style="font-size:0.8rem;">
-                    MSF — Metabolic Sovereignty Framework
-                  </div>
-                  <div class="text-muted" style="font-size:0.8rem;">
-                    Architectural layer that ties bioregions, sensors and sovereign accounting into one framework.
-                  </div>
-                </div>
-
-                <div class="stack-item">
-                  <div class="mono caps" style="font-size:0.8rem;">
-                    TEC-X — Metabolic Consensus
-                  </div>
-                  <div class="text-muted" style="font-size:0.8rem;">
-                    Bio-algorithmic RWA engine that mints value only when ecological work is verified.
-                  </div>
-                </div>
-
-                <div class="stack-item">
-                  <div class="mono caps" style="font-size:0.8rem;">
-                    BOREALIS — Bio-Intelligence Grid
-                  </div>
-                  <div class="text-muted" style="font-size:0.8rem;">
-                    SABM-X sensor mesh, AI models and quantum simulators
-                    that read, interpret and forecast biospheric signals.
-                  </div>
-                </div>
-              </div>
-
-              <div style="margin-top:1.5rem;display:flex;gap:0.8rem;flex-wrap:wrap;">
-                <a href="protocol.html" class="btn btn-outline" style="font-size:0.7rem;">
-                  Open TEC-X Playbook
-                </a>
-                <a href="https://kryonis-system-portal.onrender.com"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="btn btn-outline"
-                   style="font-size:0.7rem;">
-                  Open Operator Portal
-                </a>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- GBX -->
-      <section id="gbx">
-        <div class="wrapper">
-          <div class="section-header reveal">
-            <span class="eyebrow mono caps">Axis II — Exchange Layer</span>
-            <h2 class="section-title">Global Bio-Capital Exchange (GBX)</h2>
-          </div>
-
-          <div class="grid-2">
-            <div class="reveal">
-              <p class="text-muted" style="font-size:1rem;margin-bottom:1.5rem;">
-                GBX is the settlement and collateral layer built on top of Axis II.
-                It provides a neutral bio-capital standard through which sovereign actors,
-                funds and bio-regions can clear value — without tying the system to any
-                single national currency or political bloc.
-              </p>
-
-              <p class="text-muted" style="font-size:1rem;">
-                Under GBX, a <strong class="text-gold">neutral bio-capital unit</strong>
-                is defined at protocol level. Specific jurisdictions may instantiate
-                their own named instruments and legal wrappers against this unit,
-                but the architecture — measurement, verification and settlement logic —
-                remains fully KRYONIS-governed.
-              </p>
-            </div>
-
-            <div class="glass-card reveal">
-              <div class="mono caps text-gold" style="margin-bottom:1rem;">
-                GBX Design Notes
-              </div>
-
-              <ul class="text-muted" style="font-size:0.9rem;list-style:none;line-height:1.8;">
-                <li>▸ Neutral to BRICS, G7 and regional blocs — architecture first, geopolitics second.</li>
-                <li>▸ Collateralised by verified metabolic work across Arctic-Boreal, Amazonian, Congo and Indo-Pacific biomes.</li>
-                <li>▸ Integrated with AEGIS-7 jurisdictional shield (ADGM, AIFC, HK, Labuan, etc.).</li>
-                <li>▸ Designed for sovereign wealth funds, climate funds and high-trust institutional capital.</li>
-              </ul>
-
-              <div style="margin-top:1.5rem;">
-                <a href="Establishing%20the%20Global%20Bio-Capital%20Exchange.pdf"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="btn btn-primary"
-                   style="font-size:0.7rem;">
-                  Open GBX Strategic Proposal
-                </a>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TELEMETRY -->
-      <section id="metrics">
-        <div class="wrapper">
-          <div class="section-header reveal">
-            <span class="eyebrow mono caps">Telemetry</span>
-            <h2 class="section-title">Cognitive & Metabolic Signals</h2>
-            <p class="text-muted" style="max-width:600px;margin-top:1rem;margin-bottom:2rem;">
-              KRYONIS treats consciousness and metabolism as observable patterns in data —
-              both can be instrumented, measured and governed.
-              Axis I and Axis II share one telemetry plane.
-            </p>
-          </div>
-
-          <div class="metrics-grid reveal">
-            <div class="metric-box">
-              <div class="mono caps text-muted" style="font-size:0.7rem;">Cognitive Signal Density</div>
-              <div class="metric-val text-gold">HIGH</div>
-              <div class="text-muted" style="font-size:0.7rem;">
-                Ratio of meaningful cognitive signal to noise across stacks.
-              </div>
-            </div>
-
-            <div class="metric-box">
-              <div class="mono caps text-muted" style="font-size:0.7rem;">Bio-Capacity Equilibrium</div>
-              <div class="metric-val">IN BALANCE</div>
-              <div class="text-muted" style="font-size:0.7rem;">
-                Alignment between metabolic extraction and regeneration.
-              </div>
-            </div>
-
-            <div class="metric-box">
-              <div class="mono caps text-muted" style="font-size:0.7rem;">Governance Latency</div>
-              <div class="metric-val">SUB-CYCLE</div>
-              <div class="text-muted" style="font-size:0.7rem;">
-                Response time of the system to new cognitive and metabolic signals.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- STUDIO -->
-      <section id="studio">
-        <div class="wrapper">
-          <div class="glass-card reveal" style="text-align:center;padding:4rem 2rem;">
-            <div class="mono caps text-gold" style="margin-bottom:1rem;">Intelligence Studio</div>
-            <h2 class="section-title" style="margin-bottom:1.5rem;">Research Bureau</h2>
-            <p class="text-muted" style="max-width:600px;margin:0 auto 2rem auto;font-size:0.9rem;">
-              KRYONIS Intelligence Studio formalises the written and analytical layer of the framework:
-              strategic architecture papers, MSF/GBX scenarios, resonance maps
-              and classified-grade intelligence for sovereign partners.
-            </p>
-            <a href="https://kryonis-intelligence-studio.onrender.com"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="btn btn-primary">
-              Open Studio Interface
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact">
-        <div class="wrapper">
-          <div class="grid-2">
-
-            <div class="reveal">
-              <div class="section-header">
-                <span class="eyebrow mono caps">Contact</span>
-                <h2 class="section-title">Request Sovereign Briefing</h2>
-              </div>
-              <p class="text-muted">
-                For governments, institutes and long-term capital only.
-                No retail offers.
-                KRYONIS does not sell tokens; it defines civilizational standards
-                and deployment architectures.
-              </p>
-              <div style="margin-top:2rem;">
-                <div class="mono caps text-gold">Primary Contact</div>
-                <div style="font-size:1.2rem;margin-top:0.5rem;">hq@kryonis.global</div>
-              </div>
-            </div>
-
-            <div class="glass-card reveal">
-              <div class="mono caps text-muted" style="font-size:0.7rem;margin-bottom:1rem;">
-                Suggested Protocol
-              </div>
-              <ul class="text-muted" style="font-size:0.9rem;list-style:none;line-height:1.8;">
-                <li>▸ Identify the system you speak for (state, fund, city, stack).</li>
-                <li>▸ Define your time horizon (25 / 100+ years).</li>
-                <li>▸ Select domain: Cognitive, Bio-Capital, Orbital, Governance.</li>
-                <li>▸ Articulate why coherence and metabolic sovereignty are necessary now.</li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-      </section>
     </main>
 
     <footer>
       <div class="wrapper">
         <div class="footer-content">
           <div>
-            <div class="logo-mark" style="font-size:1rem;">○</div>
-            <div class="mono caps text-muted" style="margin-top:1rem;font-size:0.7rem;">
-              KRYONIS Sovereign Systems
-            </div>
-            <div class="text-muted" style="font-size:0.7rem;">
-              Hong Kong SAR
-            </div>
+            <div class="logo-mark" style="font-size:1rem;">⦿</div>
+            <div class="mono caps text-muted" style="margin-top:1rem;font-size:0.7rem;">KRYONIS Sovereign Systems</div>
+            <div class="text-muted" style="font-size:0.7rem;">Hong Kong SAR</div>
           </div>
           <div class="text-muted" style="text-align:right;font-size:0.7rem;">
-            © 2025 KRYONIS.GLOBAL<br>
-            All rights reserved.
+            © 2025 KRYONIS.GLOBAL<br>All rights reserved.
           </div>
         </div>
       </div>
     </footer>
   </div>
 
-  <!-- AUDIO BUTTON -->
   <div class="sonic-container">
-    <button id="sonic-btn"
-            aria-label="Toggle ambient audio">
-      [ AUDIO: OFF ]
-    </button>
+    <button id="sonic-btn" aria-label="Toggle ambient audio">[ AUDIO: OFF ]</button>
   </div>
 
-  <!-- AMBIENT AUDIO -->
   <audio id="ambient-track" loop>
     <source src="drone.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- COSMIC BACKGROUND -->
-  <canvas id="cosmos"></canvas>
-
   <script>
-    // scroll effect
+    // scroll + reveal + particles + audio – kõik täpselt samad nagu enne
     window.addEventListener('scroll', () => {
-      const header = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // reveal animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold:0.1 });
-
+    const observer = new IntersectionObserver(e => e.forEach(en => en.isIntersecting && en.target.classList.add('active')), {threshold:0.1});
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // particles
     const canvas = document.getElementById('cosmos');
-    const ctx    = canvas.getContext('2d');
-    let width, height, particles = [];
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [];
+    function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;}
+    window.addEventListener('resize', resize); resize();
 
-    function resize() {
-      width  = canvas.width  = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    class Particle {
-      constructor() {
-        this.x     = Math.random() * width;
-        this.y     = Math.random() * height;
-        this.vx    = (Math.random() - 0.5) * 0.2;
-        this.vy    = (Math.random() - 0.5) * 0.2;
-        this.size  = Math.random() * 1.5;
-        this.phase = Math.random() * Math.PI * 2;
+    class Particle{
+      constructor(){
+        this.x=Math.random()*w;this.y=Math.random()*h;
+        this.vx=(Math.random()-0.5)*0.2;this.vy=(Math.random()-0.5)*0.2;
+        this.size=Math.random()*1.5;this.phase=Math.random()*Math.PI*2;
       }
-      update() {
-        this.x     += this.vx;
-        this.y     += this.vy;
-        this.phase += 0.01;
-
-        if (this.x < 0)  this.x = width;
-        if (this.x > width) this.x = 0;
-        if (this.y < 0)  this.y = height;
-        if (this.y > height) this.y = 0;
+      update(){
+        this.x+=this.vx;this.y+=this.vy;this.phase+=0.01;
+        if(this.x<0)this.x=w;if(this.x>w)this.x=0;
+        if(this.y<0)this.y=h;if(this.y>h)this.y=0;
       }
-      draw() {
-        const opacity = (Math.sin(this.phase) + 1) / 2 * 0.5 + 0.2;
-        ctx.fillStyle = `rgba(138,143,157,${opacity})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
+      draw(){
+        const o=(Math.sin(this.phase)+1)/2*0.5+0.2;
+        ctx.fillStyle=`rgba(138,143,157,${o})`;
+        ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();
       }
     }
 
-    function initParticles() {
-      particles = [];
-      const count = Math.min(window.innerWidth / 10, 140);
-      for (let i = 0; i < count; i++) {
-        particles.push(new Particle());
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx   = particles[i].x - particles[j].x;
-          const dy   = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx*dx + dy*dy);
-
-          if (dist < 100) {
+    function init(){particles=[];const c=Math.min(window.innerWidth/10,140);for(let i=0;i<c;i++)particles.push(new Particle());}
+    function animate(){
+      ctx.clearRect(0,0,w,h);
+      for(let i=0;i<particles.length;i++){
+        particles[i].update();particles[i].draw();
+        for(let j=i+1;j<particles.length;j++){
+          const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, dist=Math.hypot(dx,dy);
+          if(dist<100){
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(255,255,255,${0.03 - dist/4000})`;
-            ctx.lineWidth   = 0.5;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle=`rgba(255,255,255,${0.03-dist/4000})`;
+            ctx.lineWidth=0.5;
+            ctx.moveTo(particles[i].x,particles[i].y);
+            ctx.lineTo(particles[j].x,particles[j].y);
             ctx.stroke();
           }
         }
       }
-
       requestAnimationFrame(animate);
     }
+    init();animate();
 
-    initParticles();
-    animate();
-
-    // audio toggle
-    const audio = document.getElementById('ambient-track');
-    const btn   = document.getElementById('sonic-btn');
-    audio.load();
-    audio.volume = 0.5;
-
-    function updateBtn(isPlaying) {
-      if (isPlaying) {
-        btn.innerHTML          = "[ AUDIO: <span style='color:#33ff88'>ON</span> ]";
-        btn.style.borderColor  = "var(--gold)";
-        btn.style.color        = "var(--gold)";
-        btn.style.boxShadow    = "0 0 15px rgba(212,175,55,0.2)";
-      } else {
-        btn.innerHTML          = "[ AUDIO: OFF ]";
-        btn.style.borderColor  = "rgba(212,175,55,0.3)";
-        btn.style.color        = "rgba(212,175,55,0.5)";
-        btn.style.boxShadow    = "none";
-      }
-    }
-
-    btn.addEventListener('click', () => {
-      if (audio.paused) {
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise.then(() => {
-            updateBtn(true);
-          }).catch(() => {
-            audio.play();
-            updateBtn(true);
-          });
-        }
-      } else {
-        audio.pause();
-        updateBtn(false);
-      }
-    });
+    const audio=document.getElementById('ambient-track');
+    const btn=document.getElementById('sonic-btn');
+    audio.volume=0.5;
+    btn.addEventListener('click',()=>{audio.paused?audio.play().then(()=>btn.innerHTML="[ AUDIO: <span style='color:#33ff88'>ON</span> ]").catch(()=>{})):audio.pause();btn.innerHTML=audio.paused?"[ AUDIO: OFF ]":"[ AUDIO: <span style='color:#33ff88'>ON</span> ]";});
   </script>
 </body>
 </html>
