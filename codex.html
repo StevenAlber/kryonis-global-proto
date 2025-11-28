@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
-  <!-- Favicon (optional) -->
+  <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
@@ -97,7 +97,7 @@
       margin:0 auto;
       padding:0 1.5rem;
       position:relative;
-      z-index:1;
+      z-index:10;
     }
 
     /* HEADER */
@@ -181,7 +181,7 @@
       color:#05060a;
     }
 
-    /* SECONDARY NAV: PLAYBOOK / CODEX */
+    /* SECONDARY NAV */
 
     .subnav{
       border-top:1px solid rgba(255,255,255,0.05);
@@ -375,83 +375,40 @@
       padding-left:1rem;
     }
 
-    /* FOOTER */
+    /* FOOTER – IDENTICAL STRUCTUUR EMA INDEXIGA */
 
     footer{
-      padding:3rem 0 4rem;
-      border-top:1px solid rgba(255,255,255,0.06);
+      padding:4rem 0;
+      padding-bottom:100px; /* ruum audio-nupu jaoks */
       color:var(--fg-dark);
       font-size:0.75rem;
     }
 
     .footer-content{
-      max-width:1160px;
-      margin:0 auto;
-      padding:0 1.5rem;
       display:flex;
       justify-content:space-between;
       align-items:flex-end;
-      gap:1.5rem;
-      flex-wrap:wrap;
     }
 
-    .footer-left{
-      display:flex;
-      flex-direction:column;
-      gap:0.4rem;
-    }
+    /* AUDIO BUTTON – kopeeritud index.html-st */
 
-    .footer-logo{
-      width:18px;
-      height:18px;
-      border-radius:999px;
-      border:1px solid var(--gold-dim);
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
+    .sonic-container{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      z-index:9999;
+    }
+    #sonic-btn{
+      background:#000;
+      border:1px solid rgba(212,175,55,0.3);
+      color:rgba(212,175,55,0.5);
       font-family:'JetBrains Mono',monospace;
-      font-size:0.6rem;
-      color:var(--gold);
-      box-shadow:0 0 16px rgba(197,160,40,0.55);
-    }
-
-    .footer-brand{
-      font-family:'Cinzel',serif;
-      font-size:0.86rem;
-      letter-spacing:0.12em;
+      font-size:10px;
+      padding:8px 12px;
+      cursor:pointer;
       text-transform:uppercase;
-      color:#f1f1f7;
-    }
-
-    .footer-meta{
-      font-family:'JetBrains Mono',monospace;
-      font-size:0.65rem;
-      letter-spacing:0.16em;
-      text-transform:uppercase;
-    }
-
-    .footer-right{
-      text-align:right;
-    }
-
-    .footer-right span{display:block;}
-
-    .audio-toggle{
-      margin-top:0.8rem;
-      display:inline-block;
-      padding:0.25rem 0.9rem;
-      border-radius:2px;
-      border:1px solid rgba(197,160,40,0.8);
-      font-family:'JetBrains Mono',monospace;
-      font-size:0.65rem;
-      letter-spacing:0.16em;
-      text-transform:uppercase;
-      color:var(--gold);
-      background:rgba(5,5,8,0.9);
-    }
-    .audio-toggle:hover{
-      background:var(--gold);
-      color:#05060a;
+      letter-spacing:0.1em;
+      transition:0.3s;
     }
 
     /* Reveal */
@@ -475,7 +432,7 @@
       .subnav-links{gap:1rem;font-size:0.65rem;}
       .hero{padding-top:7.5rem;}
       .hero-sub{border-left:none;padding-left:0;margin-top:0.6rem;}
-      .footer-right{text-align:left;}
+      .footer-content{flex-direction:column;align-items:flex-start;gap:1.5rem;}
     }
 
     @media(max-width:600px){
@@ -505,12 +462,13 @@
               <a href="index.html#axis2">AXIS II</a>
               <a href="index.html#gbx">GBX</a>
               <a href="charter.html">CHARTER</a>
+              <a href="codex.html">CODEX</a>
             </div>
             <a href="index.html#contact" class="cta-btn caps mono">BRIEFING</a>
           </div>
         </nav>
 
-        <!-- SECONDARY NAV: PLAYBOOK / CODEX -->
+        <!-- SECONDARY NAV -->
         <div class="subnav">
           <div class="subnav-links">
             <a href="protocol.html">PLAYBOOK</a>
@@ -685,21 +643,38 @@
       </section>
     </main>
 
+    <!-- FOOTER – EMA STRUKTUUR -->
     <footer>
-      <div class="footer-content">
-        <div class="footer-left">
-          <div class="footer-logo">○</div>
-          <div class="footer-brand">KRYONIS Sovereign Systems</div>
-          <div class="footer-meta">Hong Kong SAR · Axis I / Axis II Codex</div>
-        </div>
-        <div class="footer-right">
-          <span>© 2025 KRYONIS.GLOBAL</span>
-          <span>Doctrinal Lexicon · Cognitive &amp; Metabolic Sovereignty</span>
-          <button class="audio-toggle mono caps" type="button">[ AUDIO: OFF ]</button>
+      <div class="wrapper">
+        <div class="footer-content">
+          <div>
+            <div class="logo-mark" style="font-size:1rem;">○</div>
+            <div class="mono caps text-muted" style="margin-top:1rem;font-size:0.7rem;">
+              KRYONIS Sovereign Systems
+            </div>
+            <div class="text-muted" style="font-size:0.7rem;">
+              Hong Kong SAR · Axis I / Axis II Codex
+            </div>
+          </div>
+          <div class="text-muted" style="text-align:right;font-size:0.7rem;">
+            © 2025 KRYONIS.GLOBAL<br>
+            Doctrinal Lexicon · Cognitive &amp; Metabolic Sovereignty
+          </div>
         </div>
       </div>
     </footer>
   </div>
+
+  <!-- AUDIO BUTTON + AUDIO, nagu indexil -->
+  <div class="sonic-container">
+    <button id="sonic-btn" aria-label="Toggle ambient audio">
+      [ AUDIO: OFF ]
+    </button>
+  </div>
+
+  <audio id="ambient-track" loop>
+    <source src="drone.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     // Header scroll effect
@@ -743,7 +718,7 @@
 
     window.addEventListener('load', activateVisibleReveals);
 
-    // Cosmic particles background
+    // Cosmic particles background (sama loogika kui indexil)
     const canvas = document.getElementById('cosmos');
     if (canvas && canvas.getContext) {
       const ctx = canvas.getContext('2d');
@@ -838,6 +813,48 @@
 
       resize();
       animate();
+    }
+
+    // Audio toggle – sama loogika nagu index.html
+    const audio = document.getElementById('ambient-track');
+    const btn   = document.getElementById('sonic-btn');
+
+    if (audio && btn) {
+      audio.volume = 0.5;
+
+      function updateBtn(isPlaying) {
+        if (isPlaying) {
+          btn.innerHTML          = "[ AUDIO: <span style='color:#33ff88'>ON</span> ]";
+          btn.style.borderColor  = "var(--gold)";
+          btn.style.color        = "var(--gold)";
+          btn.style.boxShadow    = "0 0 15px rgba(212,175,55,0.2)";
+        } else {
+          btn.innerHTML          = "[ AUDIO: OFF ]";
+          btn.style.borderColor  = "rgba(212,175,55,0.3)";
+          btn.style.color        = "rgba(212,175,55,0.5)";
+          btn.style.boxShadow    = "none";
+        }
+      }
+
+      updateBtn(false);
+
+      btn.addEventListener('click', () => {
+        if (audio.paused) {
+          const playPromise = audio.play();
+          if (playPromise !== undefined) {
+            playPromise.then(() => {
+              updateBtn(true);
+            }).catch(() => {
+              updateBtn(false);
+            });
+          } else {
+            updateBtn(true);
+          }
+        } else {
+          audio.pause();
+          updateBtn(false);
+        }
+      });
     }
   </script>
 </body>
