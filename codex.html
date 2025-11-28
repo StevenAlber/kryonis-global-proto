@@ -89,7 +89,7 @@
       z-index:1;
     }
 
-    /* HEADER — sama muster kui index */
+    /* HEADER */
 
     header{
       position:fixed;
@@ -224,6 +224,9 @@
       text-transform:uppercase;
       color:#fff;
       margin-bottom:1.2rem;
+    }
+    .hero-title span{
+      color:var(--gold);
     }
 
     .hero-sub{
@@ -489,7 +492,7 @@
             <span>Usage · Internal &amp; External</span>
           </div>
           <h1 class="hero-title serif">
-            The Lexicon of<br />
+            <span>The Lexicon</span> of<br />
             Cognitive &amp; Metabolic Sovereignty
           </h1>
           <p class="hero-sub">
@@ -702,7 +705,7 @@
 
     window.addEventListener('load', activateVisibleReveals);
 
-    // Cosmic particles background – ühtne kõikidel lehtedel
+    // Cosmic particles background
     const canvas = document.getElementById('cosmos');
     if (canvas && canvas.getContext) {
       const ctx = canvas.getContext('2d');
