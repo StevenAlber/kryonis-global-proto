@@ -4,328 +4,748 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KRYONIS — The Codex</title>
-  <meta name="description" content="The official glossary of KRYONIS doctrinal terms and definitions." />
+  <meta name="description" content="The official KRYONIS codex of doctrinal terms and definitions across Axis I and Axis II." />
 
+  <!-- Fonts (match index) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <style>
-    :root {
-      --bg: #030304;
-      --fg: #e1e1e6;
-      --fg-dim: #6b7280;
-      --gold: #C5A028;
-      --gold-dim: rgba(197, 160, 40, 0.3);
-      --border: rgba(255, 255, 255, 0.08);
+    :root{
+      --bg-deep:#020204;
+      --bg-panel:rgba(15,15,20,0.6);
+
+      --fg:#e0e0e6;
+      --fg-muted:#8a8f9d;
+      --fg-dark:#555a66;
+
+      --gold:#C5A028;
+      --gold-dim:rgba(197,160,40,0.3);
+      --gold-glow:rgba(197,160,40,0.15);
+
+      --violet:#7c73e6;
+
+      --border:rgba(255,255,255,0.08);
+      --glass:blur(10px);
+
+      --radius-lg:18px;
+      --radius-pill:999px;
+      --shadow-soft:0 24px 80px rgba(0,0,0,0.65);
+
+      --transition-fast:0.18s ease-out;
+      --transition-med:0.28s ease-out;
+
+      --max-width:1160px;
+      --ease:cubic-bezier(0.23,1,0.32,1);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html,body{height:100%;}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      color: var(--fg);
-      line-height: 1.6;
-      overflow-x: hidden;
+    body{
+      font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background-color:var(--bg-deep);
+      color:var(--fg);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      overflow-x:hidden;
+      position:relative;
+      line-height:1.6;
     }
 
-    .wrapper { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
-    .mono { font-family: 'JetBrains Mono', monospace; }
-    .serif { font-family: 'Cinzel', serif; }
-    .caps { text-transform: uppercase; letter-spacing: 0.1em; }
-    .text-gold { color: var(--gold); }
+    .mono{font-family:"JetBrains Mono",monospace;letter-spacing:-0.02em;}
+    .serif{font-family:"Cinzel",serif;}
+    .caps{text-transform:uppercase;letter-spacing:0.1em;}
+    .text-gold{color:var(--gold);}
+    .text-muted{color:var(--fg-muted);}
 
-    /* HEADER - FIXED FOR STABILITY */
-    header {
-      position: fixed;
-      top: 0; left: 0; width: 100%;
-      z-index: 1000;
-      padding: 1.5rem 0;
-      background: rgba(3, 3, 4, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    
-    .header-content {
-      display: flex; justify-content: space-between; align-items: center;
-      max-width: 1000px; margin: 0 auto; padding: 0 2rem;
+    a{text-decoration:none;color:inherit;transition:all 0.3s var(--ease);}
+
+    .noise{
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      pointer-events:none;z-index:900;opacity:0.05;
+      background:url("image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    .back-link { font-size: 0.7rem; color: var(--fg-dim); text-decoration: none; border: 1px solid var(--border); padding: 8px 16px; border-radius: 2px; transition:0.3s; }
-    .back-link:hover { border-color: var(--gold); color: var(--gold); }
-
-    /* PADDING FOR FIXED HEADER */
-    main { padding-top: 100px; padding-bottom: 100px; }
-
-    /* HERO */
-    .hero { padding: 4rem 0; }
-    h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; color: #fff; margin-bottom: 1.5rem; }
-    .lead { 
-      color: var(--fg-dim); font-size: 1.1rem; max-width: 600px; 
-      border-left: 1px solid var(--border); padding-left: 1.5rem;
+    #cosmos{
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      z-index:-1;opacity:0.5;
     }
 
-    /* DICTIONARY GRID (DESKTOP DEFAULT) */
-    .term-row {
-      display: grid; 
-      grid-template-columns: 1fr 2fr; 
-      gap: 2rem;
-      padding: 4rem 0;
-      border-bottom: 1px solid var(--border);
-      align-items: start;
-      transition: 0.3s;
-    }
-    .term-row:last-child { border-bottom: none; }
-    .term-row:hover { background: rgba(255,255,255,0.01); }
-
-    .term-col { position: sticky; top: 120px; }
-
-    .term {
-      font-family: 'Cinzel', serif;
-      font-size: 1.8rem;
-      color: var(--gold);
-      line-height: 1.2;
-      margin-bottom: 0.5rem;
-    }
-    
-    .phonetic {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--fg-dim);
-      display: block;
-      letter-spacing: 0.05em;
+    .page{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      position:relative;
+      z-index:1;
     }
 
-    .definition {
-      font-size: 1.1rem;
-      color: var(--fg);
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-      font-weight: 300;
-    }
-    
-    .context {
-      font-size: 0.9rem;
-      color: var(--fg-dim);
-      font-style: italic;
-      background: rgba(255,255,255,0.02);
-      padding: 1.5rem;
-      border-left: 2px solid var(--gold-dim);
+    .wrapper{
+      width:100%;max-width:var(--max-width);
+      margin:0 auto;padding:3.5rem 1.4rem 4rem;
+      position:relative;z-index:10;
     }
 
-    /* FOOTER */
-    footer { padding: 4rem 0; text-align: center; font-size: 0.7rem; color: var(--fg-dim); border-top: 1px solid var(--border); }
+    /* Header / nav (match index) */
 
-    /* === MOBILE FIXES (CRITICAL FOR LAYOUT) === */
-    @media (max-width: 800px) {
-      .header-content, .wrapper { padding: 0 1.5rem; }
-      
-      .term-row { 
-        display: flex; 
-        flex-direction: column; /* Stack vertically */
-        gap: 1rem; 
-        padding: 3rem 0; 
-      }
-      
-      /* Disable sticky on mobile to prevent overlap */
-      .term-col { position: static; margin-bottom: 0.5rem; }
-      
-      .term { font-size: 1.6rem; }
-      .lead { border-left: none; padding-left: 0; margin-top: 1rem; }
-      
-      .definition { font-size: 1rem; margin-bottom: 1rem; }
-      .context { padding: 1rem; font-size: 0.85rem; }
+    header{
+      position:fixed;top:0;left:0;width:100%;z-index:100;
+      padding:1.2rem 0;background:rgba(3,3,4,0.9);
+      backdrop-filter:blur(15px);border-bottom:1px solid var(--border);
+      transition:background 0.3s var(--ease),box-shadow 0.3s var(--ease);
+    }
+    header.scrolled{
+      background:rgba(3,3,4,0.98);
+      box-shadow:0 0 24px rgba(0,0,0,0.6);
     }
 
-    /* SONIC BUTTON FIXED POSITION */
-    .sonic-container {
-      position: fixed; 
-      bottom: 20px; 
-      right: 20px; 
-      z-index: 9999;
+    .nav{
+      display:flex;justify-content:space-between;align-items:center;
+      max-width:var(--max-width);margin:0 auto;padding:0 1.4rem;
+      gap:1.2rem;
     }
-    
-    #sonic-btn {
-      background: #000; 
-      border: 1px solid rgba(212, 175, 55, 0.3); 
-      color: rgba(212, 175, 55, 0.5); 
-      font-family: 'JetBrains Mono', monospace; 
-      font-size: 10px; 
-      padding: 8px 12px; 
-      cursor: pointer; 
-      text-transform: uppercase; 
-      letter-spacing: 0.1em; 
-      transition: 0.3s;
+
+    .brand{display:flex;align-items:center;gap:0.8rem;}
+    .logo-mark{color:var(--gold);font-size:1.1rem;}
+    .brand-text{font-size:0.85rem;letter-spacing:0.15em;font-weight:600;color:#fff;}
+
+    .nav-links{display:flex;gap:1.6rem;align-items:center;}
+    .nav-links a{
+      font-family:"JetBrains Mono",monospace;
+      font-size:0.68rem;text-transform:uppercase;
+      color:var(--fg-muted);padding:5px 0;
+      border-bottom:1px solid transparent;
+      letter-spacing:0.16em;
+    }
+    .nav-links a:hover{color:var(--fg);border-color:var(--fg-dark);}
+
+    .playbook-link{
+      color:var(--gold)!important;
+      border-color:var(--gold-dim)!important;
+    }
+
+    .cta-btn{
+      border:1px solid var(--gold);padding:0.4rem 1rem;
+      border-radius:2px;font-size:0.7rem;color:var(--gold);
+      background:rgba(197,160,40,0.05);white-space:nowrap;
+      font-family:"JetBrains Mono",monospace;
+      text-transform:uppercase;letter-spacing:0.18em;
+    }
+    .cta-btn:hover{background:var(--gold);color:#000;}
+
+    .nav-meta{
+      font-family:"JetBrains Mono",monospace;
+      font-size:0.62rem;text-transform:uppercase;
+      letter-spacing:0.18em;color:var(--fg-dark);
+    }
+
+    /* Hero */
+
+    .hero{
+      min-height:clamp(70vh,85vh,900px);
+      display:grid;
+      grid-template-columns:minmax(0,1.7fr) minmax(0,1.1fr);
+      gap:3rem;align-items:flex-start;
+      padding-top:7rem;padding-bottom:3.5rem;
+    }
+
+    .hero-eyebrow{
+      font-family:"JetBrains Mono",monospace;
+      font-size:0.68rem;text-transform:uppercase;
+      letter-spacing:0.25em;color:var(--fg-muted);
+      margin-bottom:0.9rem;display:inline-flex;align-items:center;gap:0.6rem;
+    }
+    .hero-eyebrow-dot{
+      width:7px;height:7px;border-radius:999px;
+      border:1px solid var(--gold-dim);
+      box-shadow:0 0 12px rgba(197,160,40,0.7);
+    }
+
+    .hero-title{
+      font-family:"Cinzel",serif;
+      font-size:clamp(2.2rem,3.6vw,2.8rem);
+      letter-spacing:0.08em;text-transform:uppercase;
+      line-height:1.2;margin-bottom:1.4rem;color:#fff;
+    }
+
+    .hero-sub{
+      font-size:0.96rem;color:var(--fg-muted);
+      line-height:1.7;max-width:36rem;margin-bottom:1.5rem;
+      border-left:1px solid var(--border);padding-left:1.4rem;
+    }
+
+    .hero-meta{
+      font-size:0.78rem;color:var(--fg-dark);
+      display:flex;flex-wrap:wrap;gap:0.7rem;margin-bottom:1.8rem;
+    }
+    .hero-chip{
+      border-radius:var(--radius-pill);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:0.25rem 0.8rem;
+      font-family:"JetBrains Mono",monospace;
+      font-size:0.7rem;text-transform:uppercase;
+      letter-spacing:0.14em;background:rgba(10,10,16,0.92);
+    }
+
+    .hero-actions{display:flex;flex-wrap:wrap;gap:0.8rem;}
+
+    .btn{
+      border-radius:var(--radius-pill);
+      border:1px solid var(--gold-dim);
+      background:radial-gradient(circle at top left,rgba(197,160,40,0.16),rgba(8,8,12,0.95));
+      color:#fdfdfb;padding:0.45rem 1.1rem;
+      font-size:0.7rem;font-family:"JetBrains Mono",monospace;
+      letter-spacing:0.18em;text-transform:uppercase;
+      cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem;
+      box-shadow:0 0 0 1px rgba(0,0,0,0.85),0 14px 40px rgba(0,0,0,0.9);
+      transition:transform var(--transition-fast),box-shadow var(--transition-fast),border-color var(--transition-fast),background var(--transition-fast);
+      text-decoration:none;white-space:nowrap;
+    }
+    .btn-dot{
+      width:6px;height:6px;border-radius:50%;
+      background:radial-gradient(circle,var(--gold),transparent);
+      box-shadow:0 0 10px rgba(197,160,40,0.8);
+    }
+    .btn:hover{
+      transform:translateY(-1px);
+      border-color:var(--gold);
+      background:radial-gradient(circle at top left,rgba(197,160,40,0.26),rgba(6,6,10,0.98));
+      box-shadow:0 18px 60px rgba(0,0,0,0.95);
+    }
+    .btn-outline{
+      background:transparent;border-color:rgba(255,255,255,0.16);color:var(--fg-muted);box-shadow:none;
+    }
+    .btn-outline:hover{
+      border-color:var(--violet);color:#f4f4ff;
+      background:radial-gradient(circle at top left,rgba(124,115,230,0.2),rgba(5,5,9,0.96));
+      box-shadow:0 12px 40px rgba(0,0,0,0.9);
+    }
+
+    .hero-aside{
+      align-self:stretch;display:flex;flex-direction:column;gap:1.1rem;
+    }
+
+    .glass-card{
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:linear-gradient(135deg,rgba(10,10,16,0.95),rgba(10,10,16,0.6));
+      backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);
+      box-shadow:var(--shadow-soft);
+      padding:1.4rem 1.5rem;
+    }
+
+    /* Sections / terms */
+
+    section.section{padding:0 0 3.5rem;}
+    .section-header{margin-bottom:1.8rem;}
+    .section-title{
+      font-family:"Cinzel",serif;
+      font-size:1.05rem;letter-spacing:0.18em;
+      text-transform:uppercase;color:#f5f5ff;margin-bottom:0.6rem;
+    }
+    .section-kicker{
+      font-size:0.9rem;color:var(--fg-muted);
+      max-width:38rem;line-height:1.6;
+    }
+
+    .term-list{
+      display:flex;flex-direction:column;gap:1.8rem;
+    }
+
+    .term-card{
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:linear-gradient(135deg,rgba(10,10,16,0.98),rgba(10,10,16,0.7));
+      padding:1.4rem 1.5rem;
+      box-shadow:0 18px 60px rgba(0,0,0,0.8);
+    }
+
+    .term-header{
+      display:flex;justify-content:space-between;align-items:flex-start;
+      gap:1rem;margin-bottom:0.6rem;
+    }
+
+    .term-name{
+      font-family:"Cinzel",serif;
+      font-size:1.3rem;text-transform:uppercase;
+      letter-spacing:0.08em;color:var(--gold);
+    }
+
+    .term-tag{
+      border-radius:var(--radius-pill);
+      border:1px solid rgba(124,115,230,0.5);
+      padding:0.2rem 0.8rem;
+      font-family:"JetBrains Mono",monospace;
+      font-size:0.64rem;text-transform:uppercase;
+      letter-spacing:0.16em;color:var(--violet);
+      background:radial-gradient(circle at top left,rgba(124,115,230,0.2),transparent);
+    }
+
+    .term-phonetic{
+      font-family:"JetBrains Mono",monospace;
+      font-size:0.72rem;color:var(--fg-dark);
+      letter-spacing:0.08em;text-transform:uppercase;
+      margin-bottom:0.6rem;
+    }
+
+    .term-definition{
+      font-size:0.95rem;color:var(--fg-muted);
+      line-height:1.7;margin-bottom:1rem;
+    }
+
+    .term-context{
+      font-size:0.85rem;color:var(--fg-dark);
+      font-style:italic;
+      border-left:2px solid var(--gold-dim);
+      padding-left:1rem;
+    }
+
+    /* Footer */
+
+    footer{
+      padding:1.7rem 1.4rem 2.1rem;
+      border-top:1px solid rgba(255,255,255,0.06);
+      background:radial-gradient(circle at top,rgba(10,10,16,0.95),rgba(2,2,4,0.98));
+      margin-top:auto;
+    }
+
+    .footer-content{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;flex-wrap:wrap;
+      gap:1.2rem;align-items:center;justify-content:space-between;
+      font-size:0.8rem;color:var(--fg-dark);
+    }
+
+    .footer-left{display:flex;align-items:center;gap:0.6rem;}
+    .footer-logo{
+      width:18px;height:18px;border-radius:999px;
+      border:1px solid var(--gold-dim);
+      display:inline-flex;align-items:center;justify-content:center;
+      font-family:"JetBrains Mono",monospace;
+      font-size:0.6rem;color:var(--gold);
+      box-shadow:0 0 16px rgba(197,160,40,0.55);
+    }
+    .footer-brand{
+      font-family:"Cinzel",serif;
+      font-size:0.86rem;letter-spacing:0.12em;
+      text-transform:uppercase;color:#f1f1f7;
+    }
+    .footer-meta{
+      font-family:"JetBrains Mono",monospace;
+      font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;
+    }
+    .footer-right{font-size:0.76rem;color:var(--fg-dark);text-align:right;}
+    .footer-right span{display:block;}
+
+    /* Reveal (match system: .reveal + .active) */
+    .reveal{
+      opacity:0;
+      transform:translateY(30px);
+      transition:all 0.8s var(--ease);
+    }
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:900px){
+      .nav{flex-direction:column;align-items:flex-start;gap:0.4rem;}
+      .nav-links{gap:0.8rem;flex-wrap:wrap;}
+      .nav-links a{font-size:0.65rem;}
+
+      .hero{grid-template-columns:minmax(0,1fr);gap:2.5rem;padding-top:7rem;}
+      .hero-aside{order:-1;}
+      .wrapper{padding-top:3.5rem;}
+    }
+
+    @media(max-width:600px){
+      .nav{padding-inline:1rem;}
+      .hero-title{font-size:1.9rem;}
+      .hero-sub{font-size:0.9rem;border-left:none;padding-left:0;}
+      .glass-card,.term-card{padding:1.1rem 1.15rem;}
+      .footer-content{align-items:flex-start;}
+      .footer-right{text-align:left;}
     }
   </style>
 </head>
 <body>
+  <div class="noise"></div>
+  anvas id="cosmos"></canvas>
 
-  <header>
-    <div class="header-content">
-      <div class="serif caps text-gold">Kryonis.Global</div>
-      <a href="index.html" class="back-link mono caps">← Return</a>
-    </div>
-  </header>
-
-  <main>
-    <div class="wrapper">
-      
-      <section class="hero">
-        <span class="mono caps text-gold" style="font-size:0.7rem; border:1px solid var(--gold-dim); padding:4px 8px; margin-bottom:1.5rem; display:inline-block;">Glossary of Terms</span>
-        <h1 class="serif">The Codex</h1>
-        <p class="lead">
-          Language structures reality. To build a new civilization, we must first define the terms of its existence.
-        </p>
-      </section>
-
-      <div class="dictionary">
-        
-        <div class="term-row">
-          <div class="term-col">
-            <div class="term">Decoherence</div>
-            <span class="phonetic mono">/diː-kəʊ-ˈhɪə-rəns/</span>
-          </div>
-          <div>
-            <div class="definition">
-              The systemic breakdown of structural integrity caused by excessive informational noise and entropy. In a decoherent state, institutions retain their form (bureaucracy) but lose their function (signal).
+  <div class="page">
+    <header id="navbar">
+      <div class="wrapper" style="padding:0 1.4rem;">
+        <nav class="nav">
+          <a href="index.html" class="brand">
+            <div class="logo-mark">○</div>
+            <div class="brand-text serif caps">KRYONIS.GLOBAL</div>
+          </a>
+          <div style="display:flex;align-items:center;gap:1.5rem;">
+            <div class="nav-links caps mono">
+              <a href="index.html#axis1">AXIS I</a>
+              <a href="index.html#axis2">AXIS II</a>
+              <a href="index.html#gbx">GBX</a>
+              <a href="charter.html">CHARTER</a>
+              <a href="protocol.html" class="playbook-link">PLAYBOOK</a>
+              <a href="codex.html" style="color:#f5f5ff;border-color:var(--fg-dark);">CODEX</a>
             </div>
-            <div class="context">
-              "The 21st century crisis is not a resource crisis; it is a crisis of global decoherence. KRYONIS nodes are designed to act as Faraday cages against this entropy."
-            </div>
+            <a href="index.html#contact" class="cta-btn caps mono">BRIEFING</a>
           </div>
-        </div>
-
-        <div class="term-row">
-          <div class="term-col">
-            <div class="term">Proof of Coherence</div>
-            <span class="phonetic mono">[PoC]</span>
-          </div>
-          <div>
-            <div class="definition">
-              A validation protocol that measures a system's ability to maintain alignment under stress. Unlike Proof-of-Work (which expends energy) or Proof-of-Stake (which leverages capital), PoC measures the efficiency and clarity of energy organization.
-            </div>
-            <div class="context">
-              "Nations with high GDP but low PoC are fragile. Nations with high PoC are antifragile."
-            </div>
-          </div>
-        </div>
-
-        <div class="term-row">
-          <div class="term-col">
-            <div class="term">Noöcratic</div>
-            <span class="phonetic mono">/noʊ-ə-ˈkræt-ɪk/</span>
-          </div>
-          <div>
-            <div class="definition">
-              A governance model derived from the "Noosphere" (sphere of mind). A system where decision-making authority is distributed based on demonstrated cognitive capacity and foresight, rather than popularity or accumulated capital.
-            </div>
-            <div class="context">
-              "Democracy counts heads. Noöcracy weighs thoughts. In a KRYONIS node, governance is allocated to those who demonstrate the longest time horizons."
-            </div>
-          </div>
-        </div>
-
-        <div class="term-row">
-          <div class="term-col">
-            <div class="term">Bio-Sentient Node</div>
-            <span class="phonetic mono">[Architecture]</span>
-          </div>
-          <div>
-            <div class="definition">
-              A sovereign physical territory designed to be biologically autonomous (food/energy) and cognitively connected. A node is not just a smart city; it is a conscious organism capable of self-repair and localized intelligence.
-            </div>
-          </div>
-        </div>
-
-        <div class="term-row">
-          <div class="term-col">
-            <div class="term">The Lattice</div>
-            <span class="phonetic mono">[Network]</span>
-          </div>
-          <div>
-            <div class="definition">
-              The resonant field connecting all KRYONIS nodes. It is the "nervous system" of the new architecture, carrying high-fidelity signal while filtering out low-fidelity noise.
-            </div>
-          </div>
-        </div>
-
-        <div class="term-row">
-          <div class="term-col">
-            <div class="term">Lazy Susan</div>
-            <span class="phonetic mono">[Protocol]</span>
-          </div>
-          <div>
-            <div class="definition">
-              A proprietary synthesis engine where 12 nodes of hybrid intelligence (Human + AI) rotate around a central problem. It replaces vertical hierarchy with horizontal resonance, allowing for the rapid architecting of sovereign futures.
-            </div>
-          </div>
-        </div>
-
+        </nav>
       </div>
+    </header>
 
-      <footer class="mono caps">
-        Kryonis Intelligence Studio · Hong Kong SAR · 2025
-      </footer>
-    </div>
-  </main>
+    <main>
+      <div class="wrapper">
+        <!-- HERO -->
+        <section class="hero reveal">
+          <div>
+            <div class="hero-eyebrow mono">
+              <span class="hero-eyebrow-dot"></span>
+              <span>KRYONIS CODEX</span>
+            </div>
+            <h1 class="hero-title">
+              The Lexicon of<br />
+              <span>Cognitive &amp; Metabolic Sovereignty</span>
+            </h1>
+            <p class="hero-sub">
+              Language is the operating system of reality. The Codex defines the core
+              terms of KRYONIS — the words and concepts that anchor Axis I (Cognitive Capital)
+              and Axis II (Metabolic Bio-Capital) into one coherent civilizational frame.
+            </p>
+            <div class="hero-meta">
+              <div class="hero-chip mono caps">Axis I · Cognitive</div>
+              <div class="hero-chip mono caps">Axis II · Metabolic</div>
+              <div class="hero-chip mono caps">GBX · Bio-Capital Rail</div>
+            </div>
+            <div class="hero-actions">
+              <a href="#axis1-terms" class="btn">
+                <span class="btn-dot"></span>
+                <span>Axis I Terms</span>
+              </a>
+              <a href="#axis2-terms" class="btn btn-outline">
+                <span>Axis II / Architecture</span>
+              </a>
+            </div>
+          </div>
 
-  <div class="sonic-container">
-    <button id="sonic-btn" onclick="toggleAudio()">
-      [ AUDIO: OFF ]
-    </button>
+          <aside class="hero-aside">
+            <div class="glass-card">
+              <div class="mono caps text-muted" style="font-size:0.7rem;margin-bottom:0.6rem;">
+                Usage · Internal &amp; External
+              </div>
+              <p class="text-muted" style="font-size:0.88rem;line-height:1.6;">
+                The Codex is not a marketing glossary. It is a precision tool:
+                every term here is designed to be used in contracts, protocols,
+                architecture diagrams and sovereign memos without ambiguity.
+              </p>
+              <p class="text-muted" style="font-size:0.88rem;line-height:1.6;margin-top:0.7rem;">
+                If a term is not defined in the Codex, it is not considered part of
+                the official KRYONIS doctrinal language.
+              </p>
+            </div>
+          </aside>
+        </section>
+
+        <!-- AXIS I TERMS -->
+        <section id="axis1-terms" class="section reveal">
+          <header class="section-header">
+            <h2 class="section-title">Axis I · Cognitive Lexicon</h2>
+            <p class="section-kicker">
+              Terms that describe the cognitive substrate of sovereignty: coherence, sense-making,
+              legitimacy and the governance of intelligence itself.
+            </p>
+          </header>
+
+          <div class="term-list">
+            <!-- Decoherence -->
+            <article class="term-card">
+              <header class="term-header">
+                <div>
+                  <h3 class="term-name">Decoherence</h3>
+                  <div class="term-phonetic">/diː-kəʊ-ˈhɪə-rəns/</div>
+                </div>
+                <span class="term-tag">Axis I · Failure mode</span>
+              </header>
+              <p class="term-definition">
+                The systemic breakdown of structural integrity caused by excessive informational
+                noise and entropy. In a decoherent state, institutions retain their form
+                (bureaucracy) but lose their function (signal).
+              </p>
+              <p class="term-context">
+                “The 21st-century crisis is not a resource crisis; it is a crisis of global
+                decoherence. KRYONIS nodes are designed to act as Faraday cages against this entropy.”
+              </p>
+            </article>
+
+            <!-- Proof of Coherence -->
+            <article class="term-card">
+              <header class="term-header">
+                <div>
+                  <h3 class="term-name">Proof of Coherence</h3>
+                  <div class="term-phonetic">[PoC]</div>
+                </div>
+                <span class="term-tag">Axis I · Legitimacy layer</span>
+              </header>
+              <p class="term-definition">
+                A validation protocol that measures a system’s ability to maintain alignment
+                under stress. Unlike Proof-of-Work (which expends energy) or Proof-of-Stake
+                (which leverages capital), PoC measures the efficiency and clarity of energy
+                organization and meaning-making.
+              </p>
+              <p class="term-context">
+                “Nations with high GDP but low PoC are fragile. Nations with high PoC are antifragile.”
+              </p>
+            </article>
+
+            <!-- Noöcratic -->
+            <article class="term-card">
+              <header class="term-header">
+                <div>
+                  <h3 class="term-name">Noöcratic</h3>
+                  <div class="term-phonetic">/noʊ-ə-ˈkræt-ɪk/</div>
+                </div>
+                <span class="term-tag">Axis I · Governance</span>
+              </header>
+              <p class="term-definition">
+                A governance model derived from the noosphere (sphere of mind). Decision-making
+                authority is distributed based on demonstrated cognitive capacity, depth of
+                understanding and long-horizon foresight — rather than popularity, velocity
+                or accumulated capital.
+              </p>
+              <p class="term-context">
+                “Democracy counts heads. Noöcracy weighs thoughts. In a KRYONIS node, governance
+                is allocated to those who demonstrate the longest time horizons.”
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- AXIS II / ARCHITECTURE TERMS -->
+        <section id="axis2-terms" class="section reveal">
+          <header class="section-header">
+            <h2 class="section-title">Axis II · Architecture &amp; Metabolic Terms</h2>
+            <p class="section-kicker">
+              Terms that describe the physical, metabolic and architectural substrate of KRYONIS:
+              nodes, lattices and bio-capital infrastructure.
+            </p>
+          </header>
+
+          <div class="term-list">
+            <!-- Bio-Sentient Node -->
+            <article class="term-card">
+              <header class="term-header">
+                <div>
+                  <h3 class="term-name">Bio-Sentient Node</h3>
+                  <div class="term-phonetic">[Architecture]</div>
+                </div>
+                <span class="term-tag">Axis II · Sovereign node</span>
+              </header>
+              <p class="term-definition">
+                A sovereign physical territory designed to be biologically autonomous
+                (food, energy, water) and cognitively connected. A node is not merely a
+                “smart city”; it is a conscious organism capable of self-repair, local
+                decision-making and long-horizon metabolic accounting.
+              </p>
+            </article>
+
+            <!-- The Lattice -->
+            <article class="term-card">
+              <header class="term-header">
+                <div>
+                  <h3 class="term-name">The Lattice</h3>
+                  <div class="term-phonetic">[Network]</div>
+                </div>
+                <span class="term-tag">Architecture · Nervous system</span>
+              </header>
+              <p class="term-definition">
+                The resonant field connecting all KRYONIS nodes. The Lattice functions as
+                the nervous system of the architecture, carrying high-fidelity signal
+                between nodes while aggressively filtering out low-fidelity noise.
+              </p>
+            </article>
+
+            <!-- Lazy Susan -->
+            <article class="term-card">
+              <header class="term-header">
+                <div>
+                  <h3 class="term-name">Lazy Susan</h3>
+                  <div class="term-phonetic">[Protocol]</div>
+                </div>
+                <span class="term-tag">Axis I / II · Synthesis engine</span>
+              </header>
+              <p class="term-definition">
+                The KRYONIS Round Table protocol where multiple human and machine intelligences
+                rotate around a central problem. Instead of vertical hierarchy, Lazy Susan uses
+                horizontal resonance: perspectives are rotated until a single coherent
+                architecture emerges that both Axis I and Axis II can execute.
+              </p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-left">
+          <div class="footer-logo">○</div>
+          <div>
+            <div class="footer-brand">KRYONIS Sovereign Systems</div>
+            <div class="footer-meta">Hong Kong SAR · Axis I / Axis II Codex</div>
+          </div>
+        </div>
+        <div class="footer-right">
+          <span>© 2025 KRYONIS.GLOBAL</span>
+          <span>Doctrinal Lexicon · Cognitive &amp; Metabolic Sovereignty</span>
+        </div>
+      </div>
+    </footer>
   </div>
 
-  <audio id="ambient-track" loop preload="auto">
-    <source src="drone.mp3" type="audio/mpeg">
-  </audio>
-
   <script>
-    const audio = document.getElementById('ambient-track');
-    const btn = document.getElementById('sonic-btn');
-    
-    // Force load
-    audio.load();
-    audio.volume = 0.5; 
-
-    function toggleAudio() {
-      if (audio.paused) {
-        // Use Promise to handle autoplay restrictions
-        var playPromise = audio.play();
-
-        if (playPromise !== undefined) {
-          playPromise.then(_ => {
-            // Play started successfully
-            updateBtn(true);
-          })
-          .catch(error => {
-            console.log("Playback prevented. User interaction needed.");
-            // On mobile, sometimes we need to trigger play again inside the click event
-            audio.play();
-            updateBtn(true);
-          });
-        }
+    // Header scroll effect (same as index)
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('navbar');
+      if (!header) return;
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
       } else {
-        audio.pause();
-        updateBtn(false);
+        header.classList.remove('scrolled');
       }
+    });
+
+    // Reveal animation (.reveal + .active)
+    const reveals = document.querySelectorAll('.reveal');
+
+    function activateVisibleReveals() {
+      reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.9) {
+          el.classList.add('active');
+        }
+      });
     }
 
-    function updateBtn(isPlaying) {
-      if (isPlaying) {
-        btn.innerHTML = "[ AUDIO: <span style='color:#33ff88'>ON</span> ]";
-        btn.style.borderColor = "var(--gold)";
-        btn.style.color = "var(--gold)";
-        btn.style.boxShadow = "0 0 15px rgba(212, 175, 55, 0.2)";
-      } else {
-        btn.innerHTML = "[ AUDIO: OFF ]";
-        btn.style.borderColor = "rgba(212, 175, 55, 0.3)";
-        btn.style.color = "rgba(212, 175, 55, 0.5)";
-        btn.style.boxShadow = "none";
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold:0.1 });
+
+      reveals.forEach(el => observer.observe(el));
+    } else {
+      activateVisibleReveals();
+      window.addEventListener('scroll', activateVisibleReveals);
+    }
+
+    window.addEventListener('load', activateVisibleReveals);
+
+    // Cosmic particles background (shared implementation)
+    const canvas = document.getElementById('cosmos');
+    if (canvas && canvas.getContext) {
+      const ctx = canvas.getContext('2d');
+      let width = 0;
+      let height = 0;
+      let particles = [];
+      let animationId = null;
+
+      function resize() {
+        width  = canvas.width  = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        initParticles();
       }
+
+      window.addEventListener('resize', () => {
+        cancelAnimationFrame(animationId);
+        resize();
+        animate();
+      });
+
+      class Particle {
+        constructor() { this.reset(); }
+        reset() {
+          this.x     = Math.random() * width;
+          this.y     = Math.random() * height;
+          this.vx    = (Math.random() - 0.5) * 0.2;
+          this.vy    = (Math.random() - 0.5) * 0.2;
+          this.size  = Math.random() * 1.5;
+          this.phase = Math.random() * Math.PI * 2;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.phase += 0.01;
+          if (this.x < 0) this.x = width;
+          if (this.x > width) this.x = 0;
+          if (this.y < 0) this.y = height;
+          if (this.y > height) this.y = 0;
+        }
+        draw() {
+          const opacity = (Math.sin(this.phase) + 1) / 2 * 0.5 + 0.2;
+          ctx.fillStyle = `rgba(138,143,157,${opacity})`;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function initParticles() {
+        particles = [];
+        const baseCount = Math.floor(window.innerWidth / 18);
+        const count = Math.max(40, Math.min(baseCount, 80));
+        for (let i = 0; i < count; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.update();
+          p.draw();
+        }
+
+        for (let i = 0; i < particles.length; i++) {
+          const p1 = particles[i];
+          for (let j = i + 1; j < particles.length && j < i + 15; j++) {
+            const p2 = particles[j];
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+
+            if (dist < 90) {
+              const alpha = 0.03 - dist / 3000;
+              if (alpha > 0) {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+                ctx.lineWidth   = 0.5;
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+              }
+            }
+          }
+        }
+
+        animationId = requestAnimationFrame(animate);
+      }
+
+      resize();
+      animate();
     }
   </script>
-
 </body>
 </html>
