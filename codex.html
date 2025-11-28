@@ -236,7 +236,8 @@
 
     .hero-title{
       font-family:'Cinzel',serif;
-      font-size:clamp(2rem,3.6vw,3.2rem);
+      font-size:clamp(2.2rem,4vw,3.4rem);
+      line-height:1.18;
       letter-spacing:0.12em;
       text-transform:uppercase;
       color:#fff;
@@ -390,7 +391,7 @@
       display:flex;
       justify-content:space-between;
       align-items:flex-end;
-      gap:1rem;
+      gap:1.5rem;
       flex-wrap:wrap;
     }
 
@@ -435,6 +436,24 @@
 
     .footer-right span{display:block;}
 
+    .audio-toggle{
+      margin-top:0.8rem;
+      display:inline-block;
+      padding:0.25rem 0.9rem;
+      border-radius:2px;
+      border:1px solid rgba(197,160,40,0.8);
+      font-family:'JetBrains Mono',monospace;
+      font-size:0.65rem;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:var(--gold);
+      background:rgba(5,5,8,0.9);
+    }
+    .audio-toggle:hover{
+      background:var(--gold);
+      color:#05060a;
+    }
+
     /* Reveal */
 
     .reveal{
@@ -456,10 +475,11 @@
       .subnav-links{gap:1rem;font-size:0.65rem;}
       .hero{padding-top:7.5rem;}
       .hero-sub{border-left:none;padding-left:0;margin-top:0.6rem;}
+      .footer-right{text-align:left;}
     }
 
     @media(max-width:600px){
-      .hero-title{font-size:2rem;}
+      .hero-title{font-size:2.2rem;}
       .term-card{padding:1.2rem 1.3rem;}
     }
   </style>
@@ -675,6 +695,7 @@
         <div class="footer-right">
           <span>© 2025 KRYONIS.GLOBAL</span>
           <span>Doctrinal Lexicon · Cognitive &amp; Metabolic Sovereignty</span>
+          <button class="audio-toggle mono caps" type="button">[ AUDIO: OFF ]</button>
         </div>
       </div>
     </footer>
