@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KRYONIS / GBX Charter — Metabolic Bio-Capital Constitution</title>
+  <meta name="description" content="The KRYONIS / GBX Charter defines the constitutional principles of metabolic bio-capital and the 2035 systems map for a planetary bio-sovereign standard." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-deep: #020204;
+      --bg-panel: rgba(15, 15, 20, 0.6);
+
+      --fg: #e0e0e6;
+      --fg-muted: #8a8f9d;
+      --fg-dark: #555a66;
+
+      --gold: #C5A028;
+      --gold-dim: rgba(197, 160, 40, 0.3);
+      --gold-glow: rgba(197, 160, 40, 0.15);
+
+      --violet: #7c73e6;
+
+      --border: rgba(255, 255, 255, 0.08);
+      --glass: blur(10px);
+
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.65);
+
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.28s ease-out;
+
+      --max-width: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #070814 0, #020204 55%);
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+      z-index: 0;
+    }
+
+    canvas#cosmos {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(2, 2, 4, 0.94), rgba(2, 2, 4, 0.72));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      transition: background var(--transition-med), border-color var(--transition-med), transform 0.22s ease-out;
+    }
+
+    header.scrolled {
+      background: rgba(2, 2, 4, 0.98);
+      border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.9rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      color: var(--fg-muted);
+    }
+
+    .nav-logo {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: 1px solid var(--gold-dim);
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.9), 0 0 24px rgba(197, 160, 40, 0.4);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.55rem;
+      color: var(--gold);
+    }
+
+    .nav-brand {
+      font-family: "Cinzel", serif;
+      font-size: 0.8rem;
+      color: #f1f1f7;
+    }
+
+    .nav-center {
+      display: flex;
+      gap: 1.6rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .nav-link {
+      position: relative;
+      cursor: pointer;
+      color: var(--fg-muted);
+      letter-spacing: 0.16em;
+      text-decoration: none;
+      transition: color var(--transition-fast), opacity var(--transition-fast);
+      opacity: 0.8;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.3rem;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), var(--violet));
+      transition: width var(--transition-med);
+      opacity: 0.85;
+    }
+
+    .nav-link:hover {
+      color: #f5f5ff;
+      opacity: 1;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .nav-meta {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--fg-dark);
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--gold-dim);
+      background: radial-gradient(circle at top left, rgba(197, 160, 40, 0.16), rgba(8, 8, 12, 0.95));
+      color: #fdfdfb;
+      padding: 0.45rem 1.1rem;
+      font-size: 0.7rem;
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.85), 0 14px 40px rgba(0, 0, 0, 0.9);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn span {
+      font-size: 0.7rem;
+    }
+
+    .btn-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--gold), transparent);
+      box-shadow: 0 0 10px rgba(197, 160, 40, 0.8);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--gold);
+      background: radial-gradient(circle at top left, rgba(197, 160, 40, 0.26), rgba(6, 6, 10, 0.98));
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.95);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .wrapper {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3.5rem 1.4rem 4rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.1fr);
+      gap: 3rem;
+      align-items: center;
+      padding-top: 1.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .eyebrow {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--fg-muted);
+      margin-bottom: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      border: 1px solid var(--gold-dim);
+      box-shadow: 0 0 12px rgba(197, 160, 40, 0.7);
+    }
+
+    .hero-title {
+      font-family: "Cinzel", serif;
+      font-size: clamp(2.1rem, 3.1vw, 2.6rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.25;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title span {
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      color: var(--fg-muted);
+      line-height: 1.6;
+      max-width: 36rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.8rem;
+      font-size: 0.78rem;
+      color: var(--fg-dark);
+    }
+
+    .meta-pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: radial-gradient(circle at top left, rgba(124, 115, 230, 0.18), rgba(8, 8, 12, 0.9));
+      padding: 0.32rem 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: "JetBrains Mono", monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .meta-pill span {
+      font-size: 0.66rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.16);
+      color: var(--fg-muted);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--violet);
+      color: #f4f4ff;
+      background: radial-gradient(circle at top left, rgba(124, 115, 230, 0.2), rgba(5, 5, 9, 0.96));
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-aside {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .hero-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, rgba(197, 160, 40, 0.15), rgba(12, 12, 18, 0.96));
+      padding: 1.1rem 1.15rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-card-title {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-card-body {
+      font-size: 0.88rem;
+      color: var(--fg-muted);
+      line-height: 1.5;
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+
+    .chip {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 10, 16, 0.9);
+      padding: 0.25rem 0.7rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--fg-dark);
+    }
+
+    .section {
+      padding: 0 0 3.5rem;
+    }
+
+    .section-header {
+      margin-bottom: 1.8rem;
+    }
+
+    .section-title {
+      font-family: "Cinzel", serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #f5f5ff;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-kicker {
+      font-size: 0.9rem;
+      color: var(--fg-muted);
+      max-width: 36rem;
+      line-height: 1.6;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    .glass-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(10, 10, 16, 0.95), rgba(10, 10, 16, 0.6));
+      backdrop-filter: var(--glass);
+      -webkit-backdrop-filter: var(--glass);
+      box-shadow: var(--shadow-soft);
+      padding: 1.4rem 1.5rem;
+    }
+
+    .glass-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+      gap: 0.6rem;
+    }
+
+    .glass-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--fg-dark);
+    }
+
+    .glass-tag {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(124, 115, 230, 0.5);
+      padding: 0.2rem 0.75rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--violet);
+      background: radial-gradient(circle at top left, rgba(124, 115, 230, 0.2), transparent);
+    }
+
+    .glass-title {
+      font-size: 0.98rem;
+      margin-bottom: 0.55rem;
+      color: #f7f7ff;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .glass-body {
+      font-size: 0.9rem;
+      color: var(--fg-muted);
+      line-height: 1.7;
+      margin-bottom: 0.9rem;
+    }
+
+    .principle-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .principle-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .principle-index {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding-top: 0.25rem;
+    }
+
+    .principle-text {
+      color: var(--fg-muted);
+      line-height: 1.6;
+    }
+
+    .principle-text strong {
+      color: #f7f7ff;
+      font-weight: 500;
+    }
+
+    .aside-note {
+      font-size: 0.8rem;
+      color: var(--fg-dark);
+      margin-top: 0.6rem;
+      line-height: 1.5;
+    }
+
+    .stack-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      font-size: 0.88rem;
+    }
+
+    .stack-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--fg-muted);
+    }
+
+    .stack-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-dark);
+    }
+
+    .stack-value {
+      text-align: right;
+      color: var(--fg-muted);
+    }
+
+    .callout {
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(197, 160, 40, 0.5);
+      padding: 1rem 1.1rem;
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      line-height: 1.6;
+      background: radial-gradient(circle at top left, rgba(197, 160, 40, 0.13), rgba(8, 8, 12, 0.9));
+      margin-top: 1.2rem;
+    }
+
+    .systems-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 1.4rem;
+      align-items: flex-start;
+    }
+
+    .timeline {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      font-size: 0.88rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0.4rem;
+      top: 0.35rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--violet), transparent);
+      box-shadow: 0 0 12px rgba(124, 115, 230, 0.8);
+    }
+
+    .timeline-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--fg-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-text {
+      color: var(--fg-muted);
+      line-height: 1.6;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .cta-note {
+      font-size: 0.8rem;
+      color: var(--fg-dark);
+    }
+
+    .divider {
+      height: 1px;
+      background: radial-gradient(circle at center, rgba(197, 160, 40, 0.35), transparent);
+      opacity: 0.7;
+      margin: 0.6rem 0 1.1rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: radial-gradient(circle at top, rgba(10, 10, 16, 0.95), rgba(2, 2, 4, 0.98));
+      padding: 1.7rem 1.4rem 2.1rem;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--fg-dark);
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .footer-logo {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1px solid var(--gold-dim);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.6rem;
+      color: var(--gold);
+      box-shadow: 0 0 16px rgba(197, 160, 40, 0.55);
+    }
+
+    .footer-brand {
+      font-family: "Cinzel", serif;
+      font-size: 0.86rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f1f1f7;
+    }
+
+    .footer-meta {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .footer-right {
+      font-size: 0.76rem;
+      color: var(--fg-dark);
+      text-align: right;
+    }
+
+    .footer-right span {
+      display: block;
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav {
+        flex-wrap: wrap;
+        gap: 0.6rem 1rem;
+      }
+
+      .nav-center {
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 0.64rem;
+        gap: 0.9rem;
+      }
+
+      .nav-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+      }
+
+      .hero-aside {
+        order: -1;
+      }
+
+      .grid-2,
+      .systems-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .wrapper {
+        padding-top: 2.5rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        padding-inline: 1rem;
+      }
+
+      .hero-title {
+        font-size: 1.85rem;
+      }
+
+      .hero-sub {
+        font-size: 0.9rem;
+      }
+
+      .hero-card {
+        padding: 1rem 1rem;
+      }
+
+      .glass-card {
+        padding: 1.1rem 1.15rem;
+      }
+
+      .footer-content {
+        align-items: flex-start;
+      }
+
+      .footer-right {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <canvas id="cosmos"></canvas>
+
+  <div class="page">
+    <header id="navbar">
+      <nav class="nav">
+        <div class="nav-left">
+          <div class="nav-logo">○</div>
+          <span class="nav-brand">KRYONIS.GLOBAL</span>
+        </div>
+        <div class="nav-center">
+          <a href="index.html#axis1" class="nav-link">Axis I</a>
+          <a href="index.html#axis2" class="nav-link">Axis II</a>
+          <a href="protocol.html#gbx" class="nav-link">GBX</a>
+          <a href="protocol.html" class="nav-link">Playbook</a>
+        </div>
+        <div class="nav-right">
+          <div class="nav-meta">Charter / GBX</div>
+          <a href="index.html#contact" class="btn">
+            <span class="btn-dot"></span>
+            <span>Briefing</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="wrapper">
+        <!-- HERO -->
+        <section class="hero reveal">
+          <div>
+            <div class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              <span>KRYONIS / GBX CHARTER</span>
+            </div>
+            <h1 class="hero-title">
+              The Constitutional Frame of<br />
+              <span>Metabolic Bio-Capital</span>
+            </h1>
+            <p class="hero-sub">
+              This Charter defines how value is allowed to exist inside the KRYONIS /
+              GBX standard. It is not a manifesto, a policy whitepaper, or a branding deck.
+              It is the boundary condition: where cognitive intent meets metabolic reality —
+              and where capital is not permitted to outrun the biosphere that sustains it.
+            </p>
+            <div class="hero-meta">
+              <div class="meta-pill">
+                <span>AXIS I / II</span>
+                <span>Joint frame</span>
+              </div>
+              <div class="meta-pill">
+                <span>GBX</span>
+                <span>Bio-capital rail</span>
+              </div>
+              <div class="meta-pill">
+                <span>2035</span>
+                <span>Target map</span>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <a href="#principles" class="btn">
+                <span class="btn-dot"></span>
+                <span>View Principles</span>
+              </a>
+              <a href="#systems-map" class="btn btn-outline">
+                <span>2035 Systems Map</span>
+              </a>
+            </div>
+          </div>
+
+          <aside class="hero-aside">
+            <div class="hero-card">
+              <div class="hero-card-title">Charter Scope</div>
+              <div class="hero-card-body">
+                The Charter governs only one thing: how <strong>verified biological work</strong> is
+                translated into units of account that can move across jurisdictions without
+                erasing ecological limits or political sovereignty.
+                <div class="hero-chip-row">
+                  <div class="chip">No political bloc</div>
+                  <div class="chip">No speculative casino</div>
+                  <div class="chip">No “green” cosmetics</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-card" style="background: linear-gradient(135deg, rgba(10,10,18,0.96), rgba(20,10,26,0.92));">
+              <div class="hero-card-title">Anchors</div>
+              <div class="hero-card-body">
+                The Charter sits at the intersection of:
+                <ul class="stack-list" style="margin-top:0.5rem;">
+                  <li class="stack-item">
+                    <span class="stack-label">Axis I</span>
+                    <span class="stack-value">Cognitive Capital / PoC</span>
+                  </li>
+                  <li class="stack-item">
+                    <span class="stack-label">Axis II</span>
+                    <span class="stack-value">Metabolic Sovereignty / MSF</span>
+                  </li>
+                  <li class="stack-item">
+                    <span class="stack-label">Rail</span>
+                    <span class="stack-value">GBX — Global Bio-Capital Exchange</span>
+                  </li>
+                </ul>
+                <div class="aside-note">
+                  If any instrument or institution contradicts these anchors,
+                  it cannot be labelled “KRYONIS / GBX compliant”.
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <!-- PRINCIPLES -->
+        <section id="principles" class="section reveal">
+          <header class="section-header">
+            <h2 class="section-title">Charter Principles</h2>
+            <p class="section-kicker">
+              The Charter is deliberately short. Each principle is designed to be testable
+              at the level of code, contracts, and institutions. Together they define
+              what it means for any asset, corridor, or settlement unit to claim GBX alignment.
+            </p>
+          </header>
+
+          <div class="grid-2">
+            <div class="glass-card">
+              <div class="glass-header">
+                <div class="glass-label">01 — 05</div>
+                <div class="glass-tag">Constitutive layer</div>
+              </div>
+              <h3 class="glass-title">The metabolic constitution</h3>
+              <p class="glass-body">
+                These principles bind capital to biospheric reality. They are not advisory.
+                They are pre-conditions for any issuance, listing, or corridor integration.
+              </p>
+              <ul class="principle-list">
+                <li class="principle-item">
+                  <div class="principle-index">P-01</div>
+                  <div class="principle-text">
+                    <strong>Value is minted only from verified biological work.</strong>
+                    Every GBX-linked unit must map to measurable metabolic processes
+                    — in soils, waters, genomes, infrastructures, or communities —
+                    not to abstract narratives or synthetic risk products.
+                  </div>
+                </li>
+                <li class="principle-item">
+                  <div class="principle-index">P-02</div>
+                  <div class="principle-text">
+                    <strong>Capital cannot outrun physical limits.</strong>
+                    Issuance, leverage, and circulation must remain strictly bounded
+                    by regenerative capacity, ecological thresholds, and thermodynamic reality.
+                  </div>
+                </li>
+                <li class="principle-item">
+                  <div class="principle-index">P-03</div>
+                  <div class="principle-text">
+                    <strong>Externalities are fully internalised.</strong>
+                    There is no “outside” of the ledger. All material impacts —
+                    including long-tail risks — must be priced into the unit at source.
+                  </div>
+                </li>
+                <li class="principle-item">
+                  <div class="principle-index">P-04</div>
+                  <div class="principle-text">
+                    <strong>Proofs travel, data does not.</strong>
+                    Sovereign bio-data remains inside its jurisdictional boundary.
+                    Only cryptographic and statistical proofs are allowed to cross borders.
+                  </div>
+                </li>
+                <li class="principle-item">
+                  <div class="principle-index">P-05</div>
+                  <div class="principle-text">
+                    <strong>The standard is geopolitically non-aligned.</strong>
+                    GBX must remain neutral to geopolitical blocs. No single state,
+                    alliance, or corporate group may capture issuance or governance.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="glass-card">
+              <div class="glass-header">
+                <div class="glass-label">06 — 09</div>
+                <div class="glass-tag">Governance layer</div>
+              </div>
+              <h3 class="glass-title">The coherence mandate</h3>
+              <p class="glass-body">
+                These principles tie GBX to the cognitive architecture of KRYONIS.
+                They ensure that governance emerges from coherence, not noise or volume.
+              </p>
+              <ul class="principle-list">
+                <li class="principle-item">
+                  <div class="principle-index">P-06</div>
+                  <div class="principle-text">
+                    <strong>Governance is anchored in Proof-of-Coherence.</strong>
+                    Decision-rights are weighted by demonstrated systemic understanding
+                    and long-horizon alignment — not by capital size alone.
+                  </div>
+                </li>
+                <li class="principle-item">
+                  <div class="principle-index">P-07</div>
+                  <div class="principle-text">
+                    <strong>Issuance must converge to observed reality.</strong>
+                    Models are advisory. If real-world telemetry diverges from modelled
+                    expectations, issuance rules follow reality, not projections.
+                  </div>
+                </li>
+                <li class="principle-item">
+                  <div class="principle-index">P-08</div>
+                  <div class="principle-text">
+                    <strong>Intergenerational risk is explicitly priced.</strong>
+                    Long-term metabolic liabilities cannot be discounted to zero.
+                    GBX rejects the idea that distant futures are economically negligible.
+                  </div>
+                </li>
+                <li class="principle-item">
+                  <div class="principle-index">P-09</div>
+                  <div class="principle-text">
+                    <strong>Every GBX corridor must be auditable as a story.</strong>
+                    Beyond metrics, any citizen should be able to understand —
+                    in narrative form — what their unit of bio-capital is actually tied to.
+                  </div>
+                </li>
+              </ul>
+              <div class="callout">
+                In practice, these principles form the checklist for any SWF, Bio-Bank,
+                or settlement unit seeking GBX designation. Failure on any single
+                principle is sufficient grounds for exclusion.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2035 SYSTEMS MAP -->
+        <section id="systems-map" class="section reveal">
+          <header class="section-header">
+            <h2 class="section-title">2035 Systems Map</h2>
+            <p class="section-kicker">
+              The 2035 map is not a prediction. It is a design target: a configuration
+              of institutions, corridors, and telemetry that would make the GBX standard
+              genuinely indispensable — not as ideology, but as infrastructure.
+            </p>
+          </header>
+
+          <div class="systems-grid">
+            <div class="glass-card">
+              <div class="glass-header">
+                <div class="glass-label">TARGET CONFIGURATION</div>
+                <div class="glass-tag">By 2035</div>
+              </div>
+              <h3 class="glass-title">From pilot standard to planetary rail</h3>
+              <p class="glass-body">
+                By 2035, GBX is envisioned as a quietly embedded layer in the global system —
+                less visible than headlines, more persistent than electoral cycles. The map
+                focuses on where and how the standard actually binds capital to biology.
+              </p>
+              <ul class="timeline">
+                <li class="timeline-item">
+                  <div class="timeline-label">Bio-Banks</div>
+                  <div class="timeline-text">
+                    A minimum of <strong>five regional Bio-Banks</strong> (Arctic, Temperate,
+                    Tropical, Drylands, Oceanic) operate as custodians of verified
+                    bio-assets and long-horizon metabolic programs.
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <div class="timeline-label">Reserve architecture</div>
+                  <div class="timeline-text">
+                    Systemically important central banks and sovereign wealth funds hold
+                    <strong>3–5% of reserves</strong> in GBX-linked instruments,
+                    recognising bio-capital as a distinct macro-asset class.
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <div class="timeline-label">Industrial corridors</div>
+                  <div class="timeline-text">
+                    Leading pharma, biomaterials, and agri-tech supply chains settle a
+                    portion of their long-term contracts through GBX corridors, using
+                    SABM-X-style pipelines for verified biological inputs.
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <div class="timeline-label">Neutral infra-operator</div>
+                  <div class="timeline-text">
+                    KRYONIS functions as a <strong>neutral infra-operator</strong> —
+                    not as a supranational government, but as an audited, multi-polar
+                    coordination layer for standards, proofs, and telemetry.
+                  </div>
+                </li>
+              </ul>
+              <div class="callout">
+                The map is deliberately incomplete. It leaves room for new corridors,
+                regional experiments, and sovereign architectures — as long as they
+                remain inside the Charter’s metabolic and cognitive bounds.
+              </div>
+            </div>
+
+            <div class="glass-card">
+              <div class="glass-header">
+                <div class="glass-label">MUTUAL COHERENCE</div>
+                <div class="glass-tag">Axis I / Axis II</div>
+              </div>
+              <h3 class="glass-title">How the axes lock together</h3>
+              <p class="glass-body">
+                GBX is where Axis I and Axis II touch. If either axis drifts, the Charter
+                stops holding. The 2035 map therefore encodes a set of coherence checks:
+              </p>
+              <ul class="stack-list">
+                <li class="stack-item">
+                  <span class="stack-label">Cognitive layer</span>
+                  <span class="stack-value">
+                    PoC &amp; GCI scorecards track whether governance choices improve or
+                    degrade systemic understanding over time.
+                  </span>
+                </li>
+                <li class="stack-item">
+                  <span class="stack-label">Metabolic layer</span>
+                  <span class="stack-value">
+                    MSF &amp; TEC-X telemetry confirm that every GBX unit maps to
+                    measurable bio-processes with known uncertainty.
+                  </span>
+                </li>
+                <li class="stack-item">
+                  <span class="stack-label">Sovereignty</span>
+                  <span class="stack-value">
+                    Sovereign nodes retain control of their data, tooling, and
+                    issuance parameters — the standard coordinates, it does not dictate.
+                  </span>
+                </li>
+                <li class="stack-item">
+                  <span class="stack-label">Civic legibility</span>
+                  <span class="stack-value">
+                    Citizens can query, in plain language, what sits behind any GBX-linked unit.
+                  </span>
+                </li>
+              </ul>
+              <div class="divider"></div>
+              <div class="cta-row">
+                <a href="protocol.html" class="btn btn-outline">
+                  <span>Open GBX Playbook</span>
+                </a>
+                <div class="cta-note">
+                  For implementation detail, see the Metabolic Sovereignty / TEC-X protocol.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-left">
+          <div class="footer-logo">○</div>
+          <div>
+            <div class="footer-brand">KRYONIS Sovereign Systems</div>
+            <div class="footer-meta">Hong Kong SAR · Global Bio-Capital Exchange</div>
+          </div>
+        </div>
+        <div class="footer-right">
+          <span>© 2025 KRYONIS.GLOBAL</span>
+          <span>Charter Draft — GBX / Metabolic Sovereignty Framework</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Sticky header behaviour
+    (function () {
+      const header = document.getElementById("navbar");
+      let lastScrollY = window.scrollY;
+
+      const onScroll = () => {
+        const current = window.scrollY;
+        if (current > 48) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+        lastScrollY = current;
+      };
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+    })();
+
+    // Reveal animation
+    (function () {
+      const elements = document.querySelectorAll(".reveal");
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: "0px 0px -10% 0px",
+            threshold: 0.1
+          }
+        );
+
+        elements.forEach((el) => observer.observe(el));
+      } else {
+        // Fallback: simple scroll handler
+        const revealOnScroll = () => {
+          const triggerBottom = window.innerHeight * 0.9;
+          elements.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < triggerBottom) {
+              el.classList.add("visible");
+            }
+          });
+        };
+        window.addEventListener("scroll", revealOnScroll, { passive: true });
+        revealOnScroll();
+      }
+    })();
+
+    // Cosmic background
+    (function () {
+      const canvas = document.getElementById("cosmos");
+      const ctx = canvas.getContext("2d");
+
+      let width, height, particles;
+
+      function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        initParticles();
+      }
+
+      function initParticles() {
+        const count = Math.min(80, Math.max(40, Math.floor((width * height) / 25000)));
+        particles = [];
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.12,
+            vy: (Math.random() - 0.5) * 0.12,
+            r: Math.random() * 1.2 + 0.4
+          });
+        }
+      }
+
+      function step() {
+        if (!ctx) return;
+        ctx.clearRect(0, 0, width, height);
+
+        ctx.fillStyle = "rgba(255,255,255,0.85)";
+        for (const p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < -50) p.x = width + 50;
+          if (p.x > width + 50) p.x = -50;
+          if (p.y < -50) p.y = height + 50;
+          if (p.y > height + 50) p.y = -50;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        const maxDist = 120;
+        ctx.lineWidth = 0.6;
+        for (let i = 0; i < particles.length; i++) {
+          const p1 = particles[i];
+          for (let j = i + 1; j < particles.length && j < i + 18; j++) {
+            const p2 = particles[j];
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < maxDist) {
+              const alpha = 0.03 * (1 - dist / maxDist);
+              ctx.strokeStyle = "rgba(142, 131, 255," + alpha + ")";
+              ctx.beginPath();
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      window.addEventListener("resize", resize);
+      resize();
+      requestAnimationFrame(step);
+    })();
+  </script>
+</body>
+</html>
