@@ -17,8 +17,8 @@
 
   <style>
     :root {
-      --bg-deep:#000000;
-      --bg-panel:rgba(5,5,10,0.55);
+      --bg-deep:#020204;
+      --bg-panel:rgba(15,15,20,0.6);
 
       --fg:#e0e0e6;
       --fg-muted:#8a8f9d;
@@ -44,7 +44,7 @@
 
     body{
       font-family:'Inter',sans-serif;
-      background-color:var(--bg-deep); /* puhas must, cosmos katab selle */
+      background-color:var(--bg-deep);
       color:var(--fg);
       line-height:1.6;
       overflow-x:hidden;
@@ -61,19 +61,12 @@
     .noise{
       position:fixed;top:0;left:0;width:100%;height:100%;
       pointer-events:none;z-index:900;opacity:0.05;
-      background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background:url("image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    /* üks kosmiline canvas kogu lehe jaoks */
     #cosmos{
       position:fixed;top:0;left:0;width:100%;height:100%;
       z-index:-1;opacity:0.5;
-    }
-
-    .page{
-      position:relative;
-      z-index:1;
-      background:transparent; /* EI mingit pruunikat paneeli, kosmos on taga */
     }
 
     .wrapper{
@@ -120,7 +113,6 @@
       min-height:clamp(80vh,90vh,1000px);
       display:flex;align-items:center;
       padding-top:6rem;padding-bottom:4rem;
-      background:transparent;
     }
     .hero-grid{
       display:grid;grid-template-columns:1.6fr 1fr;gap:5rem;align-items:center;
@@ -155,14 +147,9 @@
     }
     .btn-outline:hover{border-color:var(--fg);color:var(--fg);}
 
-    /* tõeline klaas – mitte suur pruun paneel */
     .glass-card{
-      background:var(--bg-panel);
-      backdrop-filter:var(--glass);
-      border:1px solid var(--border);
-      padding:2rem;
-      position:relative;
-      border-radius:14px;
+      background:var(--bg-panel);backdrop-filter:var(--glass);
+      border:1px solid var(--border);padding:2rem;position:relative;
     }
     .glass-card::before{
       content:'';position:absolute;top:0;left:0;width:100%;height:1px;
@@ -176,11 +163,8 @@
     }
     .metric-row:last-child{border-bottom:none;}
 
-    /* sektsioonid on läbipaistvad – kosmos paistab läbi */
     section{
-      padding:6rem 0;
-      border-bottom:1px solid rgba(255,255,255,0.02);
-      background:transparent;
+      padding:6rem 0;border-bottom:1px solid rgba(255,255,255,0.02);
     }
     .section-header{margin-bottom:3rem;}
     .eyebrow{color:var(--gold);font-size:0.7rem;margin-bottom:0.8rem;display:block;}
@@ -189,15 +173,11 @@
 
     .stack-list{display:flex;flex-direction:column;gap:1rem;}
     .stack-item{
-      background:rgba(5,5,10,0.35);
-      border:1px solid var(--border);
-      padding:1.5rem;
-      transition:0.3s var(--ease);
-      border-radius:10px;
+      background:rgba(255,255,255,0.01);border:1px solid var(--border);
+      padding:1.5rem;transition:0.3s var(--ease);
     }
     .stack-item:hover{
-      background:rgba(5,5,10,0.5);
-      border-color:var(--gold-dim);
+      background:rgba(255,255,255,0.03);border-color:var(--gold-dim);
       transform:translateX(5px);
     }
 
@@ -207,7 +187,6 @@
     .metric-box{
       background:linear-gradient(145deg,#0a0b10,#020204);
       border:1px solid var(--border);padding:1.5rem;text-align:center;
-      border-radius:12px;
     }
     .metric-val{
       font-size:1.8rem;font-family:'Cinzel',serif;margin:0.5rem 0;
@@ -215,7 +194,6 @@
 
     footer{
       padding:4rem 0;color:var(--fg-dark);font-size:0.75rem;padding-bottom:100px;
-      background:transparent;
     }
     .footer-content{
       display:flex;justify-content:space-between;align-items:flex-end;
@@ -231,13 +209,11 @@
       transform:translateY(0);
     }
 
-    /* AXES BAND – ainult õrn halo, mitte pruun riba */
+    /* AXES BAND */
     .axes-band{
       padding:3rem 0 1rem;
       border-bottom:1px solid rgba(255,255,255,0.04);
-      background:radial-gradient(circle at top,
-        rgba(197,160,40,0.02) 0%,
-        rgba(0,0,0,0) 55%);
+      background:transparent; /* halo eemaldatud */
     }
     .axes-grid{
       display:grid;
@@ -245,11 +221,10 @@
       gap:1.5rem;
     }
     .axis-card{
-      background:rgba(5,5,10,0.55);
+      background:rgba(15,15,20,0.75);
       border:1px solid var(--border);
       padding:1.4rem 1.6rem;
       backdrop-filter:var(--glass);
-      border-radius:12px;
     }
     .axis-label{
       font-size:0.75rem;
@@ -314,7 +289,8 @@
 
 <body>
   <div class="noise"></div>
-  <canvas id="cosmos"></canvas>
+  <!-- SINGLE cosmic background canvas -->
+  anvas id="cosmos"></canvas>
 
   <div class="page">
     <header id="navbar">
@@ -841,7 +817,7 @@
     </button>
   </div>
 
-  <!-- AMBIENT AUDIO -->
+  <!-- AMBIENT AUDIO (safe: plays only on click, silent if file missing) -->
   <audio id="ambient-track" loop>
     <source src="drone.mp3" type="audio/mpeg">
   </audio>
@@ -858,7 +834,7 @@
       }
     });
 
-    // Reveal animation
+    // Reveal animation (IntersectionObserver + initial check)
     const reveals = document.querySelectorAll('.reveal');
 
     function activateVisibleReveals() {
@@ -882,10 +858,12 @@
 
       reveals.forEach(el => observer.observe(el));
     } else {
+      // Fallback: activate all
       activateVisibleReveals();
       window.addEventListener('scroll', activateVisibleReveals);
     }
 
+    // Run initial check on load
     window.addEventListener('load', activateVisibleReveals);
 
     // Cosmic particles background
@@ -943,7 +921,7 @@
       function initParticles() {
         particles = [];
         const baseCount = Math.floor(window.innerWidth / 18);
-        const count = Math.max(40, Math.min(baseCount, 80));
+        const count = Math.max(40, Math.min(baseCount, 80)); // performance-safe
         for (let i = 0; i < count; i++) {
           particles.push(new Particle());
         }
@@ -958,7 +936,7 @@
           p.draw();
         }
 
-        // kerge ühendus, mitte täis n^2
+        // Lightweight connections (not full n^2)
         for (let i = 0; i < particles.length; i++) {
           const p1 = particles[i];
           for (let j = i + 1; j < particles.length && j < i + 15; j++) {
@@ -988,7 +966,7 @@
       animate();
     }
 
-    // Audio toggle
+    // Audio toggle (defensive, no play loop on error)
     const audio = document.getElementById('ambient-track');
     const btn   = document.getElementById('sonic-btn');
 
@@ -1018,6 +996,7 @@
             playPromise.then(() => {
               updateBtn(true);
             }).catch(() => {
+              // if user gesture or file problem, just stay OFF without looping
               updateBtn(false);
             });
           } else {
